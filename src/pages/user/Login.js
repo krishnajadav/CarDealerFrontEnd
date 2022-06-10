@@ -5,7 +5,7 @@ import Paper from '@mui/material/Paper';
 import * as Yup from "yup";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import React from "react";
@@ -85,7 +85,7 @@ function Login() {
                 </Grid>
                 <Grid container mt={1}>
                     <Grid item xs={12} sm={12} md={6}>
-                        <Button variant="text">Don't have an account? Click here</Button>
+                        <Button variant="text" component={Link} to="/register">Don't have an account? Click here</Button>
                     </Grid>
                 </Grid>
                 <Grid container>
