@@ -4,6 +4,7 @@ import AddAccessory from "./pages/accessory/AddAccessory";
 import EditAccessory from "./pages/accessory/EditAccessory";
 import EmployeeRegistration from "./pages/user/EmployeeRegistration";
 import EmployeeList from "./pages/user/EmployeeList";
+import ChangePassword from "./pages/user/ChangePassword";
 
 export const dealerRoutes = [
     {
@@ -41,5 +42,11 @@ export const dealerRoutes = [
         path: '/manage/employee/add',
         key: 'employee-add',
         component: EmployeeRegistration
+    },
+    {
+        title: 'Change Password',
+        path: '/manage/employee/change-password',
+        key: 'employee-change-password',
+        component: ChangePassword
     }
 ]
