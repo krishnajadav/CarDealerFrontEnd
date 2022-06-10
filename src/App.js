@@ -5,6 +5,7 @@ import LayoutDealer from "./components/LayoutDealer";
 import Login from "./pages/user/Login";
 import LayoutCustomer from "./components/LayoutCustomer";
 import CustomerRegistration from "./pages/user/CustomerRegistration";
+import ForgotPassword from "./pages/user/ForgotPassword";
 
 function App() {
   return(
@@ -12,6 +13,7 @@ function App() {
           <Routes>
               <Route exact path="/login" element={<Login/>}/>
               <Route exact path="/register" element={<CustomerRegistration/>}/>
+              <Route exact path="/forgot-password" element={<ForgotPassword/>}/>
               <Route path="/manage" element={<LayoutDealer />} >
                   {dealerRoutes.map((route) => (
                       <Route
