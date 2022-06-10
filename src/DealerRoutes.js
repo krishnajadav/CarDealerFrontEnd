@@ -5,6 +5,7 @@ import EditAccessory from "./pages/accessory/EditAccessory";
 import EmployeeRegistration from "./pages/user/EmployeeRegistration";
 import EmployeeList from "./pages/user/EmployeeList";
 import ChangePassword from "./pages/user/ChangePassword";
+import VehicleInventory from "./pages/inventory/VehicleInventory"
 
 export const dealerRoutes = [
     {
@@ -48,5 +49,11 @@ export const dealerRoutes = [
         path: '/manage/employee/change-password',
         key: 'employee-change-password',
         component: ChangePassword
+    },
+    {
+        title: 'Inventory Management',
+        path: '/manage/inventory',
+        key: 'inventory-management',
+        component: VehicleInventory
     }
 ]

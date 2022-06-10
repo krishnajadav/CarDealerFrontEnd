@@ -34,6 +34,9 @@ const pages = [{
 }, {
     name: "Employees",
     link: "/manage/employee"
+}, {
+    name: "Inventory",
+    link: "/manage/inventory"
 }];
 const settings = [{
     name: "Account",
