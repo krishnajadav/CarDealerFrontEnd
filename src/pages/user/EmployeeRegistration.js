@@ -36,7 +36,7 @@ function EmployeeRegistration() {
     });
 
     const onSubmit = data => {
-        navigate("/");
+        navigate("/manage/employee");
     }
 
     return (
