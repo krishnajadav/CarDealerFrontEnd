@@ -21,7 +21,7 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 const pages = ["Vehicles", "Accessories", "Repairs", "Services"];
 const settings = ["Account", "Logout"];
 
-function Navbar () {
+function DealerNavBar () {
 
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -190,4 +190,4 @@ function Navbar () {
     );
 }
 
-export default Navbar;
+export default DealerNavBar;

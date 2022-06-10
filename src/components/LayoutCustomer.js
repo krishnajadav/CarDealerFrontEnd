@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
-import DealerNavBar from "./DealerNavBar";
 import { Outlet } from 'react-router-dom';
+import CustomerNavBar from "./CustomerNavBar";
 
-function LayoutDealer() {
+function LayoutCustomer() {
     return(
         <Box
             sx={{
@@ -14,10 +14,10 @@ function LayoutDealer() {
                 flexGrow: 1,
             }}
         >
-            <DealerNavBar />
+            <CustomerNavBar />
             <Outlet/>
         </Box>
     );
 }
 
-export default LayoutDealer;
+export default LayoutCustomer;
