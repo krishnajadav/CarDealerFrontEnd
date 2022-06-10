@@ -2,6 +2,7 @@ import AccessoryHomeEmployee from "./pages/accessory/AccessoryHomeEmployee";
 import DealerHome from "./pages/landing/DealerHome";
 import AddAccessory from "./pages/accessory/AddAccessory";
 import EditAccessory from "./pages/accessory/EditAccessory";
+import EmployeeRegistration from "./pages/user/EmployeeRegistration";
 
 export const dealerRoutes = [
     {
@@ -27,5 +28,11 @@ export const dealerRoutes = [
         path: '/manage/accessories/edit',
         key: 'accessories-edit',
         component: EditAccessory
+    },
+    {
+        title: 'Signup Employee',
+        path: '/manage/employee/add',
+        key: 'employee-add',
+        component: EmployeeRegistration
     }
 ]

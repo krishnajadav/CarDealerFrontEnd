@@ -4,12 +4,14 @@ import {customerRoutes} from "./CustomerRoutes";
 import LayoutDealer from "./components/LayoutDealer";
 import Login from "./pages/user/Login";
 import LayoutCustomer from "./components/LayoutCustomer";
+import CustomerRegistration from "./pages/user/CustomerRegistration";
 
 function App() {
   return(
       <Router>
           <Routes>
               <Route exact path="/login" element={<Login/>}/>
+              <Route exact path="/register" element={<CustomerRegistration/>}/>
               <Route path="/manage" element={<LayoutDealer />} >
                   {dealerRoutes.map((route) => (
                       <Route
