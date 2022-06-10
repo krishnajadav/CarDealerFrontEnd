@@ -10,15 +10,10 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import React from "react";
 
-function EmployeeRegistration() {
+function ChangePassword() {
     const navigate = useNavigate();
 
     const validationSchema = Yup.object().shape({
-        firstName: Yup.string().required('First Name is required'),
-        lastName: Yup.string().required('Last Name is required'),
-        username: Yup.string()
-            .required('Username is required')
-            .email('Username should be a valid email'),
         password: Yup.string()
             .required('Password is required')
             .min(8, 'Password must be at least 8 characters'),
@@ -36,63 +31,15 @@ function EmployeeRegistration() {
     });
 
     const onSubmit = data => {
-        navigate("/manage/employee");
+        navigate("/login");
     }
 
     return (
         <Paper>
             <Box px={3} py={2}>
-                <Typography variant="h4" align="center">
-                    Employee Registration
+                <Typography variant="h6" >
+                    Change Password
                 </Typography>
-                <Grid container spacing={1}>
-                    <Grid item xs={12} sm={12} md={12}>
-                        <TextField
-                            placeholder="Enter a valid email"
-                            id="username"
-                            name="username"
-                            label="Username"
-                            fullWidth
-                            margin="dense"
-                            {...register('username')}
-                            error={errors.username ? true : false}
-                        />
-                        <Typography variant="inherit" color="textSecondary">
-                            {errors.username?.message}
-                        </Typography>
-                    </Grid>
-                </Grid>
-                <Grid container spacing={1}>
-                    <Grid item xs={12} sm={12} md={6}>
-                        <TextField
-                            id="firstName"
-                            name="firstName"
-                            label="First Name"
-                            fullWidth
-                            margin="dense"
-                            {...register('firstName')}
-                            error={errors.firstName ? true : false}
-                        />
-                        <Typography variant="inherit" color="textSecondary">
-                            {errors.firstName?.message}
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={12} sm={12} md={6}>
-                        <TextField
-                            id="lastName"
-                            name="lastName"
-                            label="Last Name"
-                            fullWidth
-                            margin="dense"
-                            {...register('lastName')}
-                            error={errors.lastName ? true : false}
-                        />
-                        <Typography variant="inherit" color="textSecondary">
-                            {errors.lastName?.message}
-                        </Typography>
-                    </Grid>
-                </Grid>
-
                 <Grid container spacing={1}>
                     <Grid item xs={12} sm={12} md={6}>
                         <TextField
@@ -109,6 +56,8 @@ function EmployeeRegistration() {
                             {errors.password?.message}
                         </Typography>
                     </Grid>
+                </Grid>
+                <Grid container spacing={1}>
                     <Grid item xs={12} sm={12} md={6}>
                         <TextField
                             id="confirmPassword"
@@ -132,15 +81,13 @@ function EmployeeRegistration() {
                             color="primary"
                             onClick={handleSubmit(onSubmit)}
                         >
-                            Register
+                            Save
                         </Button>
                     </Grid>
                 </Grid>
             </Box>
         </Paper>
     );
-
-
 }
 
-export default EmployeeRegistration;
+export default ChangePassword;

@@ -17,9 +17,31 @@ import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import {Link as navLink} from "react-router-dom";
 
-const pages = ["Vehicles", "Accessories", "Repairs", "Services", "Quotes"];
-const settings = ["Account", "Logout"];
+const pages = [{
+    name: "Vehicles",
+    link: "/vehicles"
+}, {
+    name: "Accessories",
+    link: "/accessories"
+}, {
+    name: "Repairs",
+    link: "/repairs"
+}, {
+    name: "Services",
+    link: "/services"
+}, {
+    name: "Quotes",
+    link: "/quotes"
+}];
+const settings = [{
+    name: "Account",
+    link: "/user/change-password"
+}, {
+    name: "Logout",
+    link: "/login"
+}];
 
 function CustomerNavBar () {
 
@@ -104,8 +126,8 @@ function CustomerNavBar () {
                                 }}
                             >
                                 {pages.map((page) => (
-                                    <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                        <Typography textAlign="center">{page}</Typography>
+                                    <MenuItem key={page.name} onClick={handleCloseNavMenu} component={navLink} to={page.link}>
+                                        <Typography textAlign="center">{page.name}</Typography>
                                     </MenuItem>
                                 ))}
                             </Menu>
@@ -134,11 +156,12 @@ function CustomerNavBar () {
                         <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
                             {pages.map((page) => (
                                 <Button
-                                    key={page}
+                                    key={page.name}
+                                    component={navLink} to={page.link}
                                     onClick={handleCloseNavMenu}
                                     sx={{ my: 2, color: "white", display: "block" }}
                                 >
-                                    {page}
+                                    {page.name}
                                 </Button>
                             ))}
                         </Box>
@@ -166,8 +189,8 @@ function CustomerNavBar () {
                                 onClose={handleCloseUserMenu}
                             >
                                 {settings.map((setting) => (
-                                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center">{setting}</Typography>
+                                    <MenuItem key={setting.name} onClick={handleCloseUserMenu} component={navLink} to={setting.link}>
+                                        <Typography textAlign="center">{setting.name}</Typography>
                                     </MenuItem>
                                 ))}
                             </Menu>
