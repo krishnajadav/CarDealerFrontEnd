@@ -15,6 +15,9 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from 'react-router-dom'
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogTitle from '@mui/material/DialogTitle';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -43,6 +46,16 @@ TabPanel.propTypes = {
 };
 
 function AccessoryHomeEmployee() {
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
     const [textTab1, setTextTab1] = React.useState("");
     const [helperTextTab1, setHelperTextTab1] = React.useState();
     const [helperTextTab1Error, setHelperTextTab1Error] = React.useState(false);
@@ -106,6 +119,22 @@ function AccessoryHomeEmployee() {
     return (
         <div>
             <Box sx={{ width: "100%" }}>
+                <Dialog
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogTitle id="alert-dialog-title">
+                        {"Confirm accessory removal?"}
+                    </DialogTitle>
+                    <DialogActions>
+                        <Button onClick={handleClose}>Remove</Button>
+                        <Button onClick={handleClose} autoFocus>
+                            Cancel
+                        </Button>
+                    </DialogActions>
+                </Dialog>
                 <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                     <Tabs
                         textColor="secondary"
@@ -163,10 +192,10 @@ function AccessoryHomeEmployee() {
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
-                                        <Button size="small" color="secondary">
+                                        <Button size="small" color="secondary" component={Link} to="/manage/accessories/edit">
                                             Edit
                                         </Button>
-                                        <Button size="small" color="error">
+                                        <Button size="small" color="error" onClick={handleClickOpen}>
                                             Remove
                                         </Button>
                                     </CardActions>

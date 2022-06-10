@@ -12,7 +12,7 @@ import {useNavigate} from "react-router-dom";
 import Stack from "@mui/material/Stack";
 import MenuItem from '@mui/material/MenuItem';
 
-function AddAccessory() {
+function EditAccessory() {
     const [filename, setFilename] = useState("");
     const [category, setCategory] = React.useState("Oil");
 
@@ -52,7 +52,7 @@ function AddAccessory() {
         <Paper>
             <Box px={3} py={2}>
                 <Typography variant="h4" align="center">
-                    Add New Accessory
+                    Edit Accessory
                 </Typography>
                 <Grid container spacing={1}>
                     <Grid item xs={3} sm={3}>
@@ -80,6 +80,7 @@ function AddAccessory() {
 
                     <Grid item xs={12} sm={12}>
                         <TextField
+                            defaultValue="Castrol 20W"
                             required
                             id="productName"
                             name="productName"
@@ -95,6 +96,7 @@ function AddAccessory() {
                     </Grid>
                     <Grid item xs={12} sm={12}>
                         <TextField
+                            defaultValue="This a generic description"
                             required
                             id="description"
                             name="description"
@@ -128,6 +130,7 @@ function AddAccessory() {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
+                            defaultValue="19"
                             required
                             id="price"
                             name="price"
@@ -144,6 +147,7 @@ function AddAccessory() {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
+                            defaultValue="10"
                             required
                             id="quantity"
                             name="quantity"
@@ -165,7 +169,7 @@ function AddAccessory() {
                         color="primary"
                         onClick={handleSubmit(onSubmit)}
                     >
-                        Add
+                        Save
                     </Button>
                 </Box>
             </Box>
@@ -173,4 +177,4 @@ function AddAccessory() {
     );
 }
 
-export default AddAccessory;
+export default EditAccessory;
