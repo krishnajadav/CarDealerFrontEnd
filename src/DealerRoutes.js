@@ -3,10 +3,10 @@ import DealerHome from "./pages/landing/DealerHome";
 import AddAccessory from "./pages/accessory/AddAccessory";
 import EditAccessory from "./pages/accessory/EditAccessory";
 
-export const routes = [
+export const dealerRoutes = [
     {
         title: 'Home',
-        path: '/',
+        path: '/manage/home',
         key: 'dealer-home',
         component: DealerHome
     },
