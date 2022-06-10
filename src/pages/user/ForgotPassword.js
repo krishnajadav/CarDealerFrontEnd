@@ -10,12 +10,13 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import React from "react";
 
-function Login() {
+function ForgotPassword() {
     const navigate = useNavigate();
 
     const validationSchema = Yup.object().shape({
-        username: Yup.string().required('Username is required'),
-        password: Yup.string().required('Password is required'),
+        username: Yup.string()
+            .required('Username is required')
+            .email('Username should be a valid email')
     });
 
     const {
@@ -27,20 +28,20 @@ function Login() {
     });
 
     const onSubmit = data => {
-        navigate("/");
+        navigate("/login");
     }
 
     return (
 
         <Paper>
             <Box px={3} py={2}>
-                <Typography variant="h2" >
-                    Login to proceed
+                <Typography variant="h6" >
+                    Enter email to recover your password
                 </Typography>
                 <Grid container spacing={1}>
                     <Grid item xs={12} sm={12} md={6}>
                         <TextField
-                            placeholder="Enter any value to proceed"
+                            placeholder="Enter your username/email"
                             id="username"
                             name="username"
                             label="Username"
@@ -54,24 +55,6 @@ function Login() {
                         </Typography>
                     </Grid>
                 </Grid>
-                <Grid container spacing={1}>
-                    <Grid item xs={12} sm={12} md={6}>
-                        <TextField
-                            placeholder="Enter any value to proceed"
-                            id="password"
-                            name="password"
-                            label="Password"
-                            type="password"
-                            fullWidth
-                            margin="dense"
-                            {...register('password')}
-                            error={errors.password ? true : false}
-                        />
-                        <Typography variant="inherit" color="textSecondary">
-                            {errors.password?.message}
-                        </Typography>
-                    </Grid>
-                </Grid>
                 <Grid container mt={3}>
                     <Grid item xs={12} sm={12} md={6}>
                         <Button
@@ -79,7 +62,7 @@ function Login() {
                             color="primary"
                             onClick={handleSubmit(onSubmit)}
                         >
-                            Login
+                            Request new password
                         </Button>
                     </Grid>
                 </Grid>
@@ -88,15 +71,10 @@ function Login() {
                         <Button variant="text" component={Link} to="/register">Don't have an account? Click here</Button>
                     </Grid>
                 </Grid>
-                <Grid container>
-                    <Grid item xs={12} sm={12} md={6}>
-                        <Button variant="text" component={Link} to="/forgot-password">Forgot password</Button>
-                    </Grid>
-                </Grid>
             </Box>
         </Paper>
     );
 
 }
 
-export default Login;
+export default ForgotPassword;
