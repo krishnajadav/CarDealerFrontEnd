@@ -14,6 +14,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import SearchIcon from "@mui/icons-material/Search";
+import { Link } from 'react-router-dom'
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -122,7 +123,7 @@ function AccessoryHomeEmployee() {
                 </Box>
                 <TabPanel value={value} index={0}>
                     <Stack direction="row" m={1} justifyContent="space-between">
-                        <Button variant="contained" color="secondary">
+                        <Button variant="contained" color="primary" component={Link} to="/manage/accessories/add">
                             Add
                         </Button>
 
