@@ -42,7 +42,7 @@ const CarResults = (props) => {
   ) : (
     <MaterialTable
       icons={tableIcons}
-      title="Available vehicles for rent"
+      title={"Available vehicles for rent between " + startDate.toISOString().split("T")[0] + " and "+ endDate.toISOString().split("T")[0] }
       columns={columns}
       data={data}
     />

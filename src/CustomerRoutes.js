@@ -1,9 +1,6 @@
 import CustomerHome from "./pages/landing/CustomerHome";
 import ChangePassword from "./pages/user/ChangePassword";
-import Carform from "./pages/user/Carform";
-import CarResults from "./pages/user/CarResults";
-import CarLoan from "./pages/user/CarLoan";
-import Services from "./pages/user/Services";
+import Quotes from "./pages/quotes/Quotes";
 import AccessoryHomeCustomer from "./pages/accessory/AccessoryHomeCustomer"
 
 export const customerRoutes = [
@@ -26,9 +23,9 @@ export const customerRoutes = [
     component: AccessoryHomeCustomer
   },
   {
-    title: "Services",
-    path: "services",
-    key: "services",
-    component: Services,
+    title: "Quotes",
+    path: "/quotes",
+    key: "quotes",
+    component: Quotes,
   },
 ];

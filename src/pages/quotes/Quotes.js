@@ -1,7 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import "./Services.css";
+import "./Quotes.css";
 import Tabs from "@mui/material/Tabs";
 import Carform from "./Carform";
 import CarLoan from "./CarLoan";
