@@ -1,0 +1,15 @@
+.MuiOutlinedInput-root {
+  width: 100% !important;
+}
+.input-wrapper {
+  margin-block: 10px;
+}
+
+.input-wrapper label,
+.input-wrapper select,
+.input-wrapper input {
+  flex-basis: 50%;
+  outline: none;
+  border-radius: 5px;
+  height: 30px;
+}

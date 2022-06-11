@@ -1,22 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import Standard from "./themes/standard";
+import { BookingContextProvider } from "./pages/services/store";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-      <ThemeProvider theme={Standard}>
-          <CssBaseline enableColorScheme />
-          <App />
-      </ThemeProvider>
+    <ThemeProvider theme={Standard}>
+      <BookingContextProvider>
+        <CssBaseline enableColorScheme />
+        <App />
+      </BookingContextProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );
 
