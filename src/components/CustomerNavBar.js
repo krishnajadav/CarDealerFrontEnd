@@ -17,200 +17,223 @@ import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import {Link as navLink} from "react-router-dom";
+import { Link as navLink } from "react-router-dom";
 
-const pages = [{
+const pages = [
+  {
     name: "Vehicles",
-    link: "/vehicles"
-}, {
+    link: "/vehicles",
+  },
+  {
     name: "Accessories",
-    link: "/accessories"
-}, {
+    link: "/accessories",
+  },
+  {
     name: "Repairs",
-    link: "/repairs"
-}, {
+    link: "/repairs",
+  },
+  {
     name: "Services",
-    link: "/services"
-}, {
+    link: "/services",
+  },
+  {
     name: "Quotes",
-    link: "/quotes"
-}];
-const settings = [{
+    link: "/quotes",
+  },
+];
+const settings = [
+  {
     name: "Account",
-    link: "/user/change-password"
-}, {
+    link: "/user/change-password",
+  },
+  {
+    name: "Bookings",
+    link: "/customer-bookings",
+  },
+  {
     name: "Logout",
-    link: "/login"
-}];
+    link: "/login",
+  },
+];
 
-function CustomerNavBar () {
+function CustomerNavBar() {
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const breadcrumbs = [
+    <Link underline="hover" key="1" color="inherit" href="/">
+      Home
+    </Link>,
+    <Typography key="2" color="inherit">
+      Accessories
+    </Typography>,
+  ];
 
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
-    const breadcrumbs = [
-        <Link underline="hover" key="1" color="inherit" href="/">
-            Home
-        </Link>,
-        <Typography key="2" color="inherit">
-            Accessories
-        </Typography>,
-    ];
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
 
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
-    };
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
-    };
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
 
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+  return (
+    <div>
+      <AppBar position="static" color="secondary">
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            <DirectionsCarIcon
+              sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+            />
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="/"
+              sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+              }}
+            >
+              LOGO
+            </Typography>
 
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-    };
-    return (
-        <div>
-            <AppBar position="static" color="secondary">
-                <Container maxWidth="xl">
-                    <Toolbar disableGutters>
-                        <DirectionsCarIcon
-                            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
-                        />
-                        <Typography
-                            variant="h6"
-                            noWrap
-                            component="a"
-                            href="/"
-                            sx={{
-                                mr: 2,
-                                display: { xs: "none", md: "flex" },
-                                fontFamily: "monospace",
-                                fontWeight: 700,
-                                letterSpacing: ".3rem",
-                                color: "inherit",
-                                textDecoration: "none",
-                            }}
-                        >
-                            LOGO
-                        </Typography>
+            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: "block", md: "none" },
+                }}
+              >
+                {pages.map((page) => (
+                  <MenuItem
+                    key={page.name}
+                    onClick={handleCloseNavMenu}
+                    component={navLink}
+                    to={page.link}
+                  >
+                    <Typography textAlign="center">{page.name}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+            <DirectionsCarIcon
+              sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
+            />
+            <Typography
+              variant="h5"
+              noWrap
+              component="a"
+              href=""
+              sx={{
+                mr: 2,
+                display: { xs: "flex", md: "none" },
+                flexGrow: 1,
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+              }}
+            >
+              LOGO
+            </Typography>
+            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+              {pages.map((page) => (
+                <Button
+                  key={page.name}
+                  component={navLink}
+                  to={page.link}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
+                  {page.name}
+                </Button>
+              ))}
+            </Box>
 
-                        <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-                            <IconButton
-                                size="large"
-                                aria-label="account of current user"
-                                aria-controls="menu-appbar"
-                                aria-haspopup="true"
-                                onClick={handleOpenNavMenu}
-                                color="inherit"
-                            >
-                                <MenuIcon />
-                            </IconButton>
-                            <Menu
-                                id="menu-appbar"
-                                anchorEl={anchorElNav}
-                                anchorOrigin={{
-                                    vertical: "bottom",
-                                    horizontal: "left",
-                                }}
-                                keepMounted
-                                transformOrigin={{
-                                    vertical: "top",
-                                    horizontal: "left",
-                                }}
-                                open={Boolean(anchorElNav)}
-                                onClose={handleCloseNavMenu}
-                                sx={{
-                                    display: { xs: "block", md: "none" },
-                                }}
-                            >
-                                {pages.map((page) => (
-                                    <MenuItem key={page.name} onClick={handleCloseNavMenu} component={navLink} to={page.link}>
-                                        <Typography textAlign="center">{page.name}</Typography>
-                                    </MenuItem>
-                                ))}
-                            </Menu>
-                        </Box>
-                        <DirectionsCarIcon
-                            sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
-                        />
-                        <Typography
-                            variant="h5"
-                            noWrap
-                            component="a"
-                            href=""
-                            sx={{
-                                mr: 2,
-                                display: { xs: "flex", md: "none" },
-                                flexGrow: 1,
-                                fontFamily: "monospace",
-                                fontWeight: 700,
-                                letterSpacing: ".3rem",
-                                color: "inherit",
-                                textDecoration: "none",
-                            }}
-                        >
-                            LOGO
-                        </Typography>
-                        <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-                            {pages.map((page) => (
-                                <Button
-                                    key={page.name}
-                                    component={navLink} to={page.link}
-                                    onClick={handleCloseNavMenu}
-                                    sx={{ my: 2, color: "white", display: "block" }}
-                                >
-                                    {page.name}
-                                </Button>
-                            ))}
-                        </Box>
-
-                        <Box sx={{ flexGrow: 0 }}>
-                            <Tooltip title="Open settings">
-                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                                </IconButton>
-                            </Tooltip>
-                            <Menu
-                                sx={{ mt: "45px" }}
-                                id="menu-appbar"
-                                anchorEl={anchorElUser}
-                                anchorOrigin={{
-                                    vertical: "top",
-                                    horizontal: "right",
-                                }}
-                                keepMounted
-                                transformOrigin={{
-                                    vertical: "top",
-                                    horizontal: "right",
-                                }}
-                                open={Boolean(anchorElUser)}
-                                onClose={handleCloseUserMenu}
-                            >
-                                {settings.map((setting) => (
-                                    <MenuItem key={setting.name} onClick={handleCloseUserMenu} component={navLink} to={setting.link}>
-                                        <Typography textAlign="center">{setting.name}</Typography>
-                                    </MenuItem>
-                                ))}
-                            </Menu>
-                        </Box>
-                    </Toolbar>
-                </Container>
-            </AppBar>
-            <Divider />
-            <div className="thumb-nav">
-                <Stack spacing={2}>
-                    <Breadcrumbs
-                        separator={<NavigateNextIcon fontSize="small" />}
-                        aria-label="breadcrumb"
-                    >
-                        {breadcrumbs}
-                    </Breadcrumbs>
-                </Stack>
-            </div>
-        </div>
-    );
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {settings.map((setting) => (
+                  <MenuItem
+                    key={setting.name}
+                    onClick={handleCloseUserMenu}
+                    component={navLink}
+                    to={setting.link}
+                  >
+                    <Typography textAlign="center">{setting.name}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+      <Divider />
+      <div className="thumb-nav">
+        <Stack spacing={2}>
+          <Breadcrumbs
+            separator={<NavigateNextIcon fontSize="small" />}
+            aria-label="breadcrumb"
+          >
+            {breadcrumbs}
+          </Breadcrumbs>
+        </Stack>
+      </div>
+    </div>
+  );
 }
 
 export default CustomerNavBar;

@@ -1,8 +1,9 @@
 import CustomerHome from "./pages/landing/CustomerHome";
 import ChangePassword from "./pages/user/ChangePassword";
 import Quotes from "./pages/quotes/Quotes";
-import AccessoryHomeCustomer from "./pages/accessory/AccessoryHomeCustomer"
-
+import AccessoryHomeCustomer from "./pages/accessory/AccessoryHomeCustomer";
+import ServicesCustomer from "./pages/services/Services";
+import CustomerBookings from "./pages/services/bookings/customerBookings";
 export const customerRoutes = [
   {
     title: "Home",
@@ -17,15 +18,27 @@ export const customerRoutes = [
     component: ChangePassword,
   },
   {
-    title: 'Accessory List',
-    path: '/accessories',
-    key: 'user-accessory-list',
-    component: AccessoryHomeCustomer
+    title: "Accessory List",
+    path: "/accessories",
+    key: "user-accessory-list",
+    component: AccessoryHomeCustomer,
   },
   {
     title: "Quotes",
     path: "/quotes",
     key: "quotes",
     component: Quotes,
+  },
+  {
+    title: "Services",
+    path: "/services",
+    key: "user-services-list",
+    component: ServicesCustomer,
+  },
+  {
+    title: "Customer Services",
+    path: "/customer-bookings",
+    key: "customer-bookings",
+    component: CustomerBookings,
   },
 ];
