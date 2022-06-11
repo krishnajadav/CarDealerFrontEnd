@@ -139,6 +139,14 @@ Copy and paste the snippet of code you are referencing
 
 *Repeat as needed*
 
+
+## Image credits
+
+### services/assets/testdrivecar.png
+
+"2022 Toyota Agya 1.2 G GR Sport B101RA (20220317) 01" by オーバードライブ83 is licensed under CC BY-SA 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/4.0/?ref=openverse.
+
+
 ## Acknowledgments
 
 * Hat tip to anyone whose code was used
