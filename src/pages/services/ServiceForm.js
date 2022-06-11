@@ -7,6 +7,7 @@ import {
 } from "@mui/material";
 import { carModels, timeSlot, location } from "./helper";
 import { useForm } from "react-hook-form";
+import { formatDate } from "./helper";
 
 const ServiceFormDialog = ({
   isUpdate,
@@ -47,18 +48,23 @@ function Form({ service, onSubmit, isUpdate, id, onUpdate }) {
     register,
     handleSubmit,
     formState: { errors },
-    getValues,
   } = useForm();
 
-  const updateHandler = (id) => {
+  const updateHandler = (id, data) => {
     onUpdate({
       id,
       type: service,
-      ...getValues(),
+      ...data,
     });
   };
+
+  console.log(formatDate(new Date()));
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form
+      onSubmit={handleSubmit((data) =>
+        isUpdate ? updateHandler(id, data) : onSubmit(data)
+      )}
+    >
       <div
         className={"input-wrapper"}
         style={{ display: "flex", justifyContent: "flex-start", gap: "15px" }}
@@ -90,6 +96,7 @@ function Form({ service, onSubmit, isUpdate, id, onUpdate }) {
           style={{ border: errors.date ? "1px solid red" : "" }}
           {...register("date", { required: true })}
           type="date"
+          min={formatDate(new Date())}
         />
       </div>
 
@@ -146,22 +153,9 @@ function Form({ service, onSubmit, isUpdate, id, onUpdate }) {
           {Object.keys(errors).length > 0 && (
             <span style={{ color: "red" }}>All fields are required!!!</span>
           )}
-          {!isUpdate && (
-            <Button style={{ marginLeft: "auto" }} autoFocus type="submit">
-              Submit
-            </Button>
-          )}
-
-          {isUpdate && (
-            <Button
-              onClick={() => updateHandler(id)}
-              style={{ marginLeft: "auto" }}
-              autoFocus
-              type="button"
-            >
-              Update
-            </Button>
-          )}
+          <Button style={{ marginLeft: "auto" }} autoFocus type="submit">
+            {isUpdate ? "Update" : "Submit"}
+          </Button>
         </div>
       </DialogActions>
     </form>

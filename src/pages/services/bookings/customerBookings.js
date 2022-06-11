@@ -1,10 +1,10 @@
 import React from "react";
 import { Card } from "@mui/material";
-import { color } from "@mui/system";
 import { useBookings } from "../store";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ServiceFormDialog from "../ServiceForm";
+import "./bookings.css";
 
 const BookingCard = ({
   model,

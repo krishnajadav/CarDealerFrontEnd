@@ -54,3 +54,14 @@ export const getBookingData = () => {
     return JSON.parse(data);
   }
 };
+
+export const formatDate = (date, pattern, seperator = "-") => {
+  date = new Date(date);
+  const [dd, mm, yy] = [
+    date.getDate(),
+    "0" + (date.getMonth() + 1).toString(),
+    date.getFullYear(),
+  ];
+
+  return [yy, mm, dd].join(seperator);
+};
