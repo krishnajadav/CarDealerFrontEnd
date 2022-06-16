@@ -55,7 +55,7 @@ const CarLoan = () => {
               >
                 <Grid item xs={12} sm={12} md={6}>
                   <Typography variant="h5">
-                    Unforunately, you cannot loan a car without insurance
+                    Unforunately, you cannot loan a car as your warranty period has expired.
                   </Typography>
                 </Grid>
               </Grid>
@@ -84,7 +84,7 @@ const CarLoan = () => {
             justifyContent="center"
           >
             <Grid item xs={12} sm={12} md={6}>
-              <Typography variant="h5">Do you have car Insurance?</Typography>
+              <Typography variant="h5">Is your car under warranty?</Typography>
             </Grid>
           </Grid>
           <p></p>
