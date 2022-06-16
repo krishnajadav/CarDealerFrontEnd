@@ -15,6 +15,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
+import {CardActionArea} from "@material-ui/core";
+import {Link} from "react-router-dom";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -166,24 +168,26 @@ function AccessoryHomeCustomer() {
                         {Array.from(Array(6)).map((_, index) => (
                             <Grid card xs={4} sm={4} md={4} key={index}>
                                 <Card sx={{ m: 1 }}>
-                                    <CardMedia
-                                        component="img"
-                                        alt="oil can"
-                                        height="140"
-                                        image="/oil.jpg"
-                                    />
-                                    <CardContent>
-                                        <Typography gutterBottom variant="h5" component="div">
-                                            Castrol GTX 10W30
-                                        </Typography>
-                                        <Typography variant="body2" color="text.primary">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Ut vel quam eget orci laoreet ...
-                                        </Typography>
-                                        <Typography sx={{ fontWeight: 'bold' }} mt={2}>
-                                            $45
-                                        </Typography>
-                                    </CardContent>
+                                    <CardActionArea component={Link} to={`/accessories/view`}>
+                                        <CardMedia
+                                            component="img"
+                                            alt="oil can"
+                                            height="140"
+                                            image="/oil.jpg"
+                                        />
+                                        <CardContent>
+                                            <Typography gutterBottom variant="h5" component="div">
+                                                Castrol GTX 10W30
+                                            </Typography>
+                                            <Typography variant="body2" color="text.primary">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                Ut vel quam eget orci laoreet ...
+                                            </Typography>
+                                            <Typography sx={{ fontWeight: 'bold' }} mt={2}>
+                                                $45
+                                            </Typography>
+                                        </CardContent>
+                                    </CardActionArea>
                                 </Card>
                             </Grid>
                         ))}
@@ -211,24 +215,26 @@ function AccessoryHomeCustomer() {
                         {Array.from(Array(6)).map((_, index) => (
                             <Grid card xs={4} sm={4} md={4} key={index}>
                                 <Card sx={{ m: 1 }}>
-                                    <CardMedia
-                                        component="img"
-                                        alt="oil can"
-                                        height="140"
-                                        image="/oil.jpg"
-                                    />
-                                    <CardContent>
-                                        <Typography gutterBottom variant="h5" component="div">
-                                            Castrol GTX 10W30
-                                        </Typography>
-                                        <Typography variant="body2" color="text.primary">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Ut vel quam eget orci laoreet ...
-                                        </Typography>
-                                        <Typography sx={{ fontWeight: 'bold' }} mt={2}>
-                                            $45
-                                        </Typography>
-                                    </CardContent>
+                                    <CardActionArea component={Link} to={`/accessories/view`}>
+                                        <CardMedia
+                                            component="img"
+                                            alt="oil can"
+                                            height="140"
+                                            image="/oil.jpg"
+                                        />
+                                        <CardContent>
+                                            <Typography gutterBottom variant="h5" component="div">
+                                                Castrol GTX 10W30
+                                            </Typography>
+                                            <Typography variant="body2" color="text.primary">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                Ut vel quam eget orci laoreet ...
+                                            </Typography>
+                                            <Typography sx={{ fontWeight: 'bold' }} mt={2}>
+                                                $45
+                                            </Typography>
+                                        </CardContent>
+                                    </CardActionArea>
                                 </Card>
                             </Grid>
                         ))}
@@ -257,24 +263,26 @@ function AccessoryHomeCustomer() {
                         {Array.from(Array(6)).map((_, index) => (
                             <Grid card xs={4} sm={4} md={4} key={index}>
                                 <Card sx={{ m: 1 }}>
-                                    <CardMedia
-                                        component="img"
-                                        alt="oil can"
-                                        height="140"
-                                        image="/oil.jpg"
-                                    />
-                                    <CardContent>
-                                        <Typography gutterBottom variant="h5" component="div">
-                                            Castrol GTX 10W30
-                                        </Typography>
-                                        <Typography variant="body2" color="text.primary">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Ut vel quam eget orci laoreet ...
-                                        </Typography>
-                                        <Typography sx={{ fontWeight: 'bold' }} mt={2}>
-                                            $45
-                                        </Typography>
-                                    </CardContent>
+                                    <CardActionArea component={Link} to={`/accessories/view`}>
+                                        <CardMedia
+                                            component="img"
+                                            alt="oil can"
+                                            height="140"
+                                            image="/oil.jpg"
+                                        />
+                                        <CardContent>
+                                            <Typography gutterBottom variant="h5" component="div">
+                                                Castrol GTX 10W30
+                                            </Typography>
+                                            <Typography variant="body2" color="text.primary">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                Ut vel quam eget orci laoreet ...
+                                            </Typography>
+                                            <Typography sx={{ fontWeight: 'bold' }} mt={2}>
+                                                $45
+                                            </Typography>
+                                        </CardContent>
+                                    </CardActionArea>
                                 </Card>
                             </Grid>
                         ))}
@@ -302,24 +310,26 @@ function AccessoryHomeCustomer() {
                         {Array.from(Array(6)).map((_, index) => (
                             <Grid card xs={4} sm={4} md={4} key={index}>
                                 <Card sx={{ m: 1 }}>
-                                    <CardMedia
-                                        component="img"
-                                        alt="oil can"
-                                        height="140"
-                                        image="/oil.jpg"
-                                    />
-                                    <CardContent>
-                                        <Typography gutterBottom variant="h5" component="div">
-                                            Castrol GTX 10W30
-                                        </Typography>
-                                        <Typography variant="body2" color="text.primary">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Ut vel quam eget orci laoreet ...
-                                        </Typography>
-                                        <Typography sx={{ fontWeight: 'bold' }} mt={2}>
-                                            $45
-                                        </Typography>
-                                    </CardContent>
+                                    <CardActionArea component={Link} to={`/accessories/view`}>
+                                        <CardMedia
+                                            component="img"
+                                            alt="oil can"
+                                            height="140"
+                                            image="/oil.jpg"
+                                        />
+                                        <CardContent>
+                                            <Typography gutterBottom variant="h5" component="div">
+                                                Castrol GTX 10W30
+                                            </Typography>
+                                            <Typography variant="body2" color="text.primary">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                Ut vel quam eget orci laoreet ...
+                                            </Typography>
+                                            <Typography sx={{ fontWeight: 'bold' }} mt={2}>
+                                                $45
+                                            </Typography>
+                                        </CardContent>
+                                    </CardActionArea>
                                 </Card>
                             </Grid>
                         ))}
