@@ -6,6 +6,7 @@ import ServicesCustomer from "./pages/services/Services";
 import CustomerBookings from "./pages/services/bookings/customerBookings";
 import TradeIn from "./pages/tradeIn/TradeIn";
 import VehicleForm from "./pages/vehicles/Vehicle";
+import Accessory from "./pages/accessory/Accessory";
 
 
 export const customerRoutes = [
@@ -56,6 +57,11 @@ export const customerRoutes = [
     path:"/vehicles",
     key: "vehicle-form",
     component: VehicleForm,
-
   },
+  {
+    title: "Accessory",
+    path: "/accessories/:id",
+    key: "accessory",
+    component: Accessory
+  }
 ];
