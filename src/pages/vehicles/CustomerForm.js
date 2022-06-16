@@ -11,7 +11,9 @@ function CustomerForm() {
     const [open, setOpen] = React.useState(false);
 
     const handleClick = () => {
+        
         setOpen(true);
+        //window.alert("The requirements have been submitted");
     };
 
     const handleClose = (event, reason) => {
@@ -25,10 +27,12 @@ function CustomerForm() {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
+        
         console.log({
             brand: data.get('brand'),
             model: data.get('model'),
         });
+       
     };
 
     return (
@@ -45,10 +49,10 @@ function CustomerForm() {
                 <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
                     <LockOutlinedIcon />
                 </Avatar>
-                <Typography component="h1" variant="h5">
+                <Typography component="h1" variant="h4">
                     Vehicle Requirements Form
                 </Typography>
-                <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1,display: 'flex',
+                <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1,display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
                     width: '50%' }}>
@@ -79,9 +83,10 @@ function CustomerForm() {
                             row
                             aria-labelledby="demo-row-radio-buttons-group-label"
                             name="row-radio-buttons-group"
+                            defaultValue="petrol"
                         >
-                            <FormControlLabel value="female" control={<Radio />} label="Petrol" />
-                            <FormControlLabel value="male" control={<Radio />} label="Diesel" />
+                            <FormControlLabel value="petrol" control={<Radio />} label="Petrol" />
+                            <FormControlLabel value="diesel" control={<Radio />} label="Diesel" />
                             <FormControlLabel value="other" control={<Radio />} label="Other" />
 
                         </RadioGroup>
@@ -90,7 +95,7 @@ function CustomerForm() {
 
                     <TextField
                         margin="normal"
-                        required
+                        required="true"
                         fullWidth
                         name="date"
 
@@ -122,12 +127,13 @@ function CustomerForm() {
                     >
                         Submit
                     </Button>
+                    
 
-                    <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                    {/* <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
                         <Alert onClose={handleClose} severity="success" sx={{ width: '150%' }}>
                             Your requirements have been submitted
                         </Alert>
-                    </Snackbar>
+                    </Snackbar> */}
 
                     <Grid container>
                         <Grid item xs>
@@ -155,3 +161,10 @@ function CustomerForm() {
 
 
 export default CustomerForm;
+
+
+/*
+ Code references: 
+ https://github.com/mui/material-ui/tree/v5.8.4/docs/data/material/getting-started/templates/sign-in
+ https://mui.com/material-ui/react-radio-button/ 
+ */
