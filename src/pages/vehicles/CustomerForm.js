@@ -2,7 +2,7 @@ import { useState } from 'react';
 //import ReactDOM from 'react-dom/client';
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import { Avatar, TextField, Typography, Grid, Button, Link, FormControlLabel, FormControl, FormLabel, RadioGroup, Radio, Snackbar, Alert } from '@mui/material';
+import { Avatar, TextField, Typography, Grid, Button, Link, FormControlLabel, FormControl, FormLabel, RadioGroup, Radio } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 function CustomerForm() {
@@ -92,7 +92,6 @@ function CustomerForm() {
                         </RadioGroup>
                     </FormControl>
 
-
                     <TextField
                         margin="normal"
                         required="true"
@@ -106,7 +105,6 @@ function CustomerForm() {
                     <FormLabel
                         id="Expected delivery date"
                     > Enter the Expected delivery date </FormLabel>
-
 
                     <TextField
                         margin="normal"
@@ -128,22 +126,15 @@ function CustomerForm() {
                         Submit
                     </Button>
                     
-
-                    {/* <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                        <Alert onClose={handleClose} severity="success" sx={{ width: '150%' }}>
-                            Your requirements have been submitted
-                        </Alert>
-                    </Snackbar> */}
-
                     <Grid container>
                         <Grid item xs>
-                            <Link href="#" variant="body2">
-                                Return to homepage
+                            <Link href="/home" variant="body2">
+                               <h3> Return to homepage </h3>
                             </Link>
                         </Grid>
                         <Grid item>
-                            <Link href="#" variant="body2">
-                                {"View Car catalog"}
+                            <Link href="/services" variant="body2">
+                               <h3> View offered services</h3>
                             </Link>
                         </Grid>
                     </Grid>
@@ -153,7 +144,6 @@ function CustomerForm() {
 
                 </Box>
             </Box>
-
 
         </form>
     )
