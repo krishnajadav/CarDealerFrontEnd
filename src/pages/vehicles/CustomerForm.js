@@ -1,8 +1,7 @@
 import { useState } from 'react';
-//import ReactDOM from 'react-dom/client';
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import { Avatar, TextField, Typography, Grid, Button, Link, FormControlLabel, FormControl, FormLabel, RadioGroup, Radio, Snackbar, Alert } from '@mui/material';
+import { Avatar, TextField, Typography, Grid, Button, Link, FormControlLabel, FormControl, FormLabel, RadioGroup, Radio } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 function CustomerForm() {
@@ -11,7 +10,9 @@ function CustomerForm() {
     const [open, setOpen] = React.useState(false);
 
     const handleClick = () => {
+        
         setOpen(true);
+        //window.alert("The requirements have been submitted");
     };
 
     const handleClose = (event, reason) => {
@@ -25,10 +26,12 @@ function CustomerForm() {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
+        
         console.log({
             brand: data.get('brand'),
             model: data.get('model'),
         });
+       
     };
 
     return (
@@ -45,10 +48,10 @@ function CustomerForm() {
                 <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
                     <LockOutlinedIcon />
                 </Avatar>
-                <Typography component="h1" variant="h5">
+                <Typography component="h1" variant="h4">
                     Vehicle Requirements Form
                 </Typography>
-                <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1,display: 'flex',
+                <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1,display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
                     width: '50%' }}>
@@ -79,18 +82,18 @@ function CustomerForm() {
                             row
                             aria-labelledby="demo-row-radio-buttons-group-label"
                             name="row-radio-buttons-group"
+                            defaultValue="petrol"
                         >
-                            <FormControlLabel value="female" control={<Radio />} label="Petrol" />
-                            <FormControlLabel value="male" control={<Radio />} label="Diesel" />
+                            <FormControlLabel value="petrol" control={<Radio />} label="Petrol" />
+                            <FormControlLabel value="diesel" control={<Radio />} label="Diesel" />
                             <FormControlLabel value="other" control={<Radio />} label="Other" />
 
                         </RadioGroup>
                     </FormControl>
 
-
                     <TextField
                         margin="normal"
-                        required
+                        required="true"
                         fullWidth
                         name="date"
 
@@ -101,7 +104,6 @@ function CustomerForm() {
                     <FormLabel
                         id="Expected delivery date"
                     > Enter the Expected delivery date </FormLabel>
-
 
                     <TextField
                         margin="normal"
@@ -122,22 +124,16 @@ function CustomerForm() {
                     >
                         Submit
                     </Button>
-
-                    <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                        <Alert onClose={handleClose} severity="success" sx={{ width: '150%' }}>
-                            Your requirements have been submitted
-                        </Alert>
-                    </Snackbar>
-
+                    
                     <Grid container>
                         <Grid item xs>
-                            <Link href="#" variant="body2">
-                                Return to homepage
+                            <Link href="/home" variant="body2">
+                               <h3> Return to homepage </h3>
                             </Link>
                         </Grid>
                         <Grid item>
-                            <Link href="#" variant="body2">
-                                {"View Car catalog"}
+                            <Link href="/services" variant="body2">
+                               <h3> View offered services</h3>
                             </Link>
                         </Grid>
                     </Grid>
@@ -148,10 +144,16 @@ function CustomerForm() {
                 </Box>
             </Box>
 
-
         </form>
     )
 }
 
 
 export default CustomerForm;
+
+
+/*
+ Code references: 
+ https://github.com/mui/material-ui/tree/v5.8.4/docs/data/material/getting-started/templates/sign-in
+ https://mui.com/material-ui/react-radio-button/ 
+ */
