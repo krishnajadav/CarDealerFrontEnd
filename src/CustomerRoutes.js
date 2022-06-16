@@ -4,6 +4,8 @@ import Quotes from "./pages/quotes/Quotes";
 import AccessoryHomeCustomer from "./pages/accessory/AccessoryHomeCustomer";
 import ServicesCustomer from "./pages/services/Services";
 import CustomerBookings from "./pages/services/bookings/customerBookings";
+import VehicleForm from "./pages/vehicles/Vehicle";
+
 export const customerRoutes = [
   {
     title: "Home",
@@ -40,5 +42,11 @@ export const customerRoutes = [
     path: "/customer-bookings",
     key: "customer-bookings",
     component: CustomerBookings,
+  },
+  {
+    title: "VehicleForm",
+    path:"/vehicles",
+    key: "vehicle-form",
+    component: VehicleForm,
   },
 ];
