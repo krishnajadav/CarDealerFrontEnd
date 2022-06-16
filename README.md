@@ -51,9 +51,9 @@ _author_: Jimi D<br/>
 
 _FileName_: Carform.js, CarResults.js, TableIcons.js
 These were implemented as part of CSCI 5709 Assignment 1 by Elizabeth James
-
-
 <br/>
+
+
 
 ### CustomerNavBar.js /DealerNavBar.js
 
@@ -603,6 +603,37 @@ Copy and paste the snippet of code you are referencing
 - <!---How---> The code in [React Tabs component - Material UI ](https://mui.com/material-ui/react-tabs/) was implemented to show a tabbed view of avaiable products in categories
 - <!---Why---> [React Tabs component - Material UI ](https://mui.com/material-ui/react-tabs/)'s Code was used because it shows the implementation for tabs
 - <!---How---> [React Tabs component - Material UI ](https://mui.com/material-ui/react-tabs/)'s Code was modified by adjusting for color palette and product content rendering for categories
+
+
+### TradeIn.js
+
+
+*Line 50*
+
+```
+const dummyYearRange = {min:2010, max:2022};
+```
+*Line 138*
+
+```
+ <TextField type="number" label="Year" inputProps = {dummyYearRange} onChange={e => updateYear(e.target.value)}/>
+
+```
+
+The code above was created by adapting the code in [React TextField component - Material UI ](https://mui.com/material-ui/api/text-field/) as shown below:
+
+```
+const inputProps = {
+  step: 300,
+};
+
+return <TextField id="time" type="time" inputProps={inputProps} />;
+
+```
+
+- <!---How---> The code in [React TextField component - Material UI ](https://mui.com/material-ui/api/text-field/) was implemented to create a number input field with a min and max value.
+- <!---Why---> [React TextField component - Material UI ](https://mui.com/material-ui/api/text-field/)'s Code was used because it shows how to include props to the underlying input.
+- <!---How---> [React TextField component - Material UI ](https://mui.com/material-ui/api/text-field/)'s Code was modified by using different props.
 
 
 ## Image credits
