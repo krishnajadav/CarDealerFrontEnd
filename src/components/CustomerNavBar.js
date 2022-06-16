@@ -1,5 +1,4 @@
 import * as React from "react";
-import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
@@ -13,10 +12,6 @@ import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import Avatar from "@mui/material/Avatar";
-import Divider from "@mui/material/Divider";
-import Stack from "@mui/material/Stack";
-import Breadcrumbs from "@mui/material/Breadcrumbs";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { Link as navLink } from "react-router-dom";
 
 const pages = [
@@ -59,15 +54,6 @@ const settings = [
 function CustomerNavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const breadcrumbs = [
-    <Link underline="hover" key="1" color="inherit" href="/">
-      Home
-    </Link>,
-    <Typography key="2" color="inherit">
-      Accessories
-    </Typography>,
-  ];
-
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -187,7 +173,7 @@ function CustomerNavBar() {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <Avatar src="/static/images/avatar/2.jpg" />
                 </IconButton>
               </Tooltip>
               <Menu
@@ -221,17 +207,6 @@ function CustomerNavBar() {
           </Toolbar>
         </Container>
       </AppBar>
-      <Divider />
-      <div className="thumb-nav">
-        <Stack spacing={2}>
-          <Breadcrumbs
-            separator={<NavigateNextIcon fontSize="small" />}
-            aria-label="breadcrumb"
-          >
-            {breadcrumbs}
-          </Breadcrumbs>
-        </Stack>
-      </div>
     </div>
   );
 }
