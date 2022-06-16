@@ -142,9 +142,14 @@ Copy and paste the snippet of code you are referencing
 
 ## Image credits
 
-### src/pages/services/assets/testdrivecar.png
+### src/pages/services/assets/testdrivecar.png, src/pages/services/dealer/assets/testdrivecar.png
 
 "2022 Toyota Agya 1.2 G GR Sport B101RA (20220317) 01" by オーバードライブ83 is licensed under CC BY-SA 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/4.0/?ref=openverse.
+
+### src/pages/services/assets/repairscar.png, src/pages/services/dealer/assets/repairscar.png
+
+"2022 Hyundai Atos 1.1 Plus" by RL GNZLZ is licensed under CC BY-SA 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/2.0/?ref=openverse.
+
 
 
 ## Acknowledgments

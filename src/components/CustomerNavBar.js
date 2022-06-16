@@ -29,10 +29,6 @@ const pages = [
     link: "/accessories",
   },
   {
-    name: "Repairs",
-    link: "/repairs",
-  },
-  {
     name: "Services",
     link: "/services",
   },

@@ -26,9 +26,6 @@ const pages = [{
     name: "Accessories",
     link: "/manage/accessories"
 }, {
-    name: "Repairs",
-    link: "/manage/repairs"
-}, {
     name: "Services",
     link: "/manage/services"
 }, {
