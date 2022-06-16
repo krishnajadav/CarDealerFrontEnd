@@ -95,6 +95,31 @@ Add additional notes about how to deploy this on a live system
 
 If in completing your lab / assignment / project you used any interpretation of someone else's code, then provide a list of where the code was implement, how it was implemented, why it was implemented, and how it was modified. See the sections below for more details.
 
+_FileName_: carFrom.js<br/>
+_line_: #70 and #79<br/>
+_why_: I need to select date in my form<br/>
+_how_: I referred to the user guide and its properties<br/>
+_source_: https://www.npmjs.com/package/react-date-picker<br/>
+
+
+_FileName_: carResults.js<br/>
+_line_: #40 to #45<br/>
+_why_: to display the list in pretty format,make use of pagination buttons and sort icons, make the list searchable, make the list sortable<br/>
+_how_: reffered code samples and usages to understand the usage of material table.The car component's properties were used in the material table tag<br/>
+_source 1_: https://blog.logrocket.com/material-table-react-tutorial-with-examples/<br/>
+_author_: Mohammad Fasil<br/>
+_source 2_: https://material-table.com/#/ (official documentation)<br/>
+_source 3_: https://stackoverflow.com/questions/63647493/react-material-table-is-not-displaying-table-icons <br/>
+_author_: Jimi D<br/>
+
+_FileName_: Carform.js, CarResults.js, TableIcons.js
+These were implemented as part of CSCI 5709 Assignment 1 by Elizabeth James
+
+
+<br/>
+
+
+
 ### File Name
 
 *Lines ## - ##*
@@ -150,6 +175,12 @@ Copy and paste the snippet of code you are referencing
 
 "2022 Hyundai Atos 1.1 Plus" by RL GNZLZ is licensed under CC BY-SA 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/2.0/?ref=openverse.
 
+
+### src/mocks/carLoanStub.js, src/mocks.carStub.js
+Toyota: https://www.drivespark.com/images/2021-01/toyota-fortuner-exterior-1.jpg <br/>
+Mercedes: https://cdn.motor1.com/images/mgl/7xQZW/s1/2021-mercedes-amg-gt-stealth-edition.jpg <br/>
+Innova: https://gaadiwaadi.com/wp-content/uploads/2022/04/Toyota-Innova-next-gen-rendered-img1-1068x601.jpg <br/>
+Suzuki: https://s1.cdn.autoevolution.com/images/models/SUZUKI_Swift-5-Doors-2020_main.jpg  <br/>
 
 
 ## Acknowledgments
