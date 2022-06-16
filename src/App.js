@@ -11,7 +11,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<Navigate replace to="/vehicles" />} >
+        <Route exact path="/" element={<Navigate replace to="/services" />} >
         </Route>
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<CustomerRegistration />} />
