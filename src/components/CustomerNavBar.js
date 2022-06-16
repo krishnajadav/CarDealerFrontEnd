@@ -40,6 +40,10 @@ const pages = [
     name: "Quotes",
     link: "/quotes",
   },
+  {
+    name: "Trade-in",
+    link: "/trade-in",
+  },
 ];
 const settings = [
   {

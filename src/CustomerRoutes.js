@@ -4,6 +4,8 @@ import Quotes from "./pages/quotes/Quotes";
 import AccessoryHomeCustomer from "./pages/accessory/AccessoryHomeCustomer";
 import ServicesCustomer from "./pages/services/Services";
 import CustomerBookings from "./pages/services/bookings/customerBookings";
+import TradeIn from "./pages/tradeIn/TradeIn";
+
 export const customerRoutes = [
   {
     title: "Home",
@@ -40,5 +42,11 @@ export const customerRoutes = [
     path: "/customer-bookings",
     key: "customer-bookings",
     component: CustomerBookings,
+  },
+  {
+    title: "Trade-in",
+    path: "/trade-in",
+    key: "trade-in",
+    component: TradeIn,
   },
 ];
