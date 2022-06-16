@@ -5,6 +5,8 @@ import AccessoryHomeCustomer from "./pages/accessory/AccessoryHomeCustomer";
 import ServicesCustomer from "./pages/services/Services";
 import CustomerBookings from "./pages/services/bookings/customerBookings";
 import TradeIn from "./pages/tradeIn/TradeIn";
+import VehicleForm from "./pages/vehicles/Vehicle";
+
 
 export const customerRoutes = [
   {
@@ -48,5 +50,12 @@ export const customerRoutes = [
     path: "/trade-in",
     key: "trade-in",
     component: TradeIn,
+  },
+  {
+    title: "VehicleForm",
+    path:"/vehicles",
+    key: "vehicle-form",
+    component: VehicleForm,
+
   },
 ];
