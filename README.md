@@ -636,6 +636,192 @@ return <TextField id="time" type="time" inputProps={inputProps} />;
 - <!---How---> [React TextField component - Material UI ](https://mui.com/material-ui/api/text-field/)'s Code was modified by using different props.
 
 
+### Vehicles/Navbar.js
+
+The code used in this file was referenced from : https://mui.com/material-ui/react-app-bar/ 
+
+*Lines 16 - 95*
+
+```
+export default function MenuAppBar() {
+  const [auth, setAuth] = React.useState(true);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleChange = (event) => {
+    setAuth(event.target.checked);
+  };
+
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  return (
+    <Box sx={{ flexGrow: 1 }}>
+      <FormGroup>
+        <FormControlLabel
+          control={
+            <Switch
+              checked={auth}
+              onChange={handleChange}
+              aria-label="login switch"
+            />
+          }
+          label={auth ? 'Logout' : 'Login'}
+        />
+      </FormGroup>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Dealership website
+          </Typography>
+          {auth && (
+            <div>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>My account</MenuItem>
+              </Menu>
+            </div>
+          )}
+        </Toolbar>
+      </AppBar>
+    </Box>
+  );
+}
+
+```
+
+### CustomerForm.js
+
+The code used in this file was referenced from : https://github.com/mui/material-ui/blob/v5.8.4/docs/data/material/getting-started/templates/sign-in/SignIn.js and modified according to the requirements.
+
+*Lines 12 - 77*
+
+```
+const handleClick = () => {
+        
+        setOpen(true);
+        //window.alert("The requirements have been submitted");
+    };
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpen(false);
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        
+        console.log({
+            brand: data.get('brand'),
+            model: data.get('model'),
+        });
+       
+    };
+
+    return (
+        <form classname>
+            <Box
+                sx={{
+                    marginTop: 8,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    width:'100%'
+                }}
+            >
+                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                    <LockOutlinedIcon />
+                </Avatar>
+                <Typography component="h1" variant="h4">
+                    Vehicle Requirements Form
+                </Typography>
+                <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1,display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    width: '50%' }}>
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="brand"
+                        label="Vehicle Brand"
+                        name="brand"
+                        autoComplete="brand"
+                        autoFocus
+                    />
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="model"
+                        label="Preferred model"
+                        type="model"
+                        id="model"
+                        autoComplete="car-model"
+                    />
+```
+
+
+The radio button was adapted from: https://mui.com/material-ui/react-radio-button/ and changed as per the requiremnts.
+
+*Lines 80 - 91*
+
+```
+<FormLabel id="demo-row-radio-buttons-group-label">Select the fuel variant</FormLabel>
+                        <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                            defaultValue="petrol"
+                        >
+                            <FormControlLabel value="petrol" control={<Radio />} label="Petrol" />
+                            <FormControlLabel value="diesel" control={<Radio />} label="Diesel" />
+                            <FormControlLabel value="other" control={<Radio />} label="Other" />
+
+                        </RadioGroup>
+```
+
 ## Image credits
 
 ### src/pages/services/assets/testdrivecar.png, src/pages/services/dealer/assets/testdrivecar.png
@@ -652,6 +838,9 @@ Toyota: https://www.drivespark.com/images/2021-01/toyota-fortuner-exterior-1.jpg
 Mercedes: https://cdn.motor1.com/images/mgl/7xQZW/s1/2021-mercedes-amg-gt-stealth-edition.jpg <br/>
 Innova: https://gaadiwaadi.com/wp-content/uploads/2022/04/Toyota-Innova-next-gen-rendered-img1-1068x601.jpg <br/>
 Suzuki: https://s1.cdn.autoevolution.com/images/models/SUZUKI_Swift-5-Doors-2020_main.jpg  <br/>
+
+### src/vehicles/CustomerForm.js
+LockoutlinedIcon logo: https://mui.com/material-ui/getting-started/templates/sign-in/ & https://mui.com/material-ui/material-icons/
 
 
 ## Acknowledgments
