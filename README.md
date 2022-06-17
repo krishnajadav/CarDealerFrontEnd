@@ -6,8 +6,9 @@
 
 * *Date Created*: 16 June 2022
 * *Last Modification Date*: 16 June 2022
-* *Lab URL*: <http://example.com/>
-* *Git URL*: <http://example.com/>
+* *Live link (customer layout)*: <https://web-dev-group9.herokuapp.com/services>
+* *Live link (dealership layout)*: <https://web-dev-group9.herokuapp.com/manage/accessories>
+* *Git URL*: <https://git.cs.dal.ca/lisenor/5709_group9/-/tree/main>
 
 ## Authors
 
