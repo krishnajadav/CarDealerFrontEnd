@@ -36,6 +36,7 @@ const Carform = () => {
   };
 
   const onSubmit = () => {
+    
     setInfoAcqiured(true);
   };
 
