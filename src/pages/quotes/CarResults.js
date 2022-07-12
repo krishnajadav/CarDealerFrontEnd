@@ -3,6 +3,7 @@ import MaterialTable from "material-table";
 import Typography from "@mui/material/Typography";
 import cars from "../../mocks/carStub";
 import tableIcons from "./TableIcons";
+import axios from 'axios';
 
 const CarResults = (props) => {
   const [seatCount, setSeatCount] = React.useState(props.seats);
@@ -14,27 +15,49 @@ const CarResults = (props) => {
 
   const columns = [
     { title: "", field: "Image" },
-    { title: "Car", field: "Name" },
-    { title: "Seats", field: "Seats" },
-    { title: "Cost(CAD)", field: "cost" },
-    { title: "Rating", field: "Rating" },
+    { title: "Car", field: "vehicleName" },
+    { title: "Seats", field: "vehicleSeatCount" },
+    { title: "Cost(CAD)", field: "vehiclePrice" },
+    { title: "Rating", field: "vehicleRating" },
   ];
 
   React.useEffect(() => {
-    console.log(props.seats);
-    let temp = cars[seatCount];
-    if (seatCount in cars)
-      cars[seatCount].map((car, i) => {
-        temp[i].cost =
-          car.cost *
+
+
+    axios.get(`http://localhost:4200/api/inventory/get/${seatCount}/rent`)
+    .then((res)=>{
+      let temp = res.data;
+      res.data.map((car, i) => {
+        temp[i].vehiclePrice =
+          car.vehiclePrice *
           distance *
           Math.ceil(Math.abs(endDate - startDate + 1) / (1000 * 60 * 60 * 24));
-        temp[i].Image = <img src={car.url} height="200" width="200"></img>;
+        temp[i].Image = <img src={car.vehicleImageURL} height="200" width="200"></img>;
         setData(temp);
       });
-    else {
+      if (res.data.lenght<=0){
+        setDataUnavailable(true);
+      }
+    }).catch((err)=>{
       setDataUnavailable(true);
-    }
+    })
+
+
+
+    // console.log(props.seats);
+  //   let temp = cars[seatCount];
+  //   if (seatCount in cars)
+  //     cars[seatCount].map((car, i) => {
+  //       temp[i].cost =
+  //         car.cost *
+  //         distance *
+  //         Math.ceil(Math.abs(endDate - startDate + 1) / (1000 * 60 * 60 * 24));
+  //       temp[i].Image = <img src={car.url} height="200" width="200"></img>;
+  //       setData(temp);
+  //     });
+  //   else {
+  //     setDataUnavailable(true);
+  //   }
   }, []);
 
   return dataUnavailable ? (
