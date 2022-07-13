@@ -29,17 +29,20 @@ const AddVehicle = (props) => {
     const [vehicleModelNumber,setvehicleModelNumber]=useState('')
     const [companyName,setcompanyName]=useState('')
     const [vehiclePrice,setvehiclePrice]=useState('')
-
+    const [base64URL,setbase64URL]=useState('')
+    const [vehicleImageURL,setvehicleImageURL]=useState('')
+    const [vehicleSeatCount,setvehicleSeatCount]=useState('')
+    
     const onClick = () =>{
         if(vehicleName!==""&&vehicleModelNumber!==""&&companyName!==""&&vehiclePrice!=="")
         {
             if(_id===0)
             {
-                onAddVehicle({vehicleName:vehicleName,vehicleModelNumber:vehicleModelNumber,companyName:companyName,vehiclePrice:vehiclePrice});    
+                onAddVehicle({vehicleName:vehicleName,vehicleModelNumber:vehicleModelNumber,companyName:companyName,vehiclePrice:vehiclePrice,vehicleSeatCount:vehicleSeatCount,carImageFile:base64URL});    
             }
             else
             {
-                onEditVehicle({_id:_id,vehicleName:vehicleName,vehicleModelNumber:vehicleModelNumber,companyName:companyName,vehiclePrice:vehiclePrice})
+                onEditVehicle({_id:_id,vehicleName:vehicleName,vehicleModelNumber:vehicleModelNumber,companyName:companyName,vehiclePrice:vehiclePrice,vehicleSeatCount:vehicleSeatCount,carImageFile:base64URL,vehicleImageURL:vehicleImageURL})
             }
             //updateState({});
             ClearVehicle(); 
@@ -52,6 +55,8 @@ const AddVehicle = (props) => {
         setcompanyName(vehicleEdit.companyName);
         setid(vehicleEdit._id);
         setvehiclePrice(vehicleEdit.vehiclePrice);
+        setvehicleImageURL(vehicleEdit.vehicleImageURL);
+        setvehicleSeatCount(vehicleEdit.vehicleSeatCount);
         setstatus('Edit');
     }
 
@@ -67,6 +72,8 @@ const AddVehicle = (props) => {
         setcompanyName('');
         setid(0);
         setvehiclePrice('');
+        setbase64URL('');
+        setvehicleSeatCount('');
         setstatus('Add');
     }
 
@@ -75,6 +82,7 @@ const AddVehicle = (props) => {
         vehicleName: Yup.string().required('Vehicle name is required'),
         vehicleModelNumber: Yup.string().required('vehicle ModelNumber is required'),
         vehiclePrice: Yup.string().required('vehicle Price is required'),
+        vehicleSeatCount: Yup.string().required('Seat Count is required')
     });
     const {
         register,
@@ -158,6 +166,33 @@ return (
                             {errors.vehiclePrice?.message}
                         </Typography>
                     </Grid>
+                    <Grid item xs={12} sm={12}>
+                        <TextField
+                            required
+                            id="vehicleSeatCount"
+                            name="vehicleSeatCount"
+                            label="Seat Count"
+                            type="number"
+                            fullWidth
+                            margin="dense"
+                            value={vehicleSeatCount}
+                            {...register('vehicleSeatCount')}
+                            error={errors.vehicleSeatCount ? true : false}
+                            onChange={(e)=>setvehicleSeatCount(e.target.value)}
+                        />
+                        <Typography variant="inherit" color="textSecondary">
+                            {errors.vehiclePrice?.message}
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={12} sm={12}>
+                    <input type="file" class="form-control-file" id="roomImage" accept="image/*" onChange={(e)=>{         
+                        let reader = new FileReader();
+                        reader.readAsDataURL(e.target.files[0]);
+                        reader.onload =  function () {
+                            setbase64URL(reader.result)
+                        };   
+                        }}/>
+                    </Grid>
                 </Grid>
                 <Box mt={3}>
                     <Button
@@ -184,6 +219,8 @@ return (
             <TableCell>Vehicle Name</TableCell>
             <TableCell>Vehicle Model Number</TableCell>
             <TableCell>Vehicle Price</TableCell>
+            <TableCell>Seat</TableCell>
+            <TableCell>Image</TableCell>
             <TableCell>Action</TableCell>
           </TableRow>
         </TableHead>

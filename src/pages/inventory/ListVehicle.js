@@ -28,6 +28,8 @@ const onDeleteClick = (ID) =>{
     <TableCell>{vehicle.vehicleName}</TableCell>
     <TableCell>{vehicle.vehicleModelNumber}</TableCell>
     <TableCell>{vehicle.vehiclePrice}</TableCell>
+    <TableCell>{vehicle.vehicleSeatCount}</TableCell>
+    <TableCell><img src={vehicle.vehicleImageURL} style={{width: 100 + "px"}}/></TableCell>
     <TableCell>
     <Box mt={3}>
                     <Button

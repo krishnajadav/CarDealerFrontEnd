@@ -20,6 +20,18 @@ const getInventory = async () => {
 }  
 
 const addInventory = async (vehicleAdd) => {
+
+  var ImageURL="";
+  if(vehicleAdd.carImageFile!="")
+  {
+    const imageRes = await fetch('https://mxzqx65smg.execute-api.us-east-1.amazonaws.com/storeImages',{"method": "POST",
+    "body": JSON.stringify({
+      "carImageFile":vehicleAdd.carImageFile
+    })})
+    const imageData = await imageRes.json(); 
+    ImageURL=imageData.ImageURL;
+  }
+
   const res = await fetch('http://localhost:4200/api/inventory/add',{"method": "POST",
   "headers": {
     "content-type": "application/json",
@@ -30,9 +42,11 @@ const addInventory = async (vehicleAdd) => {
     vehicleModelNumber: vehicleAdd.vehicleModelNumber,
     companyName: vehicleAdd.companyName,
     vehiclePrice: vehicleAdd.vehiclePrice,
+    vehicleImageURL:ImageURL,
+    vehicleSeatCount:vehicleAdd.vehicleSeatCount
   })})
   const data = await res.json()  
-  return data
+  return data;
 } 
 
 const deleteInventory = async (ID) => {
@@ -42,6 +56,16 @@ const deleteInventory = async (ID) => {
 } 
 
 const updateInventory = async (vehicleEdit) => {
+
+  if(vehicleEdit.carImageFile!="")
+  {
+    const imageRes = await fetch('https://mxzqx65smg.execute-api.us-east-1.amazonaws.com/storeImages',{"method": "POST",
+    "body": JSON.stringify({
+      "carImageFile":vehicleEdit.carImageFile
+    })})
+    const imageData = await imageRes.json(); 
+    vehicleEdit.vehicleImageURL=imageData.ImageURL;
+  }
   const res = await fetch(`http://localhost:4200/api/inventory/update/${vehicleEdit._id}`,{"method": "PUT",
   "headers": {
     "content-type": "application/json",
@@ -52,6 +76,8 @@ const updateInventory = async (vehicleEdit) => {
     vehicleModelNumber: vehicleEdit.vehicleModelNumber,
     companyName: vehicleEdit.companyName,
     vehiclePrice: vehicleEdit.vehiclePrice,
+    vehicleImageURL: vehicleEdit.vehicleImageURL,
+    vehicleSeatCount:vehicleEdit.vehicleSeatCount
   })})
   const data = await res.json()  
   return data
