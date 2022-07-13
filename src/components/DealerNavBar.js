@@ -51,7 +51,13 @@ function DealerNavBar() {
         setAnchorElNav(null);
     };
 
-    const handleCloseUserMenu = () => {
+    const handleCloseUserMenu = (params) => {
+        if(params.name === 'Logout') {
+            localStorage.removeItem("id");
+            localStorage.removeItem("role");
+            localStorage.removeItem("username");
+            localStorage.removeItem("accessToken");
+        }
         setAnchorElUser(null);
     };
     return (
@@ -151,7 +157,7 @@ function DealerNavBar() {
                         <Box sx={{flexGrow: 0}}>
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
-                                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"/>
+                                    <Avatar alt="" src="/static/images/avatar/2.jpg"/>
                                 </IconButton>
                             </Tooltip>
                             <Menu
@@ -171,7 +177,9 @@ function DealerNavBar() {
                                 onClose={handleCloseUserMenu}
                             >
                                 {settings.map((setting) => (
-                                    <MenuItem key={setting.name} onClick={handleCloseUserMenu} component={navLink} to={setting.link}>
+                                    <MenuItem key={setting.name} onClick={()=>{
+                                        handleCloseUserMenu(setting)
+                                    }} component={navLink} to={setting.link}>
                                         <Typography textAlign="center">{setting.name}</Typography>
                                     </MenuItem>
                                 ))}

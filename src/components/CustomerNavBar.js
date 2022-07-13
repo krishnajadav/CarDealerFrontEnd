@@ -65,7 +65,13 @@ function CustomerNavBar() {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
+  const handleCloseUserMenu = (params) => {
+    if(params.name === 'Logout') {
+      localStorage.removeItem("id");
+      localStorage.removeItem("role");
+      localStorage.removeItem("username");
+      localStorage.removeItem("accessToken");
+    }
     setAnchorElUser(null);
   };
   return (
@@ -195,7 +201,9 @@ function CustomerNavBar() {
                 {settings.map((setting) => (
                   <MenuItem
                     key={setting.name}
-                    onClick={handleCloseUserMenu}
+                    onClick={()=>{
+                      handleCloseUserMenu(setting)
+                    }}
                     component={navLink}
                     to={setting.link}
                   >
