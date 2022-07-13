@@ -1,11 +1,10 @@
 import React from "react";
 import MaterialTable from "material-table";
-import Typography from "@mui/material/Typography";
-import cars from "../../mocks/carStub";
 import tableIcons from "./TableIcons";
 import axios from 'axios';
-import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from "@mui/material/Box";
 
 const CarMoreDeals = (props) => {
   
@@ -14,9 +13,8 @@ const CarMoreDeals = (props) => {
   const [distance, setDistance] = React.useState(props.travelDistance);
   const [startDate, setStartDate] = React.useState(props.startDate);
   const [endDate, setEndDate] = React.useState(props.endDate);
-  const [dataUnavailable, setDataUnavailable] = React.useState(false);
   const [data, setData] = React.useState([]);
-  const [moreDeals, setMoreDeals] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
 
   const columns = [
     { title: "Date", field: "date" },
@@ -24,25 +22,20 @@ const CarMoreDeals = (props) => {
     { title: "Car", field: "name" },
     { title: "Seats", field: "seatCount" },
     { title: "Cost(CAD)", field: "cost" },
-    // { title: "Rating", field: "vehicleRating" },
   ];
 
   React.useEffect(() => {
 
-    console.log(startDate);
     axios.get(`http://localhost:4200/api/rental/get/${seatCount}/${distance}/${startDate.toISOString().split('T')[0]}/${endDate.toISOString().split('T')[0]}`)
     .then((res) =>{
+        setLoading(false);
     let temp = res.data;
       res.data.map((car, i) => {
         temp[i].Image = <img src={car.imageurl} height="200" width="200"></img>;
         setData(temp);
       });
-    //   setData(response.data);
-    //   console.log(data.length);
-      setDataUnavailable(false);
     }).catch((err)=>{
         console.error(err);
-        setDataUnavailable(true);
       })
 
      
@@ -52,6 +45,9 @@ const CarMoreDeals = (props) => {
   
 
   return (
+    
+    loading ?  <Box textAlign='center'> <CircularProgress  /> </Box>:
+    (
     <div>
     <MaterialTable
       icons={tableIcons}
@@ -61,6 +57,7 @@ const CarMoreDeals = (props) => {
     />
     
     </div>
+    )
   
     
   );

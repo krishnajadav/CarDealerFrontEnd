@@ -1,12 +1,12 @@
 import React from "react";
 import MaterialTable from "material-table";
 import Typography from "@mui/material/Typography";
-import cars from "../../mocks/carStub";
 import tableIcons from "./TableIcons";
 import axios from 'axios';
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import CarMoreDeals from "./CarMoreDeals";
+import Box from "@mui/material/Box";
 
 const CarResults = (props) => {
   
@@ -75,7 +75,10 @@ const CarResults = (props) => {
       columns={columns}
       data={data}
     />
-    <Button className = "App" onClick={showMoreDeals}>Show more deals</Button>
+    <br/>
+    <Box textAlign='center'>
+      <Button variant="contained" onClick={showMoreDeals}>Show more deals</Button>
+    </Box>
     </div>
   
     
