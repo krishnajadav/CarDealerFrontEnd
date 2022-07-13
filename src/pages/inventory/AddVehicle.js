@@ -23,7 +23,7 @@ const AddVehicle = (props) => {
 
    // const [, updateState]=useState();
 
-    const [id,setid]=useState(0)
+    const [_id,setid]=useState(0)
     const [Status,setstatus]=useState('Add')
     const [vehicleName,setvehicleName]=useState('')
     const [vehicleModelNumber,setvehicleModelNumber]=useState('')
@@ -33,13 +33,13 @@ const AddVehicle = (props) => {
     const onClick = () =>{
         if(vehicleName!==""&&vehicleModelNumber!==""&&companyName!==""&&vehiclePrice!=="")
         {
-            if(id===0)
+            if(_id===0)
             {
-                onAddVehicle({id:vehicles.length+1,vehicleName:vehicleName,vehicleModelNumber:vehicleModelNumber,companyName:companyName,vehiclePrice:vehiclePrice});    
+                onAddVehicle({vehicleName:vehicleName,vehicleModelNumber:vehicleModelNumber,companyName:companyName,vehiclePrice:vehiclePrice});    
             }
             else
             {
-                onEditVehicle({id:id,vehicleName:vehicleName,vehicleModelNumber:vehicleModelNumber,companyName:companyName,vehiclePrice:vehiclePrice})
+                onEditVehicle({_id:_id,vehicleName:vehicleName,vehicleModelNumber:vehicleModelNumber,companyName:companyName,vehiclePrice:vehiclePrice})
             }
             //updateState({});
             ClearVehicle(); 
@@ -50,7 +50,7 @@ const AddVehicle = (props) => {
         setvehicleName(vehicleEdit.vehicleName);
         setvehicleModelNumber(vehicleEdit.vehicleModelNumber);
         setcompanyName(vehicleEdit.companyName);
-        setid(vehicleEdit.id);
+        setid(vehicleEdit._id);
         setvehiclePrice(vehicleEdit.vehiclePrice);
         setstatus('Edit');
     }
@@ -189,7 +189,7 @@ return (
         </TableHead>
         <TableBody>
             { vehicles.length > 0 ? vehicles.map((vehicle)=>(
-            <ListVehicle key={vehicle.id} vehicle={vehicle} onEditVehicle={EditVehicleCallback} onDeleteVehicle={DeleteVehicleCallback}/>
+            <ListVehicle key={vehicle._id} vehicle={vehicle} onEditVehicle={EditVehicleCallback} onDeleteVehicle={DeleteVehicleCallback}/>
             )): <TableRow><TableCell colSpan="4">No Vehicles</TableCell></TableRow>}
         </TableBody>
       </Table>

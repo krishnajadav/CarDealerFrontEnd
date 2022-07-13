@@ -21,7 +21,7 @@ const onDeleteClick = (ID) =>{
   return (
 
     <TableRow
-    key={vehicle.id}
+    key={vehicle._id}
     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
   >
     <TableCell>{vehicle.companyName}</TableCell>
@@ -40,7 +40,7 @@ const onDeleteClick = (ID) =>{
                     <Button
                         variant="contained"
                         color="primary"
-                        onClick={onDeleteClick(vehicle.id)}
+                        onClick={onDeleteClick(vehicle._id)}
                     >
                         Delete
                     </Button>
