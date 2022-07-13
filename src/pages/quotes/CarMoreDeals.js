@@ -22,7 +22,8 @@ const CarMoreDeals = (props) => {
     { title: "Date", field: "date" },
     { title: "", field: "Image" },
     { title: "Car", field: "name" },
-    { title: "Seats", field: "seatCount" }
+    { title: "Seats", field: "seatCount" },
+    { title: "Cost(CAD)", field: "cost" },
     // { title: "Rating", field: "vehicleRating" },
   ];
 
