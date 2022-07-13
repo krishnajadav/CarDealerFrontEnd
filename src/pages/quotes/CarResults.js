@@ -4,14 +4,20 @@ import Typography from "@mui/material/Typography";
 import cars from "../../mocks/carStub";
 import tableIcons from "./TableIcons";
 import axios from 'axios';
+import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import CarMoreDeals from "./CarMoreDeals";
 
 const CarResults = (props) => {
+  
+  let navigate = useNavigate();
   const [seatCount, setSeatCount] = React.useState(props.seats);
   const [distance, setDistance] = React.useState(props.travelDistance);
   const [startDate, setStartDate] = React.useState(props.startDate);
   const [endDate, setEndDate] = React.useState(props.endDate);
   const [dataUnavailable, setDataUnavailable] = React.useState(false);
   const [data, setData] = React.useState([]);
+  const [moreDeals, setMoreDeals] = React.useState(false);
 
   const columns = [
     { title: "", field: "Image" },
@@ -23,53 +29,57 @@ const CarResults = (props) => {
 
   React.useEffect(() => {
 
-
-    axios.get(`http://localhost:4200/api/inventory/get/${seatCount}/rent`)
+    axios.get(`http://localhost:4200/api/rental/factor/get/${startDate.toISOString().split('T')[0]}`)
+    .then((response) =>{
+      axios.get(`http://localhost:4200/api/inventory/get/${seatCount}/rent`)
     .then((res)=>{
       let temp = res.data;
       res.data.map((car, i) => {
         temp[i].vehiclePrice =
-          car.vehiclePrice *
+          (car.vehiclePrice * response.data.factor *
           distance *
-          Math.ceil(Math.abs(endDate - startDate + 1) / (1000 * 60 * 60 * 24));
+          Math.ceil(Math.abs(endDate - startDate + 1) / (1000 * 60 * 60 * 24))).toFixed(2);
         temp[i].Image = <img src={car.vehicleImageURL} height="200" width="200"></img>;
         setData(temp);
       });
-      if (res.data.lenght<=0){
+      if (res.data.length<=0){
         setDataUnavailable(true);
       }
     }).catch((err)=>{
       setDataUnavailable(true);
     })
+    }) 
 
-
-
-    // console.log(props.seats);
-  //   let temp = cars[seatCount];
-  //   if (seatCount in cars)
-  //     cars[seatCount].map((car, i) => {
-  //       temp[i].cost =
-  //         car.cost *
-  //         distance *
-  //         Math.ceil(Math.abs(endDate - startDate + 1) / (1000 * 60 * 60 * 24));
-  //       temp[i].Image = <img src={car.url} height="200" width="200"></img>;
-  //       setData(temp);
-  //     });
-  //   else {
-  //     setDataUnavailable(true);
-  //   }
   }, []);
+
+  const showMoreDeals = () =>{
+    console.log("Yayy");
+    setMoreDeals(true)
+  }
 
   return dataUnavailable ? (
     <Typography variant="h2">No data available for given seat count</Typography>
   ) : (
+    moreDeals ?
+    (<CarMoreDeals
+      seats={seatCount}
+      travelDistance={distance}
+      startDate={startDate}
+      endDate={endDate}
+    />)
+    :(
+    <div>
     <MaterialTable
       icons={tableIcons}
       title={"Available vehicles for rent between " + startDate.toISOString().split("T")[0] + " and "+ endDate.toISOString().split("T")[0] }
       columns={columns}
       data={data}
     />
-  );
+    <Button className = "App" onClick={showMoreDeals}>Show more deals</Button>
+    </div>
+  
+    
+  ));
 };
 
 export default CarResults;
