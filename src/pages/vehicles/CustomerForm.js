@@ -12,7 +12,7 @@ function CustomerForm() {
     const handleClick = () => {
         
         setOpen(true);
-        //window.alert("The requirements have been submitted");
+        //window.alert("The requirements have been submitted") ;
     };
 
     const handleClose = (event, reason) => {
