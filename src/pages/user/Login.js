@@ -9,6 +9,8 @@ import {Link, useNavigate} from "react-router-dom";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import React from "react";
+import axios from "axios";
+import { toast } from 'react-toastify';
 
 function Login() {
     const navigate = useNavigate();
@@ -27,7 +29,34 @@ function Login() {
     });
 
     const onSubmit = data => {
-        navigate("/");
+        axios
+            .post("http://localhost:4200/api/user/login", {
+                username: data.username,
+                password: data.password
+            })
+            .then((response) => {
+                if(response.status === 200) {
+                    localStorage.setItem("id", response.data.id);
+                    localStorage.setItem("username", response.data.username);
+                    localStorage.setItem("accessToken", response.data.accessToken);
+                    localStorage.setItem("role", response.data.role);
+                    if(response.data.role === 'employee') {
+                        navigate("/manage/services");
+                    } else {
+                        navigate("/");
+                    }
+                }
+            }).catch((error)=> {
+            toast.error(error.response.data.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+            });
+        });
     }
 
     return (

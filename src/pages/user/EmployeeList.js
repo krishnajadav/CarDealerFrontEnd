@@ -6,21 +6,39 @@ import {Stack} from "@mui/material";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogActions from "@mui/material/DialogActions";
 import Dialog from "@mui/material/Dialog";
+import {useEffect} from "react";
+import axios from "axios";
+import {toast} from "react-toastify";
 
 
 
 function EmployeeList() {
-    const renderAction = () => {
-        return (
-            <strong>
-                <Button
-                    onClick={handleClickOpen}
-                    color="error"
-                >
-                    Deactivate
-                </Button>
-            </strong>
-        )
+    let [rows, setRows] = React.useState([])
+    const [selectedUser, setSelectedUser] = React.useState('');
+
+    useEffect(() => {
+        axios
+            .get("http://localhost:4200/api/user/employees", )
+            .then((response) => {
+                setRows(response.data);
+            });
+    }, []);
+
+    const renderAction = (params) => {
+        if (params.row.isEnabled) {
+            return(
+                <strong>
+                    <Button
+                        onClick={() => {
+                            handleClickOpen(params.row.username)
+                        }}
+                        color="error"
+                    >
+                        Deactivate
+                    </Button>
+                </strong>
+            )
+        }
     }
 
 
@@ -38,14 +56,14 @@ function EmployeeList() {
             editable: true,
         },
         {
-            field: 'id',
+            field: 'username',
             headerName: 'Username',
             width: 150,
             editable: true,
         },
         {
-            field: 'status',
-            headerName: 'Status',
+            field: 'isEnabled',
+            headerName: 'Is active?',
             width: 160
         },
         {
@@ -59,22 +77,63 @@ function EmployeeList() {
 
 
 
-    const rows = [
-        {firstName: 'David', lastName: 'Peterson', id: 'dpeterson@react.com', status: 'Enabled' },
-        {firstName: 'Jim', lastName: 'Wallace', id: 'jwallace@react.com', status: 'Enabled' },
-        {firstName: 'Dwight', lastName: 'Jamieson', id: 'djamieson@react.com', status: 'Enabled' },
-        {firstName: 'Pam', lastName: 'Grace', id: 'pgrace@react.com', status: 'Enabled' },
-
-    ];
+    // const rows = [
+    //     {firstName: 'David', lastName: 'Peterson', id: 'dpeterson@react.com', status: 'Enabled' },
+    //     {firstName: 'Jim', lastName: 'Wallace', id: 'jwallace@react.com', status: 'Enabled' },
+    //     {firstName: 'Dwight', lastName: 'Jamieson', id: 'djamieson@react.com', status: 'Enabled' },
+    //     {firstName: 'Pam', lastName: 'Grace', id: 'pgrace@react.com', status: 'Enabled' },
+    //
+    // ];
     const [open, setOpen] = React.useState(false);
 
-    const handleClickOpen = () => {
+    const handleClickOpen = (data) => {
+        setSelectedUser(data);
         setOpen(true);
     };
 
     const handleClose = () => {
+        setSelectedUser('');
         setOpen(false);
     };
+
+    const handleDeactivate = () => {
+        axios
+            .put("http://localhost:4200/api/user/updatestatus", {
+                username: selectedUser,
+                isEnabled: false
+            })
+            .then((response) => {
+                if(response.status === 200) {
+                    toast.success('Status updated', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: false,
+                        progress: undefined,
+                    });
+                    setSelectedUser('');
+                    setOpen(false);
+                    axios
+                        .get("http://localhost:4200/api/user/employees", )
+                        .then((response) => {
+                            setRows(response.data);
+                        });
+                }
+            }).catch((error)=> {
+            toast.error(error.response.data.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+            });
+        });
+    };
+
     return (
 
         <div style={{ height: 400, width: '100%', padding: '20px' }}>
@@ -93,13 +152,14 @@ function EmployeeList() {
                     {"Confirm permanent deactivation?"}
                 </DialogTitle>
                 <DialogActions>
-                    <Button onClick={handleClose}>Deactivate</Button>
+                    <Button onClick={handleDeactivate}>Deactivate</Button>
                     <Button onClick={handleClose} autoFocus>
                         Cancel
                     </Button>
                 </DialogActions>
             </Dialog>
             <DataGrid
+                getRowId={(row) => row._id}
                 rows={rows}
                 columns={columns}
                 pageSize={5}

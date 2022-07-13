@@ -9,6 +9,8 @@ import {Link, useNavigate} from "react-router-dom";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import React from "react";
+import axios from "axios";
+import {toast} from "react-toastify";
 
 function CustomerRegistration() {
     const navigate = useNavigate();
@@ -36,7 +38,38 @@ function CustomerRegistration() {
     });
 
     const onSubmit = data => {
-        navigate("/login");
+        axios
+            .post("http://localhost:4200/api/user/register", {
+                firstName: data.firstName,
+                lastName: data.lastName,
+                username: data.username,
+                role: 'customer',
+                password: data.password
+            })
+            .then((response) => {
+                if(response.status === 201) {
+                    toast.success('User created', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: false,
+                        progress: undefined,
+                    });
+                    navigate("/login");
+                }
+            }).catch((error)=> {
+            toast.error(error.response.data.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+            });
+        });
     }
 
     return (
