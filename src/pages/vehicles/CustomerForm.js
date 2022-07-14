@@ -3,15 +3,59 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import { Avatar, TextField, Typography, Grid, Button, Link, FormControlLabel, FormControl, FormLabel, RadioGroup, Radio } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import PropTypes from "prop-types";
+
+function TabPanel(props) {
+    const { children, value, index, ...other } = props;
+  
+    return (
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`simple-tabpanel-${index}`}
+        aria-labelledby={`simple-tab-${index}`}
+        {...other}
+      >
+        {value === index && (
+          <Box sx={{ p: 3 }}>
+            <Typography>{children}</Typography>
+          </Box>
+        )}
+      </div>
+    );
+  }
+  
+  TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
+  };
+  
 
 function CustomerForm() {
-    const [name, setName] = useState("");
+
+    const [value, setValue] = React.useState(0);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+    // const [name, setName] = useState("");
 
     const [open, setOpen] = React.useState(false);
 
     const handleClick = () => {
+
+        var x = document.forms["carform"]["brand"].value;
+        if (x === "") {
+          alert("Brand must be filled out");
+          return false;
+        }
+
+
         
-        setOpen(true);
+        //setOpen(true);
         //window.alert("The requirements have been submitted") ;
     };
 
@@ -35,7 +79,36 @@ function CustomerForm() {
     };
 
     return (
-        <form classname>
+        <div className='parent'>
+
+<div>
+      <Box sx={{ width: "100%" }}>
+        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+          <Tabs
+            textColor="secondary"
+            indicatorColor="secondary"
+            value={value}
+            color="secondary"
+            onChange={handleChange}
+            aria-label="basic tabs example"
+          >
+            <Tab label="Requirements form" />
+            <Tab label="Edit vehicle requirements" />
+          </Tabs>
+        </Box>
+
+        {/* <TabPanel value={value} index={0}>
+          <CustomerForm />
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <CustomerForm />
+        </TabPanel> */}
+
+      </Box>
+    </div>
+        
+        
+        <form name = "carform">
             <Box
                 sx={{
                     marginTop: 8,
@@ -145,6 +218,8 @@ function CustomerForm() {
             </Box>
 
         </form>
+
+        </div>
     )
 }
 
