@@ -1,8 +1,6 @@
-import oilChange from "./assets/oilchange.jpg";
+import oilChange from "./assets/oilchange.png";
 import tyreService from "./assets/tyreservice.png";
 import airFilter from "./assets/airfilter.png";
-import testDriveCar from "./assets/testdrivecar.png";
-import repairsCar from "./assets/repairscar.png";
 
 export const services = [
   {
@@ -20,18 +18,6 @@ export const services = [
   {
     service: "Air Filter Change",
     image: airFilter,
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  },
-  {
-    service: "Test Drive",
-    image: testDriveCar,
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  },
-  {
-    service: "Repair Estimate",
-    image: repairsCar,
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   },
