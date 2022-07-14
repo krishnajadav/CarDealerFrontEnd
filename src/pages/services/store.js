@@ -1,28 +1,66 @@
 import { createContext, useState, useContext, useEffect } from "react";
-import { setBookingData, getBookingData } from "./helper";
-
+import { setBookingData, getBookingData, baseURL } from "./helper";
 const BookingContext = createContext({});
 
-export const BookingContextProvider = ({ children }) => {
-  const [bookings, setBookings] = useState(getBookingData() ?? []);
+const getRequestOptions = (method = "POST") => ({
+  method,
+  mode: "cors",
+  cache: "no-cache",
+  credentials: "same-origin",
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
 
+export const BookingContextProvider = ({ children }) => {
+  const [bookings, setBookings] = useState([]);
   useEffect(() => {
-    setBookingData(bookings);
-  }, [bookings]);
+    getBookingData().then((data) => setBookings(data));
+  }, []);
 
   const addBooking = (booking) => {
-    setBookings((existingBookings) => [booking, ...existingBookings]);
+    fetch(`${baseURL}/customerService/createBooking`, {
+      ...getRequestOptions(),
+      body: JSON.stringify({
+        ...booking,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        const newData = {
+          ...result.data,
+          ...booking,
+        };
+        setBookings((existingBookings) => [newData, ...existingBookings]);
+      });
   };
   const deleteBooking = (id) => {
-    setBookings((existingBookings) =>
-      existingBookings.filter((e) => e.id !== id)
-    );
+    fetch(`${baseURL}/customerService/deleteBooking/${id}`, {
+      ...getRequestOptions("DELETE"),
+    }).then((res) => {
+      console.log(res);
+      if (res.status === 200)
+        setBookings((existingBookings) =>
+          existingBookings.filter((e) => e._id !== id)
+        );
+    });
   };
   const updateBooking = (updatedBooking) => {
-    const updatedData = bookings.map((b) =>
-      updatedBooking.id === b.id ? updatedBooking : b
-    );
-    setBookings(updatedData);
+    fetch(`${baseURL}/customerService/updateBooking/${updatedBooking._id}`, {
+      ...getRequestOptions("PUT"),
+      body: JSON.stringify({
+        carModel: updatedBooking.carModel,
+        date: updatedBooking.date,
+        time: updatedBooking.time,
+        location: updatedBooking.location,
+        type: updatedBooking.type,
+      }),
+    }).then((data) => {
+      const updatedData = bookings.map((b) =>
+        updatedBooking._id === b._id ? updatedBooking : b
+      );
+      setBookings(updatedData);
+    });
   };
 
   return (

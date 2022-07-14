@@ -8,7 +8,8 @@ import {
 import { carModels, timeSlot, location } from "./helper";
 import { useForm } from "react-hook-form";
 import { formatDate } from "./helper";
-
+import axios from "axios";
+import React from "react";
 const ServiceFormDialog = ({
   isUpdate,
   open,
@@ -52,7 +53,7 @@ function Form({ service, onSubmit, isUpdate, id, onUpdate }) {
 
   const updateHandler = (id, data) => {
     onUpdate({
-      id,
+      _id: id,
       type: service,
       ...data,
     });
@@ -106,8 +107,8 @@ function Form({ service, onSubmit, isUpdate, id, onUpdate }) {
       >
         <label>Time:</label>
         <select
-          style={{ border: errors.timeSlot ? "1px solid red" : "" }}
-          {...register("timeSlot", { required: true })}
+          style={{ border: errors.time ? "1px solid red" : "" }}
+          {...register("time", { required: true })}
         >
           {timeSlot.map((option, index) => (
             <option
