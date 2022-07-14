@@ -44,14 +44,20 @@ export const timeSlot = [
   "6:00 PM",
 ];
 export const location = ["Select", "Halifax", "Dartmouth", "Bedford"];
+export const baseURL = "http://localhost:4200/api";
 
 export const setBookingData = (values) =>
   localStorage.setItem("bookings", JSON.stringify(values));
 
-export const getBookingData = () => {
-  const data = localStorage.getItem("bookings");
-  if (data) {
-    return JSON.parse(data);
+export const getBookingData = async () => {
+  // const data = localStorage.getItem("bookings");
+
+  try {
+    const res = await fetch(`${baseURL}/customerService/viewBooking`);
+    const data = await res.json();
+    return data;
+  } catch (e) {
+    return { err: e.message };
   }
 };
 

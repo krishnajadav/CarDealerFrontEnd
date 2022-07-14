@@ -5,6 +5,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ServiceFormDialog from "../ServiceForm";
 import "./bookings.css";
+import axios from "axios";
 
 const BookingCard = ({
   model,
@@ -37,8 +38,9 @@ const CustomerBookings = () => {
   const [activeID, setActiveID] = React.useState(null);
 
   const openModal = (service) => {
+    console.log(service);
     setActiveService(service.type);
-    setActiveID(service.id);
+    setActiveID(service._id);
     setOpen(true);
   };
 
@@ -57,6 +59,7 @@ const CustomerBookings = () => {
       deleteBooking(id);
     }
   };
+
   return (
     <div className="bookings-wrapper">
       <h1 className="header-booking">Hello Customer!</h1>
@@ -65,11 +68,11 @@ const CustomerBookings = () => {
       {bookings &&
         bookings.map((booking) => (
           <BookingCard
-            onDelete={() => deleteHandler(booking.id)}
+            onDelete={() => deleteHandler(booking._id)}
             onUpdate={() => openModal(booking)}
             type={booking.type}
             model={booking.carModel}
-            time={booking.timeSlot}
+            time={booking.time}
             date={booking.date}
             location={booking.location}
           />

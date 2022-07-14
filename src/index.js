@@ -13,14 +13,12 @@ import { BookingContextProvider } from "./pages/services/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <ThemeProvider theme={Standard}>
-      <BookingContextProvider>
-        <CssBaseline enableColorScheme />
-        <App />
-      </BookingContextProvider>
-    </ThemeProvider>
-  </React.StrictMode>
+  <ThemeProvider theme={Standard}>
+    <BookingContextProvider>
+      <CssBaseline enableColorScheme />
+      <App />
+    </BookingContextProvider>
+  </ThemeProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -61,7 +61,7 @@ export default function ServicesContainer() {
     addBooking({
       ...data,
       type: activeService,
-      id: Math.floor(Math.random() * 500000),
+      // id: Math.floor(Math.random() * 500000),
     });
     alert(`Appointment for ${activeService} booked successfully!`);
     closeModal();
