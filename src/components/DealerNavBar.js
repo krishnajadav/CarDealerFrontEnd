@@ -157,7 +157,7 @@ function DealerNavBar() {
                         <Box sx={{flexGrow: 0}}>
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
-                                    <Avatar alt="" src="/static/images/avatar/2.jpg"/>
+                                    <Avatar alt="head shape" src="/static/images/avatar/2.jpg"/>
                                 </IconButton>
                             </Tooltip>
                             <Menu
