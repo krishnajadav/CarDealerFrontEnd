@@ -4,7 +4,9 @@ import Button from "@mui/material/Button";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogActions from "@mui/material/DialogActions";
 import Dialog from "@mui/material/Dialog";
-
+/*
+Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
+*/
 function Serviceapprove() {
   const Approval = () => {
     return (

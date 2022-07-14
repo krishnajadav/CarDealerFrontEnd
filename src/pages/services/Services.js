@@ -1,6 +1,9 @@
 import React from "react";
 import ServicesContainer from "./ServicesContainer";
 import "./services.css";
+/*
+Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
+*/
 const Services = () => {
   return (
     <div>

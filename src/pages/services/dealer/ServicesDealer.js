@@ -7,7 +7,9 @@ import { Tabs } from "@mui/material";
 import Timeslot from "./Timeslot";
 import Serviceapprove from "./serviceApprove/serviceapprove";
 import Servicerecord from "./servicerecord";
-
+/*
+Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
+*/
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
