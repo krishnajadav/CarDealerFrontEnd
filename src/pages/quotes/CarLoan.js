@@ -34,9 +34,7 @@ const CarLoan = () => {
   };
 
   React.useEffect(() => {
-
-
-    axios.get(`http://localhost:4200/api/inventory/get/0/loan`)
+    axios.get(`http://localhost:4200/api/inventory/get/loan`)
     .then((res)=>{
       let temp = res.data;
       res.data.map((car, i) => {
