@@ -5,7 +5,9 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ServiceFormDialog from "../ServiceForm";
 import "./bookings.css";
-
+/*
+Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
+*/
 const BookingCard = ({
   model,
   date,

@@ -1,6 +1,8 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { getBookingData, setBookingData } from "./serviceData";
-
+/*
+Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
+*/
 const BookingContext = createContext({});
 
 export const BookingContextProvider = ({ children }) => {

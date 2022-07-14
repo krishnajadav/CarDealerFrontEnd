@@ -1,5 +1,8 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { setBookingData, getBookingData, baseURL } from "./helper";
+/*
+Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
+*/
 const BookingContext = createContext({});
 
 const getRequestOptions = (method = "POST") => ({

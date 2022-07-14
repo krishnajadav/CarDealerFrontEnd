@@ -12,6 +12,9 @@ import React from "react";
 import { services } from "./helper";
 import ServiceFormDialog from "./ServiceForm";
 import { useBookings } from "./store";
+/*
+Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
+*/
 const CardItem = (props) => {
   const { service, image, content, onClick } = props;
   return (
