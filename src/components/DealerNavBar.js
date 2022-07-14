@@ -1,5 +1,4 @@
 import * as React from "react";
-import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
@@ -13,21 +12,11 @@ import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import Avatar from "@mui/material/Avatar";
-import Divider from "@mui/material/Divider";
-import Stack from "@mui/material/Stack";
-import Breadcrumbs from "@mui/material/Breadcrumbs";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import {Link as navLink} from "react-router-dom";
 
 const pages = [{
-    name: "Vehicles",
-    link: "/manage/vehicles"
-}, {
     name: "Accessories",
     link: "/manage/accessories"
-}, {
-    name: "Repairs",
-    link: "/manage/repairs"
 }, {
     name: "Services",
     link: "/manage/services"
@@ -50,14 +39,6 @@ function DealerNavBar() {
 
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
-    const breadcrumbs = [
-        <Link underline="hover" key="1" color="inherit" href="/">
-            Home
-        </Link>,
-        <Typography key="2" color="inherit">
-            Accessories
-        </Typography>,
-    ];
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -70,7 +51,13 @@ function DealerNavBar() {
         setAnchorElNav(null);
     };
 
-    const handleCloseUserMenu = () => {
+    const handleCloseUserMenu = (params) => {
+        if(params.name === 'Logout') {
+            localStorage.removeItem("id");
+            localStorage.removeItem("role");
+            localStorage.removeItem("username");
+            localStorage.removeItem("accessToken");
+        }
         setAnchorElUser(null);
     };
     return (
@@ -170,7 +157,7 @@ function DealerNavBar() {
                         <Box sx={{flexGrow: 0}}>
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
-                                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"/>
+                                    <Avatar alt="head shape" src="/static/images/avatar/2.jpg"/>
                                 </IconButton>
                             </Tooltip>
                             <Menu
@@ -190,7 +177,9 @@ function DealerNavBar() {
                                 onClose={handleCloseUserMenu}
                             >
                                 {settings.map((setting) => (
-                                    <MenuItem key={setting.name} onClick={handleCloseUserMenu} component={navLink} to={setting.link}>
+                                    <MenuItem key={setting.name} onClick={()=>{
+                                        handleCloseUserMenu(setting)
+                                    }} component={navLink} to={setting.link}>
                                         <Typography textAlign="center">{setting.name}</Typography>
                                     </MenuItem>
                                 ))}
@@ -199,17 +188,6 @@ function DealerNavBar() {
                     </Toolbar>
                 </Container>
             </AppBar>
-            <Divider/>
-            <div className="thumb-nav">
-                <Stack spacing={2}>
-                    <Breadcrumbs
-                        separator={<NavigateNextIcon fontSize="small"/>}
-                        aria-label="breadcrumb"
-                    >
-                        {breadcrumbs}
-                    </Breadcrumbs>
-                </Stack>
-            </div>
         </div>
     );
 }

@@ -5,19 +5,22 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import MaterialTable from "material-table";
 import Paper from "@mui/material/Paper";
-import carLoans from "../../mocks/carLoanStub";
 import tableIcons from "./TableIcons";
+import axios from 'axios';
 
 const CarLoan = () => {
   const [infoAcquired, setInfoAcquired] = React.useState(false);
   const [insuranceAvailable, setInsuranceAvailable] = React.useState(true);
+  const [carLoans, setCarLoans] = React.useState([]);
+
+
 
   const columns = [
-    { title: "", field: "url" },
-    { title: "Car", field: "Name" },
-    { title: "Seats", field: "Seats" },
-    { title: "Cost(CAD)", field: "cost" },
-    { title: "Rating", field: "Rating" },
+    { title: "", field: "Image" },
+    { title: "Car", field: "vehicleName" },
+    { title: "Seats", field: "vehicleSeatCount" },
+    { title: "Cost(CAD)", field: "vehiclePrice" },
+    { title: "Rating", field: "vehicleRating" },
   ];
 
   const handleInsuranceAvailable = () => {
@@ -29,6 +32,19 @@ const CarLoan = () => {
     setInsuranceAvailable(false);
     setInfoAcquired(true);
   };
+
+  React.useEffect(() => {
+    axios.get(`http://localhost:4200/api/inventory/get/loan`)
+    .then((res)=>{
+      let temp = res.data;
+      res.data.map((car, i) => {
+        temp[i].Image = <img src={car.vehicleImageURL} height="200" width="200"></img>;
+        setCarLoans(temp);
+      });
+    }).catch((err)=>{
+     
+    })
+  }, []);
 
   return (
     <Paper
@@ -55,7 +71,7 @@ const CarLoan = () => {
               >
                 <Grid item xs={12} sm={12} md={6}>
                   <Typography variant="h5">
-                    Unforunately, you cannot loan a car without insurance
+                    Unforunately, you cannot loan a car as your warranty period has expired.
                   </Typography>
                 </Grid>
               </Grid>
@@ -84,7 +100,7 @@ const CarLoan = () => {
             justifyContent="center"
           >
             <Grid item xs={12} sm={12} md={6}>
-              <Typography variant="h5">Do you have car Insurance?</Typography>
+              <Typography variant="h5">Is your car under warranty?</Typography>
             </Grid>
           </Grid>
           <p></p>

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
 import { dealerRoutes } from "./DealerRoutes";
 import { customerRoutes } from "./CustomerRoutes";
 import LayoutDealer from "./components/LayoutDealer";
@@ -11,6 +11,8 @@ function App() {
   return (
     <Router>
       <Routes>
+        <Route exact path="/" element={<Navigate replace to="/services" />} >
+        </Route>
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<CustomerRegistration />} />
         <Route exact path="/forgot-password" element={<ForgotPassword />} />

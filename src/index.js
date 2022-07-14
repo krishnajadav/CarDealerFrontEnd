@@ -7,18 +7,23 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import {CssBaseline, ThemeProvider} from "@mui/material";
 import Standard from "./themes/standard";
-import { BookingContextProvider } from "./pages/services/store";
+import {BookingContextProvider} from "./pages/services/store";
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <ThemeProvider theme={Standard}>
-    <BookingContextProvider>
-      <CssBaseline enableColorScheme />
-      <App />
-    </BookingContextProvider>
-  </ThemeProvider>
+    <React.StrictMode>
+        <ThemeProvider theme={Standard}>
+            <BookingContextProvider>
+                <CssBaseline enableColorScheme/>
+                <ToastContainer/>
+                <App/>
+            </BookingContextProvider>
+        </ThemeProvider>
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

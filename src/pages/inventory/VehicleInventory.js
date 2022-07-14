@@ -1,32 +1,104 @@
 import AddVehicle from "./AddVehicle"
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 
 const VehicleInventory = () => {
 
   const [vehicles,setvehicles]=useState([])
+  
+  useEffect(() => {
+    const getInventories = async () => {
+    const InventoryList = await getInventory()
+    setvehicles(InventoryList)
+  }
+  getInventories()
+  }, [])
 
-  const AddVehicleCallback = (vehicleAdd) =>{
-    var c=vehicles;
-    c.push(vehicleAdd);
-    setvehicles(c);   
+const getInventory = async () => {
+  const res = await fetch('http://localhost:4200/api/inventory/get',{"method": "GET"})
+  const data = await res.json()  
+  return data
+}  
+
+const addInventory = async (vehicleAdd) => {
+
+  var ImageURL="";
+  if(vehicleAdd.carImageFile!="")
+  {
+    const imageRes = await fetch('https://mxzqx65smg.execute-api.us-east-1.amazonaws.com/storeImages',{"method": "POST",
+    "body": JSON.stringify({
+      "carImageFile":vehicleAdd.carImageFile
+    })})
+    const imageData = await imageRes.json(); 
+    ImageURL=imageData.ImageURL;
+  }
+
+  const res = await fetch('http://localhost:4200/api/inventory/add',{"method": "POST",
+  "headers": {
+    "content-type": "application/json",
+    "accept": "application/json"
+  },
+  "body": JSON.stringify({
+    vehicleName: vehicleAdd.vehicleName,
+    vehicleModelNumber: vehicleAdd.vehicleModelNumber,
+    companyName: vehicleAdd.companyName,
+    vehiclePrice: vehicleAdd.vehiclePrice,
+    vehicleImageURL:ImageURL,
+    vehicleSeatCount:vehicleAdd.vehicleSeatCount
+  })})
+  const data = await res.json()  
+  return data;
+} 
+
+const deleteInventory = async (ID) => {
+  const res = await fetch(`http://localhost:4200/api/inventory/delete/${ID}`,{"method": "DELETE"})
+  const data = await res.json()  
+  return data
+} 
+
+const updateInventory = async (vehicleEdit) => {
+
+  if(vehicleEdit.carImageFile!="")
+  {
+    const imageRes = await fetch('https://mxzqx65smg.execute-api.us-east-1.amazonaws.com/storeImages',{"method": "POST",
+    "body": JSON.stringify({
+      "carImageFile":vehicleEdit.carImageFile
+    })})
+    const imageData = await imageRes.json(); 
+    vehicleEdit.vehicleImageURL=imageData.ImageURL;
+  }
+  const res = await fetch(`http://localhost:4200/api/inventory/update/${vehicleEdit._id}`,{"method": "PUT",
+  "headers": {
+    "content-type": "application/json",
+    "accept": "application/json"
+  },
+  "body": JSON.stringify({
+    vehicleName: vehicleEdit.vehicleName,
+    vehicleModelNumber: vehicleEdit.vehicleModelNumber,
+    companyName: vehicleEdit.companyName,
+    vehiclePrice: vehicleEdit.vehiclePrice,
+    vehicleImageURL: vehicleEdit.vehicleImageURL,
+    vehicleSeatCount:vehicleEdit.vehicleSeatCount
+  })})
+  const data = await res.json()  
+  return data
+} 
+
+  const AddVehicleCallback = async (vehicleAdd) =>{
+    await addInventory(vehicleAdd);
+    const InventoryList=await getInventory()
+    setvehicles(InventoryList)
 }
 
-const EditVehicleCallback = (vehicleEdit) =>{ 
-var i = vehicles.length;
-while ( i --> 0 ) {
-    if ( vehicles[i].id === vehicleEdit.id ) {
-      vehicles[i].vehicleName=vehicleEdit.vehicleName;
-      vehicles[i].vehicleModelNumber=vehicleEdit.vehicleModelNumber;
-      vehicles[i].companyName=vehicleEdit.companyName;
-      vehicles[i].vehiclePrice=vehicleEdit.vehiclePrice;
-        break;
-    }
-}
-setvehicles(vehicles);
+const EditVehicleCallback = async (vehicleEdit) =>{ 
+await updateInventory(vehicleEdit);
+const InventoryList=await getInventory()
+setvehicles(InventoryList)
 }
 
-const DeleteVehicleCallback = (ID) =>{
-  setvehicles(vehicles.filter((vehicle) => vehicle.id !== ID))
+const DeleteVehicleCallback = async (ID) =>{
+  await deleteInventory(ID);
+  const InventoryList=await getInventory()
+  setvehicles(InventoryList)
 }
 
   return (
