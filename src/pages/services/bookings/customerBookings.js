@@ -5,7 +5,6 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ServiceFormDialog from "../ServiceForm";
 import "./bookings.css";
-import axios from "axios";
 
 const BookingCard = ({
   model,
@@ -38,7 +37,6 @@ const CustomerBookings = () => {
   const [activeID, setActiveID] = React.useState(null);
 
   const openModal = (service) => {
-    console.log(service);
     setActiveService(service.type);
     setActiveID(service._id);
     setOpen(true);
