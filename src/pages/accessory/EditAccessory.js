@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
@@ -8,13 +8,30 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Paper from '@mui/material/Paper';
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import Stack from "@mui/material/Stack";
 import MenuItem from '@mui/material/MenuItem';
+import axios from "axios";
+import {toast} from "react-toastify";
 
 function EditAccessory() {
-    const [filename, setFilename] = useState("");
-    const [category, setCategory] = React.useState("Oil");
+    const params = useParams();
+    const [category, setCategory] = useState("Oil");
+    const [convertedImage, setConvertedImage] = useState('');
+
+    useEffect(() => {
+        axios
+            .get("http://localhost:4200/api/accessory/" + params.id, )
+            .then((response) => {
+                setValue('productName',response.data.name);
+                setValue('description',response.data.description);
+                setValue('price',response.data.price);
+                setValue('quantity',response.data.quantity);
+                setCategory(response.data.category);
+                setConvertedImage(response.data.image)
+                console.log(convertedImage)
+            });
+    }, []);
 
     const navigate = useNavigate();
 
@@ -33,6 +50,7 @@ function EditAccessory() {
 
     const {
         register,
+        setValue,
         handleSubmit,
         formState: {errors}
     } = useForm({
@@ -40,11 +58,55 @@ function EditAccessory() {
     });
 
     const onSubmit = data => {
-        navigate("/manage/accessories");
+        console.log(convertedImage);
+        axios
+            .put("http://localhost:4200/api/accessory/" + params.id, {
+                image: convertedImage,
+                name: data.productName,
+                description: data.description,
+                price: data.price,
+                quantity: data.quantity,
+                category: category
+            })
+            .then((response) => {
+                if(response.status === 200) {
+                    toast.success('Accessory updated', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: false,
+                        progress: undefined,
+                    });
+                    navigate("/manage/accessories");
+                }
+            }).catch((error)=> {
+            toast.error(error.response.data.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+            });
+        });
     }
 
-    const handleFileUpload = (e) => {
-        setFilename(e.target.files[0]);
+    const handleFileUpload = async (event) => {
+        const img = await convertToBase64(event.target.files[0]);
+        setConvertedImage(img);
+    }
+
+    const convertToBase64 = (file) => {
+        return new Promise(resolve => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+                resolve(reader.result);
+            }
+        })
     }
 
     return (
@@ -73,7 +135,7 @@ function EditAccessory() {
                                 </Button>
                             </label>
                             <div className="file-name">
-                                {filename ? filename.name : null}
+                                <img height="150px" width="150px" alt="product" src={convertedImage}/>
                             </div>
                         </Stack>
                     </Grid>
