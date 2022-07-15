@@ -28,7 +28,7 @@ const pages = [
     link: "/services",
   },
   {
-    name: "Quotes",
+    name: "Rentals&Loans",
     link: "/quotes",
   },
   {

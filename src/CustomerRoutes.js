@@ -30,7 +30,7 @@ export const customerRoutes = [
     component: AccessoryHomeCustomer,
   },
   {
-    title: "Quotes",
+    title: "Rentals&Loans",
     path: "/quotes",
     key: "quotes",
     component: Quotes,
