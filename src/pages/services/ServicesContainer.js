@@ -14,6 +14,10 @@ import ServiceFormDialog from "./ServiceForm";
 import { useBookings } from "./store";
 /*
 Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
+
+References:
+https://mui.com/
+Used cards, buttons, grids from Material UI for displaying the services in the customer service booking page.
 */
 const CardItem = (props) => {
   const { service, image, content, onClick } = props;
