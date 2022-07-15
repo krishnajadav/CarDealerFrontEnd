@@ -10,17 +10,20 @@ export const services = [
   {
     service: "Tyre Service",
     image: tyreService,
-    content: "Book an appointment for servicing the tyres of your car.",
+    content:
+      "Deflated or Punctured Tyres? Book an appointment for servicing the tyres of your car.",
   },
   {
     service: "Oil Change",
     image: oilChange,
-    content: "Book an appointment for changing the oil in your car.",
+    content:
+      "Car not running smoothly? Book an appointment for servicing and changing the oil in your car.",
   },
   {
     service: "Air Filter Change",
     image: airFilter,
-    content: "Book an appointment for changing the air filter in your car.",
+    content:
+      "Problems with the air filter of the car? Book an appointment for changing the air filter in your car.",
   },
   {
     service: "Test Drive",
