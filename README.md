@@ -1,4 +1,13 @@
 <!--- The following README.md sample file was adapted from https://gist.github.com/PurpleBooth/109311bb0361f32d87a2#file-readme-template-md by Gabriella Mosquera for academic use --->
+# Backend proj url 
+https://git.cs.dal.ca/jadav/5709_cardealerbackend_group9<br/>
+
+# Frontend proj url
+https://git.cs.dal.ca/lisenor/5709_group9
+
+# Heroku links
+_backendAPI_:https://group9-backend.herokuapp.com/<br/>
+_applicationLink_:https://project-group9-frontend.herokuapp.com/<br/>
 
 # Proposal
 
@@ -9,6 +18,7 @@
 - _Live link (customer layout)_: <https://web-dev-group9.herokuapp.com/services>
 - _Live link (dealership layout)_: <https://web-dev-group9.herokuapp.com/manage/accessories>
 - _Git URL_: <https://git.cs.dal.ca/lisenor/5709_group9/-/tree/main>
+- _Backend Git URL_: <https://git.cs.dal.ca/jadav/5709_cardealerbackend_group9>
 
 ## Authors
 
