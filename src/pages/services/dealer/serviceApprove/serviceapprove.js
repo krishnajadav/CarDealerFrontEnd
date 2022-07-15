@@ -6,6 +6,10 @@ import DialogActions from "@mui/material/DialogActions";
 import Dialog from "@mui/material/Dialog";
 /*
 Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
+
+References:
+https://mui.com/
+Used datagrid, dialogs,buttons etc from Material UI for displaying the services to be approved by the dealer.
 */
 function Serviceapprove() {
   const Approval = () => {

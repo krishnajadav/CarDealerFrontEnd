@@ -34,6 +34,11 @@ export const carModels = [
   "Toyota Camry",
   "Honda Civic",
   "Porche Tycan",
+  "Hyundai CRV",
+  "Dodge Challenger",
+  "Subaru Outback",
+  "Toyota Corolla",
+  "Hyundai Elantra",
 ];
 export const timeSlot = [
   "Select",

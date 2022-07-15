@@ -9,6 +9,11 @@ import Serviceapprove from "./serviceApprove/serviceapprove";
 import Servicerecord from "./servicerecord";
 /*
 Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
+
+References:
+https://mui.com/
+Used tabs, proptypes,box,typography from Material UI for displaying the tab panel in dealer page.
+
 */
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
