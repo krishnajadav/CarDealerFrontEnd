@@ -1,2 +1,2 @@
-const Url = 'http://localhost:4200'
+const Url = 'https://group9-backend.herokuapp.com'
 export { Url }
