@@ -35,6 +35,7 @@ const settings = [{
     link: "/login"
 }];
 
+// adopted from https://mui.com/material-ui/react-app-bar/
 function DealerNavBar() {
 
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -72,7 +73,6 @@ function DealerNavBar() {
                             variant="h6"
                             noWrap
                             component="a"
-                            href="/"
                             sx={{
                                 mr: 2,
                                 display: {xs: "none", md: "flex"},
@@ -83,7 +83,7 @@ function DealerNavBar() {
                                 textDecoration: "none",
                             }}
                         >
-                            LOGO
+                            HFX VEHICLES
                         </Typography>
 
                         <Box sx={{flexGrow: 1, display: {xs: "flex", md: "none"}}}>
@@ -129,7 +129,6 @@ function DealerNavBar() {
                             variant="h5"
                             noWrap
                             component="a"
-                            href=""
                             sx={{
                                 mr: 2,
                                 display: {xs: "flex", md: "none"},
@@ -141,7 +140,7 @@ function DealerNavBar() {
                                 textDecoration: "none",
                             }}
                         >
-                            LOGO
+                            HFX VEHICLES
                         </Typography>
                         <Box sx={{flexGrow: 1, display: {xs: "none", md: "flex"}}}>
                             {pages.map((page) => (
