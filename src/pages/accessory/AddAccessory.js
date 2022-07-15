@@ -1,3 +1,4 @@
+// Author: Tuan Hamid
 import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
@@ -13,9 +14,10 @@ import Stack from "@mui/material/Stack";
 import MenuItem from '@mui/material/MenuItem';
 import axios from "axios";
 import {toast} from "react-toastify";
+import { Url } from './../../constants/global'
 
 function AddAccessory() {
-    let convertedImage;
+    const [convertedImage, setConvertedImage] = useState('');
 
     const [category, setCategory] = React.useState("Oil");
 
@@ -44,7 +46,7 @@ function AddAccessory() {
     const onSubmit = data => {
         console.log(convertedImage);
         axios
-            .post("http://localhost:4200/api/accessory/create", {
+            .post(Url + "/api/accessory/create", {
                 image: convertedImage,
                 name: data.productName,
                 description: data.description,
@@ -79,8 +81,8 @@ function AddAccessory() {
     }
 
     const handleFileUpload = async (event) => {
-        convertedImage = await convertToBase64(event.target.files[0]);
-        console.log(convertedImage)
+        const newImg = await convertToBase64(event.target.files[0]);
+        setConvertedImage(newImg);
     }
 
     const convertToBase64 = (file) => {

@@ -1,3 +1,4 @@
+// Author: Tuan Hamid
 import React, {useEffect, useState} from 'react';
 import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
@@ -13,6 +14,7 @@ import Stack from "@mui/material/Stack";
 import MenuItem from '@mui/material/MenuItem';
 import axios from "axios";
 import {toast} from "react-toastify";
+import { Url } from './../../constants/global'
 
 function EditAccessory() {
     const params = useParams();
@@ -21,7 +23,7 @@ function EditAccessory() {
 
     useEffect(() => {
         axios
-            .get("http://localhost:4200/api/accessory/" + params.id, )
+            .get(Url + "/api/accessory/" + params.id, )
             .then((response) => {
                 setValue('productName',response.data.name);
                 setValue('description',response.data.description);
@@ -60,7 +62,7 @@ function EditAccessory() {
     const onSubmit = data => {
         console.log(convertedImage);
         axios
-            .put("http://localhost:4200/api/accessory/" + params.id, {
+            .put(Url + "/api/accessory/" + params.id, {
                 image: convertedImage,
                 name: data.productName,
                 description: data.description,
