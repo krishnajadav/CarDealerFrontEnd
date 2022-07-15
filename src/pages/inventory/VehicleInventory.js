@@ -1,6 +1,8 @@
 import AddVehicle from "./AddVehicle"
 import {useState,useEffect} from 'react'
-
+/*
+Author: Krishna Sanjaybhai Jadav(krishna.jadav@dal.ca)
+*/
 const VehicleInventory = () => {
 
   const [vehicles,setvehicles]=useState([])
