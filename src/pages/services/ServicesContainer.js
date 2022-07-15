@@ -11,7 +11,9 @@ import {
 import React from "react";
 import { services } from "./helper";
 import ServiceFormDialog from "./ServiceForm";
+import TestDriveServiceFormDialog from "./testDrive/TestDriveServiceForm";
 import { useBookings } from "./store";
+import { bookTestDrive } from "./testDrive/testDriveHelper";
 /*
 Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
 */
@@ -60,13 +62,18 @@ export default function ServicesContainer() {
     setActiveService(null);
   };
 
-  const onSubmit = (data) => {
-    addBooking({
-      ...data,
-      type: activeService,
-      // id: Math.floor(Math.random() * 500000),
-    });
-    alert(`Appointment for ${activeService} booked successfully!`);
+  const onSubmit = async(data) => {
+    if(activeService === "Test Drive"){
+      let result = await bookTestDrive(data);
+      alert(result);
+    } else {
+      addBooking({
+        ...data,
+        type: activeService,
+        // id: Math.floor(Math.random() * 500000),
+      });
+      alert(`Appointment for ${activeService} booked successfully!`);
+    } 
     closeModal();
   };
 
@@ -91,7 +98,14 @@ export default function ServicesContainer() {
           );
         })}
       </Grid>
-
+      {activeService === "Test Drive"? 
+      <TestDriveServiceFormDialog
+        isUpdate={false}
+        handleSubmit={onSubmit}
+        service={activeService}
+        open={open}
+        handleClose={closeModal}
+      /> :
       <ServiceFormDialog
         isUpdate={false}
         handleSubmit={onSubmit}
@@ -99,6 +113,7 @@ export default function ServicesContainer() {
         open={open}
         handleClose={closeModal}
       />
+      }
     </div>
   );
 }

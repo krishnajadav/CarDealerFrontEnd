@@ -45,18 +45,7 @@ export const services = [
     image: light,
     content:
       "Select the time slot availability for checking the battery in the vehicles.",
-  },
-  {
-    service: "Test Drive",
-    image: testDriveCar,
-    content:
-      "Select the time slot availability for checking the battery in the vehicles.",
-  },
-  {
-    service: "Repair Estimate",
-    image: repairsCar,
-    content: "Select the time slot availability for repair estimate.",
-  },
+  }
 ];
 
 export const timeSlotFrom = [
