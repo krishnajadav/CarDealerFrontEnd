@@ -7,6 +7,7 @@ import CustomerBookings from "./pages/services/bookings/customerBookings";
 import TradeIn from "./pages/tradeIn/TradeIn";
 import VehicleForm from "./pages/vehicles/Vehicle";
 import Accessory from "./pages/accessory/Accessory";
+import SearchVehicle from "./pages/search/SearchVehicle";
 
 
 export const customerRoutes = [
@@ -63,5 +64,11 @@ export const customerRoutes = [
     path: "/accessories/:id",
     key: "accessory",
     component: Accessory
+  },
+  {
+    title: "Search",
+    path: "/search",
+    key: "Search",
+    component: SearchVehicle
   }
 ];

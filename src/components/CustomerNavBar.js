@@ -35,6 +35,10 @@ const pages = [
     name: "Trade-in",
     link: "/trade-in",
   },
+  {
+    name: "Search",
+    link: "/search",
+  },
 ];
 const settings = [
   {
