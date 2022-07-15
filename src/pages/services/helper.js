@@ -2,6 +2,7 @@ import oilChange from "./assets/oilchange.png";
 import tyreService from "./assets/tyreservice.png";
 import airFilter from "./assets/airfilter.png";
 import testDriveCar from "./assets/testdrivecar.png";
+import {Url} from "../../constants/global"
 /*
 Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
 */
@@ -9,17 +10,20 @@ export const services = [
   {
     service: "Tyre Service",
     image: tyreService,
-    content: "Book an appointment for servicing the tyres of your car.",
+    content:
+      "Deflated or Punctured Tyres? Book an appointment for servicing the tyres of your car.",
   },
   {
     service: "Oil Change",
     image: oilChange,
-    content: "Book an appointment for changing the oil in your car.",
+    content:
+      "Car not running smoothly? Book an appointment for servicing and changing the oil in your car.",
   },
   {
     service: "Air Filter Change",
     image: airFilter,
-    content: "Book an appointment for changing the air filter in your car.",
+    content:
+      "Problems with the air filter of the car? Book an appointment for changing the air filter in your car.",
   },
   {
     service: "Test Drive",
@@ -33,6 +37,11 @@ export const carModels = [
   "Toyota Camry",
   "Honda Civic",
   "Porche Tycan",
+  "Hyundai CRV",
+  "Dodge Challenger",
+  "Subaru Outback",
+  "Toyota Corolla",
+  "Hyundai Elantra",
 ];
 export const timeSlot = [
   "Select",
@@ -49,7 +58,7 @@ export const timeSlot = [
   "6:00 PM",
 ];
 export const location = ["Select", "Halifax", "Dartmouth", "Bedford"];
-export const baseURL = "http://localhost:4200/api";
+export const baseURL = Url+"/api";
 
 export const setBookingData = (values) =>
   localStorage.setItem("bookings", JSON.stringify(values));

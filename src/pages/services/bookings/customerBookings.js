@@ -8,6 +8,10 @@ import TestDriveBookings from "../testDrive/testDriveBookings"
 import "./bookings.css";
 /*
 Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
+
+References:
+This card component from Material UI was used to display the booking details. 
+https://mui.com/material-ui/react-card/
 */
 const BookingCard = ({
   model,
