@@ -217,7 +217,7 @@ function AccessoryHomeEmployee() {
                         value={value}
                         color="secondary"
                         onChange={handleChange}
-                        aria-label="basic tabs example"
+                        aria-label="category tabs"
                     >
                         <Tab label="Oil" />
                         <Tab label="Car Care" />
