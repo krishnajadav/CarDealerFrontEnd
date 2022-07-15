@@ -9,6 +9,8 @@ import {Link, useNavigate} from "react-router-dom";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import React from "react";
+import axios from "axios";
+import {toast} from "react-toastify";
 
 function ForgotPassword() {
     const navigate = useNavigate();
@@ -28,7 +30,34 @@ function ForgotPassword() {
     });
 
     const onSubmit = data => {
-        navigate("/login");
+        axios
+            .post("http://localhost:4200/api/user/resetpassword", {
+                username: data.username,
+            })
+            .then((response) => {
+                if(response.status === 200) {
+                    toast.success('Password reset mail sent', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: false,
+                        progress: undefined,
+                    });
+                    navigate("/login");
+                }
+            }).catch((error)=> {
+            toast.error(error.response.data.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+            });
+        });
     }
 
     return (

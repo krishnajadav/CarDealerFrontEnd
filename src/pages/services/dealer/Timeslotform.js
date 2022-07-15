@@ -8,7 +8,9 @@ import {
 import { timeSlotFrom, timeSlotTill, location } from "./serviceData";
 import { useForm } from "react-hook-form";
 import { formatDate } from "./serviceData";
-
+/*
+Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
+*/
 const TimeSlotDialog = ({
   isUpdate,
   open,

@@ -21,13 +21,15 @@ const onDeleteClick = (ID) =>{
   return (
 
     <TableRow
-    key={vehicle.id}
+    key={vehicle._id}
     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
   >
     <TableCell>{vehicle.companyName}</TableCell>
     <TableCell>{vehicle.vehicleName}</TableCell>
     <TableCell>{vehicle.vehicleModelNumber}</TableCell>
     <TableCell>{vehicle.vehiclePrice}</TableCell>
+    <TableCell>{vehicle.vehicleSeatCount}</TableCell>
+    <TableCell><img src={vehicle.vehicleImageURL} style={{width: 100 + "px"}}/></TableCell>
     <TableCell>
     <Box mt={3}>
                     <Button
@@ -40,7 +42,7 @@ const onDeleteClick = (ID) =>{
                     <Button
                         variant="contained"
                         color="primary"
-                        onClick={onDeleteClick(vehicle.id)}
+                        onClick={onDeleteClick(vehicle._id)}
                     >
                         Delete
                     </Button>

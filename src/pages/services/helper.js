@@ -1,27 +1,26 @@
-import oilChange from "./assets/oilchange.jpg";
+import oilChange from "./assets/oilchange.png";
 import tyreService from "./assets/tyreservice.png";
 import airFilter from "./assets/airfilter.png";
 import testDriveCar from "./assets/testdrivecar.png";
 import repairsCar from "./assets/repairscar.png";
-
+/*
+Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
+*/
 export const services = [
   {
     service: "Tyre Service",
     image: tyreService,
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    content: "Book an appointment for servicing the tyres of your car.",
   },
   {
     service: "Oil Change",
     image: oilChange,
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    content: "Book an appointment for changing the oil in your car.",
   },
   {
     service: "Air Filter Change",
     image: airFilter,
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    content: "Book an appointment for changing the air filter in your car.",
   },
   {
     service: "Test Drive",
@@ -57,14 +56,20 @@ export const timeSlot = [
   "6:00 PM",
 ];
 export const location = ["Select", "Halifax", "Dartmouth", "Bedford"];
+export const baseURL = "http://localhost:4200/api";
 
 export const setBookingData = (values) =>
   localStorage.setItem("bookings", JSON.stringify(values));
 
-export const getBookingData = () => {
-  const data = localStorage.getItem("bookings");
-  if (data) {
-    return JSON.parse(data);
+export const getBookingData = async () => {
+  // const data = localStorage.getItem("bookings");
+
+  try {
+    const res = await fetch(`${baseURL}/customerService/viewBooking`);
+    const data = await res.json();
+    return data;
+  } catch (e) {
+    return { err: e.message };
   }
 };
 

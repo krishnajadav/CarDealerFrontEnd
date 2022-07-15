@@ -9,6 +9,8 @@ import {useNavigate} from "react-router-dom";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import React from "react";
+import axios from "axios";
+import {toast} from "react-toastify";
 
 function ChangePassword() {
     const navigate = useNavigate();
@@ -31,7 +33,39 @@ function ChangePassword() {
     });
 
     const onSubmit = data => {
-        navigate("/login");
+        axios
+            .put("http://localhost:4200/api/user/updatepassword", {
+                username: localStorage.getItem("username"),
+                password: data.password
+            })
+            .then((response) => {
+                if(response.status === 200) {
+                    toast.success('Password updated', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: false,
+                        progress: undefined,
+                    });
+                    localStorage.removeItem("username");
+                    localStorage.removeItem("accessToken");
+                    localStorage.removeItem("id");
+                    localStorage.removeItem("role");
+                    navigate("/login");
+                }
+            }).catch((error)=> {
+            toast.error(error.response.data.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+            });
+        });
     }
 
     return (

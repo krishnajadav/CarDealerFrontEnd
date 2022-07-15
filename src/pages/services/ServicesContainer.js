@@ -13,7 +13,9 @@ import { services } from "./helper";
 import ServiceFormDialog from "./ServiceForm";
 import TestDriveServiceFormDialog from "./testDrive/TestDriveServiceForm";
 import { useBookings } from "./store";
-
+/*
+Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
+*/
 const CardItem = (props) => {
   const { service, image, content, onClick } = props;
   return (
@@ -63,7 +65,7 @@ export default function ServicesContainer() {
     addBooking({
       ...data,
       type: activeService,
-      id: Math.floor(Math.random() * 500000),
+      // id: Math.floor(Math.random() * 500000),
     });
     alert(`Appointment for ${activeService} booked successfully!`);
     closeModal();
