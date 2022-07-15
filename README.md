@@ -372,38 +372,42 @@ phy>
 - <!---Why---> [App bar React component - Material UI](https://mui.com/material-ui/react-app-bar/) 's Code was used because it shows how the library works in creating the navigation bar
 - <!---How---> [App bar React component - Material UI](https://mui.com/material-ui/react-app-bar/) 's Code was modified by making changes to the required navigation buttons and dropdown menu. Also a suitable logo replacement icon was taken from MUI Icon pack at https://mui.com/material-ui/material-icons/
 
+
 ### AccessoryHomeCustomer.js
 
-*Lines 170 - 191*
-*Lines 217 - 238*
-*Lines 265 - 286*
-*Lines 312 - 333*
+*Lines 210 - 234*
+*Lines 258 - 282*
+*Lines 307 - 331*
+*Lines 355 - 378*
 
 
 ```
 Copy and paste your code on lines mentioned 
- <Card sx={{ m: 1 }}>
-                                    <CardActionArea component={Link} to={`/accessories/view`}>
+<Grid card xs={4} sm={4} md={4} key={elem._id}>
+                                <Card sx={{ m: 1 }}>
+                                    <CardActionArea onClick={()=>{
+                                        navigate("/accessories/" + elem._id)
+                                    }}>
                                         <CardMedia
                                             component="img"
-                                            alt="oil can"
+                                            alt="product image"
                                             height="140"
-                                            image="/oil.jpg"
+                                            image={elem.image}
                                         />
                                         <CardContent>
                                             <Typography gutterBottom variant="h5" component="div">
-                                                Castrol GTX 10W30
+                                                {elem.name}
                                             </Typography>
                                             <Typography variant="body2" color="text.primary">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                Ut vel quam eget orci laoreet ...
+                                                {elem.description}
                                             </Typography>
                                             <Typography sx={{ fontWeight: 'bold' }} mt={2}>
-                                                $45
+                                                ${elem.price}
                                             </Typography>
                                         </CardContent>
                                     </CardActionArea>
                                 </Card>
+                            </Grid>
 
 The code above was created by adapting the code in [React Card component - Material UI](https://mui.com/material-ui/react-card/) as shown below: 
 
@@ -438,35 +442,39 @@ species, ranging across all continents except Antarctica
 
 ### AccessoryHomeEmployee.js
 
-*Lines 178 - 202*
-*Lines 231 - 255*
-*Lines 289 - 313*
-*Lines 343 - 367*
+*Lines 253 - 281*
+*Lines 310 - 338*
+*Lines 368 - 396*
+*Lines 426 - 454*
 
 
 ```
 Copy and paste your code on lines mentioned 
- <Card sx={{ m: 1 }}>
+<Card sx={{ m: 1 }}>
                                     <CardMedia
                                         component="img"
-                                        alt="oil can"
+                                        alt="product image"
                                         height="140"
-                                        image="/oil.jpg"
+                                        image={elem.image}
                                     />
                                     <CardContent>
                                         <Typography gutterBottom variant="h5" component="div">
-                                            Castrol GTX 10W30
+                                            {elem.name}
                                         </Typography>
                                         <Typography variant="body2" color="text.secondary">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Ut vel quam eget orci laoreet ...
+                                            {elem.description}
+
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
-                                        <Button size="small" color="secondary" component={Link} to="/manage/accessories/edit">
+                                        <Button size="small" color="secondary" onClick={()=>{
+                                            navigate("/manage/accessories/edit/" + elem._id)
+                                        }}>
                                             Edit
                                         </Button>
-                                        <Button size="small" color="error" onClick={handleClickOpen}>
+                                        <Button size="small" color="error" onClick={()=>{
+                                            handleClickOpen(elem._id);
+                                        }}>
                                             Remove
                                         </Button>
                                     </CardActions>
@@ -505,24 +513,22 @@ species, ranging across all continents except Antarctica
 
 ### AccessoryHomeCustomer.js
 
-*Lines 134 - 146*
+*Lines 175 - 187*
 
 ```
-<Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-          <Tabs
-            textColor="secondary"
-            indicatorColor="secondary"
-            value={value}
-            color="secondary"
-            onChange={handleChange}
-            aria-label="basic tabs example"
-          >
-            <Tab label="Oil" />
-            <Tab label="Car Care" />
-            <Tab label="Tools" />
-            <Tab label="Tires" />
-          </Tabs>
-        </Box>
+<Tabs
+                        textColor="secondary"
+                        indicatorColor="secondary"
+                        value={value}
+                        color="secondary"
+                        onChange={handleChange}
+                        aria-label="category tabs"
+                    >
+                        <Tab label="Oil" />
+                        <Tab label="Car Care" />
+                        <Tab label="Tools" />
+                        <Tab label="Tires" />
+                    </Tabs>
 
 ```
 
@@ -555,24 +561,22 @@ Copy and paste the snippet of code you are referencing
 
 ### AccessoryHomeEmployee.js
 
-*Lines 139 - 151*
+*Lines 214 - 226*
 
 ```
-<Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-          <Tabs
-            textColor="secondary"
-            indicatorColor="secondary"
-            value={value}
-            color="secondary"
-            onChange={handleChange}
-            aria-label="basic tabs example"
-          >
-            <Tab label="Oil" />
-            <Tab label="Car Care" />
-            <Tab label="Tools" />
-            <Tab label="Tires" />
-          </Tabs>
-        </Box>
+<Tabs
+                        textColor="secondary"
+                        indicatorColor="secondary"
+                        value={value}
+                        color="secondary"
+                        onChange={handleChange}
+                        aria-label="category tabs"
+                    >
+                        <Tab label="Oil" />
+                        <Tab label="Car Care" />
+                        <Tab label="Tools" />
+                        <Tab label="Tires" />
+                    </Tabs>
 
 ```
 
@@ -602,7 +606,6 @@ Copy and paste the snippet of code you are referencing
 - <!---How---> The code in [React Tabs component - Material UI ](https://mui.com/material-ui/react-tabs/) was implemented to show a tabbed view of avaiable products in categories
 - <!---Why---> [React Tabs component - Material UI ](https://mui.com/material-ui/react-tabs/)'s Code was used because it shows the implementation for tabs
 - <!---How---> [React Tabs component - Material UI ](https://mui.com/material-ui/react-tabs/)'s Code was modified by adjusting for color palette and product content rendering for categories
-
 
 ### TradeIn.js
 
@@ -906,6 +909,106 @@ The code above was created by adapting the code in [StackOverflow](https://stack
 - <!---How---> The code in [StackOverflow](https://stackoverflow.com/a/67380953) was implemented by using it for action buttons in data grid
 - <!---Why---> [StackOverflow](https://stackoverflow.com/a/67380953)'s Code was used because it shows how to modify data grid
 - <!---How---> [StackOverflow](https://stackoverflow.com/a/67380953)'s Code was modified by adding custom logic for button rendering on specific condition
+
+
+### AddAccessory.js
+
+*Lines 83 - 96*
+
+```
+const handleFileUpload = async (event) => {
+        const newImg = await convertToBase64(event.target.files[0]);
+        setConvertedImage(newImg);
+    }
+
+    const convertToBase64 = (file) => {
+        return new Promise(resolve => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+                resolve(reader.result);
+            }
+        })
+    }
+
+```
+
+The code above was created by adapting the code in [Medium](https://raz-levy.medium.com/upload-images-to-aws-s3-using-react-js-and-node-js-express-server-bc15b959372c) as shown below:
+
+```
+Copy and paste the snippet of code you are referencing
+    const onSelectFile = async (event) => {
+        const file = event.target.files[0];
+        const convertedFile = await convertToBase64(file);
+        
+        // Request will be sent from here in the future
+    }
+    const convertToBase64 = (file) => {
+        return new Promise(resolve => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+                resolve(reader.result);
+            }
+        })
+    }
+
+
+```
+
+- <!---How---> The code in [Medium](https://raz-levy.medium.com/upload-images-to-aws-s3-using-react-js-and-node-js-express-server-bc15b959372c) was implemented to store images as base64 strings
+- <!---Why---> [Medium](https://raz-levy.medium.com/upload-images-to-aws-s3-using-react-js-and-node-js-express-server-bc15b959372c)'s Code was used because it shows how to store images in the database
+- <!---How---> [Medium](https://raz-levy.medium.com/upload-images-to-aws-s3-using-react-js-and-node-js-express-server-bc15b959372c)'s Code was modified by displaying previews of image before they are stored
+
+### EditAccessory.js
+
+*Lines 99 - 112*
+
+```
+const handleFileUpload = async (event) => {
+        const img = await convertToBase64(event.target.files[0]);
+        setConvertedImage(img);
+    }
+
+    const convertToBase64 = (file) => {
+        return new Promise(resolve => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+                resolve(reader.result);
+            }
+        })
+    }
+
+```
+
+The code above was created by adapting the code in [Medium](https://raz-levy.medium.com/upload-images-to-aws-s3-using-react-js-and-node-js-express-server-bc15b959372c) as shown below:
+
+```
+Copy and paste the snippet of code you are referencing
+    const onSelectFile = async (event) => {
+        const file = event.target.files[0];
+        const convertedFile = await convertToBase64(file);
+        
+        // Request will be sent from here in the future
+    }
+    const convertToBase64 = (file) => {
+        return new Promise(resolve => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+                resolve(reader.result);
+            }
+        })
+    }
+
+
+```
+
+- <!---How---> The code in [Medium](https://raz-levy.medium.com/upload-images-to-aws-s3-using-react-js-and-node-js-express-server-bc15b959372c) was implemented to store images as base64 strings
+- <!---Why---> [Medium](https://raz-levy.medium.com/upload-images-to-aws-s3-using-react-js-and-node-js-express-server-bc15b959372c)'s Code was used because it shows how to store images in the database
+- <!---How---> [Medium](https://raz-levy.medium.com/upload-images-to-aws-s3-using-react-js-and-node-js-express-server-bc15b959372c)'s Code was modified by displaying previews of image before they are stored
+
 
 ## Image credits
 
