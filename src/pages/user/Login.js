@@ -45,7 +45,7 @@ function Login() {
                     if(response.data.role === 'employee') {
                         navigate("/manage/services");
                     } else {
-                        navigate("/");
+                        navigate("/services");
                     }
                 }
             }).catch((error)=> {
