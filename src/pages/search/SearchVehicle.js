@@ -1,8 +1,14 @@
 import {CardActionArea,Card,CardMedia,Typography,CardContent,Grid,Box,Button,TextField} from "@mui/material";
 import {useState,useEffect} from 'react'
 import Slider from '@material-ui/core/Slider';
+<<<<<<< HEAD
 import { Url } from './../../constants/global';
 
+=======
+/*
+Author: Krishna Sanjaybhai Jadav(krishna.jadav@dal.ca)
+*/
+>>>>>>> 770ba085ae425cecce7e834771de4c7a142c63fc
 const SearchVehicle = () => {
 
     const [vehicles,setvehicles]=useState([])

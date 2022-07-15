@@ -1,3 +1,11 @@
+/*
+Author: Harsh Hariramani (B00899363)
+
+Code References:
+Used the App bar of MUI library for easy navigation between pages
+https://mui.com/material-ui/react-app-bar/
+*/
+
 
 import * as React from 'react';
 import Box from '@mui/material/Box';
