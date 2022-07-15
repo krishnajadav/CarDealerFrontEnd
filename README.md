@@ -1,13 +1,14 @@
 <!--- The following README.md sample file was adapted from https://gist.github.com/PurpleBooth/109311bb0361f32d87a2#file-readme-template-md by Gabriella Mosquera for academic use --->
 
 # Credentials
+
 - Credentials for employees<br/>
-_username_ : sl.rahmanhamid@gmail.com<br/>
-_password_ : 12345678
+  _username_ : sl.rahmanhamid@gmail.com<br/>
+  _password_ : 12345678
 
 - Credentials for customers<br/>
-_username_ : tn220771@dal.ca<br/>
-_password_ : 12345678
+  _username_ : tn220771@dal.ca<br/>
+  _password_ : 12345678
 
 # Assignment 3
 
@@ -42,8 +43,6 @@ _password_ : 12345678
 
 If in completing your lab / assignment / project you used any interpretation of someone else's code, then provide a list of where the code was implement, how it was implemented, why it was implemented, and how it was modified. See the sections below for more details.
 
-
-
 _FileName_: carFrom.js<br/>
 _line_: #70 and #79<br/>
 _why_: I need to select date in my form<br/>
@@ -61,12 +60,10 @@ _source 3_: https://mui.com/material-ui/react-progress/ - circular progrss bar u
 _source 3_: https://stackoverflow.com/questions/63647493/react-material-table-is-not-displaying-table-icons <br/>
 _author_: Jimi D<br/>
 
-
 _FileName_: CarMoreDeals.js<br/>
 _line_ : #45<br/>
 _why_: show progress bar until the results are loaded<br/>
 _source_: https://mui.com/material-ui/react-progress/<br/>
-
 
 _FileName_: rental.controller.js (backend proj)<br/>
 _line_ : #75<br/>
@@ -79,9 +76,7 @@ These were implemented as part of CSCI 5709 Assignment 1 and 3 by Elizabeth Jame
 These include Feature 1: Car Rentals and Feature 2: Car Loans
 <br/>
 
-
-
-https://mui.com/material-ui/react-progress/ - circular 
+https://mui.com/material-ui/react-progress/ - circular
 used at line #45 of CarMoreDeals.js
 
 ### CustomerNavBar.js /DealerNavBar.js
@@ -245,7 +240,7 @@ const [anchorElNav, setAnchorElNav] = React.useState(null);
           </Toolbar>
         </Container>
       </AppBar>
-      The code above was created by adapting the code in [App bar React component - Material UI](https://mui.com/material-ui/react-app-bar/) as shown below: 
+      The code above was created by adapting the code in [App bar React component - Material UI](https://mui.com/material-ui/react-app-bar/) as shown below:
 ```
 
 ```
@@ -397,21 +392,20 @@ phy>
     </AppBar>
 
 ```
+
 - <!---How---> The code in [App bar React component - Material UI](https://mui.com/material-ui/react-app-bar/)  was implemented to be the navigation bar of my website
 - <!---Why---> [App bar React component - Material UI](https://mui.com/material-ui/react-app-bar/) 's Code was used because it shows how the library works in creating the navigation bar
 - <!---How---> [App bar React component - Material UI](https://mui.com/material-ui/react-app-bar/) 's Code was modified by making changes to the required navigation buttons and dropdown menu. Also a suitable logo replacement icon was taken from MUI Icon pack at https://mui.com/material-ui/material-icons/
 
-
 ### AccessoryHomeCustomer.js
 
-*Lines 210 - 234*
-*Lines 258 - 282*
-*Lines 307 - 331*
-*Lines 355 - 378*
-
+_Lines 210 - 234_
+_Lines 258 - 282_
+_Lines 307 - 331_
+_Lines 355 - 378_
 
 ```
-Copy and paste your code on lines mentioned 
+Copy and paste your code on lines mentioned
 <Grid card xs={4} sm={4} md={4} key={elem._id}>
                                 <Card sx={{ m: 1 }}>
                                     <CardActionArea onClick={()=>{
@@ -471,14 +465,13 @@ species, ranging across all continents except Antarctica
 
 ### AccessoryHomeEmployee.js
 
-*Lines 253 - 281*
-*Lines 310 - 338*
-*Lines 368 - 396*
-*Lines 426 - 454*
-
+_Lines 253 - 281_
+_Lines 310 - 338_
+_Lines 368 - 396_
+_Lines 426 - 454_
 
 ```
-Copy and paste your code on lines mentioned 
+Copy and paste your code on lines mentioned
 <Card sx={{ m: 1 }}>
                                     <CardMedia
                                         component="img"
@@ -541,7 +534,7 @@ species, ranging across all continents except Antarctica
 
 ### AccessoryHomeCustomer.js
 
-*Lines 175 - 187*
+_Lines 175 - 187_
 
 ```
 <Tabs
@@ -589,7 +582,7 @@ Copy and paste the snippet of code you are referencing
 
 ### AccessoryHomeEmployee.js
 
-*Lines 214 - 226*
+_Lines 214 - 226_
 
 ```
 <Tabs
@@ -849,9 +842,10 @@ _Lines 80 - 91_
 
                         </RadioGroup>
 ```
+
 ### EmployeeList.js
 
-*Lines 155 - 164*
+_Lines 155 - 164_
 
 ```
 		<DataGrid
@@ -883,11 +877,11 @@ The code above was created by adapting the code in [MUI](https://mui.com/x/react
 - <!---Why---> [MUI](https://mui.com/x/react-data-grid/)'s Code was used because it shows how to create data grid
 - <!---How---> [MUI](https://mui.com/x/react-data-grid/)'s Code was modified by adding custom id and fields
 
-*Repeat as needed*
+_Repeat as needed_
 
 ### EmployeeList.js
 
-*Lines 27 - 42*
+_Lines 27 - 42_
 
 ```
 const renderAction = (params) => {
@@ -936,10 +930,9 @@ The code above was created by adapting the code in [StackOverflow](https://stack
 - <!---Why---> [StackOverflow](https://stackoverflow.com/a/67380953)'s Code was used because it shows how to modify data grid
 - <!---How---> [StackOverflow](https://stackoverflow.com/a/67380953)'s Code was modified by adding custom logic for button rendering on specific condition
 
-
 ### AddAccessory.js
 
-*Lines 83 - 96*
+_Lines 83 - 96_
 
 ```
 const handleFileUpload = async (event) => {
@@ -966,7 +959,7 @@ Copy and paste the snippet of code you are referencing
     const onSelectFile = async (event) => {
         const file = event.target.files[0];
         const convertedFile = await convertToBase64(file);
-        
+
         // Request will be sent from here in the future
     }
     const convertToBase64 = (file) => {
@@ -988,7 +981,7 @@ Copy and paste the snippet of code you are referencing
 
 ### EditAccessory.js
 
-*Lines 99 - 112*
+_Lines 99 - 112_
 
 ```
 const handleFileUpload = async (event) => {
@@ -1015,7 +1008,7 @@ Copy and paste the snippet of code you are referencing
     const onSelectFile = async (event) => {
         const file = event.target.files[0];
         const convertedFile = await convertToBase64(file);
-        
+
         // Request will be sent from here in the future
     }
     const convertToBase64 = (file) => {
@@ -1035,161 +1028,118 @@ Copy and paste the snippet of code you are referencing
 - <!---Why---> [Medium](https://raz-levy.medium.com/upload-images-to-aws-s3-using-react-js-and-node-js-express-server-bc15b959372c)'s Code was used because it shows how to store images in the database
 - <!---How---> [Medium](https://raz-levy.medium.com/upload-images-to-aws-s3-using-react-js-and-node-js-express-server-bc15b959372c)'s Code was modified by displaying previews of image before they are stored
 
-
-### ResponsiveAppBar.js
+### ServicesContainer.js
 
 The code was adapted from [App bar React Component](https://mui.com/material-ui/react-app-bar/) of Material UI.
 
-_Lines 17 - 168_
+_Lines 24 - 128_
 
 ```
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const CardItem = (props) => {
+  const { service, image, content, onClick } = props;
+  return (
+    <Card onClick={onClick} sx={{ pb: 3 }}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          height="140"
+          src={image}
+          alt="tyre service"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {service}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {content}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions sx={{ display: "flex", justifyContent: "center" }}>
+        <Button size="small" variant={"contained"} color="primary">
+          Book Appointment Now
+        </Button>
+      </CardActions>
+    </Card>
+  );
+};
 
-const ResponsiveAppBar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+// Services Container starts here
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
+export default function ServicesContainer() {
+  const [open, setOpen] = React.useState(false);
+  const [activeService, setActiveService] = React.useState(null);
+  const { addBooking } = useBookings();
+  const openModal = (service) => {
+    setActiveService(service);
+    setOpen(true);
   };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
+
+  const closeModal = () => {
+    setOpen(false);
+    setActiveService(null);
   };
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+  const onSubmit = async(data) => {
+    if(activeService === "Test Drive"){
+      if (!localStorage.getItem("id")) {
+        alert("Please log in first");
+      } else {
+        let result = await bookTestDrive(data);
+        alert(result);
+      }
+    } else {
+      addBooking({
+        ...data,
+        type: activeService,
+        // id: Math.floor(Math.random() * 500000),
+      });
+      alert(`Appointment for ${activeService} booked successfully!`);
+    }
+    closeModal();
   };
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+    <div style={{ height: "100vh", paddingBottom: "10%" }}>
+      <h1 className="header">Services Provided:</h1>
+      <Grid
+        container
+        spacing={3}
+        sx={{ paddingInline: "30px", marginBlock: "50px" }}
+      >
+        {services.map((item) => {
+          return (
+            <Grid item lg={4} md={4} sm={12} xs={12}>
+              <CardItem
+                onClick={() => openModal(item.service)}
+                image={item.image}
+                service={item.service}
+                content={item.content}
+              />
+            </Grid>
+          );
+        })}
+      </Grid>
+      {activeService === "Test Drive"?
+      <TestDriveServiceFormDialog
+        isUpdate={false}
+        handleSubmit={onSubmit}
+        service={activeService}
+        open={open}
+        handleClose={closeModal}
+      /> :
+      <ServiceFormDialog
+        isUpdate={false}
+        handleSubmit={onSubmit}
+        service={activeService}
+        open={open}
+        handleClose={closeModal}
+      />
+      }
+    </div>
   );
-};
-export default ResponsiveAppBar;
+}
+
 ```
 
 ### ServiceCard.js
@@ -1221,6 +1171,136 @@ _Lines 40 - 62_
     </Button>
   </CardActions>
 </Card>
+```
+
+### ServicesContainer.js
+
+_Lines 30-50_
+
+```
+const CardItem = (props) => {
+  const { service, image, content, onClick } = props;
+  return (
+    <Card onClick={onClick} sx={{ pb: 3 }}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          height="140"
+          src={image}
+          alt="tyre service"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {service}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {content}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions sx={{ display: "flex", justifyContent: "center" }}>
+        <Button size="small" variant={"contained"} color="primary">
+          Book Appointment Now
+        </Button>
+      </CardActions>
+    </Card>
+  );
+};
+
+// Services Container starts here
+
+export default function ServicesContainer() {
+  const [open, setOpen] = React.useState(false);
+  const [activeService, setActiveService] = React.useState(null);
+  const { addBooking } = useBookings();
+  const openModal = (service) => {
+    setActiveService(service);
+    setOpen(true);
+  };
+
+  const closeModal = () => {
+    setOpen(false);
+    setActiveService(null);
+  };
+
+  const onSubmit = async(data) => {
+    if(activeService === "Test Drive"){
+      if (!localStorage.getItem("id")) {
+        alert("Please log in first");
+      } else {
+        let result = await bookTestDrive(data);
+        alert(result);
+      }
+    } else {
+      addBooking({
+        ...data,
+        type: activeService,
+        // id: Math.floor(Math.random() * 500000),
+      });
+      alert(`Appointment for ${activeService} booked successfully!`);
+    }
+    closeModal();
+  };
+
+  return (
+    <div style={{ height: "100vh", paddingBottom: "10%" }}>
+      <h1 className="header">Services Provided:</h1>
+      <Grid
+        container
+        spacing={3}
+        sx={{ paddingInline: "30px", marginBlock: "50px" }}
+      >
+        {services.map((item) => {
+          return (
+            <Grid item lg={4} md={4} sm={12} xs={12}>
+              <CardItem
+                onClick={() => openModal(item.service)}
+                image={item.image}
+                service={item.service}
+                content={item.content}
+              />
+            </Grid>
+          );
+        })}
+      </Grid>
+      {activeService === "Test Drive"?
+      <TestDriveServiceFormDialog
+        isUpdate={false}
+        handleSubmit={onSubmit}
+        service={activeService}
+        open={open}
+        handleClose={closeModal}
+      /> :
+      <ServiceFormDialog
+        isUpdate={false}
+        handleSubmit={onSubmit}
+        service={activeService}
+        open={open}
+        handleClose={closeModal}
+      />
+      }
+    </div>
+  );
+}
+
+```
+
+### customerBookings.js
+
+The code was adapted from [React Card Component](https://mui.com/material-ui/react-card/#main-content) of Material UI.
+
+```
+    <Card className="booking-card">
+      <div className="car-model">{model}</div>
+      <div className="type">{type}</div>
+      <div className="date">{date}</div>
+      <div className="time">{time}</div>
+      <div className="location">{location}</div>
+      <div className="actions">
+        <EditIcon style={{ cursor: "pointer" }} onClick={onUpdate} />
+        <DeleteIcon style={{ cursor: "pointer" }} onClick={onDelete} />
+      </div>
+    </Card>
 ```
 
 ## Image credits
