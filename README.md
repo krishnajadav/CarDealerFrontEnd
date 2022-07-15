@@ -1,22 +1,22 @@
 <!--- The following README.md sample file was adapted from https://gist.github.com/PurpleBooth/109311bb0361f32d87a2#file-readme-template-md by Gabriella Mosquera for academic use --->
-# Backend proj url 
-https://git.cs.dal.ca/jadav/5709_cardealerbackend_group9<br/>
 
-# Frontend proj url
-https://git.cs.dal.ca/lisenor/5709_group9
+# Credentials
+- Credentials for employees<br/>
+_username_ : sl.rahmanhamid@gmail.com<br/>
+_password_ : 12345678
 
-# Heroku links
-_backendAPI_:https://group9-backend.herokuapp.com/<br/>
-_applicationLink_:https://project-group9-frontend.herokuapp.com/<br/>
+- Credentials for customers<br/>
+_username_ : tn220771@dal.ca<br/>
+_password_ : 12345678
 
-# Proposal
+# Assignment 3
 
 **[Optional]** If what is being submitted is an individual Lab or Assignment. Otherwise, include a brief one paragraph description about the project.
 
 - _Date Created_: 16 June 2022
-- _Last Modification Date_: 16 June 2022
-- _Live link (customer layout)_: <https://web-dev-group9.herokuapp.com/services>
-- _Live link (dealership layout)_: <https://web-dev-group9.herokuapp.com/manage/accessories>
+- _Last Modification Date_: 15 JUL 2022
+- _Live frontend_ : <https://project-group9-frontend.herokuapp.com/>
+- _Backend API_:<https://group9-backend.herokuapp.com/>
 - _Git URL_: <https://git.cs.dal.ca/lisenor/5709_group9/-/tree/main>
 - _Backend Git URL_: <https://git.cs.dal.ca/jadav/5709_cardealerbackend_group9>
 
