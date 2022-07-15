@@ -6,6 +6,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import PropTypes from "prop-types";
+import RequirementsForm from './RequirementsForm';
+
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -53,10 +55,6 @@ function CustomerForm() {
           return false;
         }
 
-
-        
-        //setOpen(true);
-        //window.alert("The requirements have been submitted") ;
     };
 
     const handleClose = (event, reason) => {
