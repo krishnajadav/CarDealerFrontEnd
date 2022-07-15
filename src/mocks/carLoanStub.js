@@ -1,3 +1,5 @@
+// Stubs for Feature : Car Loan
+// Author: Elizabeth James
 const carLoans = [
   {
     Name: "Toyota",

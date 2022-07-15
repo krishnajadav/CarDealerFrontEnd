@@ -1,3 +1,5 @@
+// Feature : Car Loan
+// Author: Elizabeth James
 import React from "react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -7,6 +9,7 @@ import MaterialTable from "material-table";
 import Paper from "@mui/material/Paper";
 import tableIcons from "./TableIcons";
 import axios from 'axios';
+import { Url } from './../../constants/global'
 
 const CarLoan = () => {
   const [infoAcquired, setInfoAcquired] = React.useState(false);
@@ -34,7 +37,7 @@ const CarLoan = () => {
   };
 
   React.useEffect(() => {
-    axios.get(`http://localhost:4200/api/inventory/get/loan`)
+    axios.get(Url + "/api/inventory/get/loan")
     .then((res)=>{
       let temp = res.data;
       res.data.map((car, i) => {

@@ -33,6 +33,8 @@
 
 If in completing your lab / assignment / project you used any interpretation of someone else's code, then provide a list of where the code was implement, how it was implemented, why it was implemented, and how it was modified. See the sections below for more details.
 
+
+
 _FileName_: carFrom.js<br/>
 _line_: #70 and #79<br/>
 _why_: I need to select date in my form<br/>
@@ -47,14 +49,32 @@ _how_: reffered code samples and usages to understand the usage of material tabl
 _source 1_: https://blog.logrocket.com/material-table-react-tutorial-with-examples/<br/>
 _author_: Mohammad Fasil<br/>
 _source 2_: https://material-table.com/#/ (official documentation)<br/>
+_source 3_: https://mui.com/material-ui/react-progress/ - circular progrss bar used at line #45 of CarMoreDeals.js
 _source 3_: https://stackoverflow.com/questions/63647493/react-material-table-is-not-displaying-table-icons <br/>
 _author_: Jimi D<br/>
 
-_FileName_: Carform.js, CarResults.js, TableIcons.js
-These were implemented as part of CSCI 5709 Assignment 1 by Elizabeth James
+
+_FileName_: CarMoreDeals.js<br/>
+_line_ : #45<br/>
+_why_: show progress bar until the results are loaded<br/>
+_source_: https://mui.com/material-ui/react-progress/<br/>
+
+
+_FileName_: rental.controller.js (backend proj)<br/>
+_line_ : #75<br/>
+_why_: convert Date to string in YYYY-MM-DD:<br/>
+_source 4_: https://stackoverflow.com/questions/23593052/format-javascript-date-as-yyyy-mm-dd
+_Author_: Darth Egregious
+
+_FileName_: Carform.js, CarResults.js, TableIcons.js, CarLoan.js
+These were implemented as part of CSCI 5709 Assignment 1 and 3 by Elizabeth James
+These include Feature 1: Car Rentals and Feature 2: Car Loans
 <br/>
 
 
+
+https://mui.com/material-ui/react-progress/ - circular 
+used at line #45 of CarMoreDeals.js
 
 ### CustomerNavBar.js /DealerNavBar.js
 
