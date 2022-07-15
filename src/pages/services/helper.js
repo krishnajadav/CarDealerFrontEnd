@@ -2,6 +2,7 @@ import oilChange from "./assets/oilchange.png";
 import tyreService from "./assets/tyreservice.png";
 import airFilter from "./assets/airfilter.png";
 import testDriveCar from "./assets/testdrivecar.png";
+import {Url} from "../../constants/global"
 /*
 Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
 */
@@ -49,7 +50,7 @@ export const timeSlot = [
   "6:00 PM",
 ];
 export const location = ["Select", "Halifax", "Dartmouth", "Bedford"];
-export const baseURL = "http://localhost:4200/api";
+export const baseURL = Url+"/api";
 
 export const setBookingData = (values) =>
   localStorage.setItem("bookings", JSON.stringify(values));
