@@ -5,8 +5,12 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import TestDriveServiceFormDialog from "../testDrive/TestDriveServiceForm";
 import "./../bookings/bookings.css";
-import { set } from "react-hook-form";
 
+/*
+Authors: 
+Leah Isenor
+Adarsh Kannan Iyengar
+*/
 const BookingCard = ({
   model,
   date,
@@ -31,8 +35,6 @@ const BookingCard = ({
 
 const TestDriveBookings = () => {
     const [bookings, setBookings] = useState();
-    const [card, setCard] = useState();
-    const [form, setForm] = useState();
     const [updated, setUpdated] = useState();
     const [open, setOpen] = React.useState(false);
     const [activeService, setActiveService] = React.useState(null);
@@ -45,7 +47,6 @@ const TestDriveBookings = () => {
 
     useEffect(() => {
         getBookings(); 
-
     }, [updated]);
 
     const openModal = (service) => {
@@ -68,9 +69,9 @@ const TestDriveBookings = () => {
 
     const deleteHandler = async (id) => {
         if (window.confirm("Are you sure to Delete?")) {
-            let canceled = cancelTestDrive(id);
-            window.location.reload(false); 
-       }
+            let canceled = await cancelTestDrive(id);
+            setUpdated(!updated);
+        }
     }
     
     return (

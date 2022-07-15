@@ -1,5 +1,5 @@
 /*
-Author: Leah Isenor, B00316891
+Author: Leah Isenor
 */
 const axios = require("axios");
 const { baseURL } = require("./../helper");
