@@ -1,14 +1,13 @@
 import AddVehicle from "./AddVehicle"
 import {useState,useEffect} from 'react'
-<<<<<<< HEAD
 
 import { Url } from './../../constants/global';
 
-=======
+
 /*
 Author: Krishna Sanjaybhai Jadav(krishna.jadav@dal.ca)
 */
->>>>>>> 770ba085ae425cecce7e834771de4c7a142c63fc
+
 const VehicleInventory = () => {
 
   const [vehicles,setvehicles]=useState([])
