@@ -1,6 +1,7 @@
 import {CardActionArea,Card,CardMedia,Typography,CardContent,Grid,Box,Button,TextField} from "@mui/material";
 import {useState,useEffect} from 'react'
 import Slider from '@material-ui/core/Slider';
+import { Url } from './../../constants/global';
 
 const SearchVehicle = () => {
 
@@ -23,7 +24,7 @@ const SearchVehicle = () => {
       }
   
   const getInventory = async () => {
-    const res = await fetch('http://localhost:4200/api/inventory/get',{"method": "GET"})
+    const res = await fetch(Url + '/api/inventory/get',{"method": "GET"})
     const data = await res.json()  
     return data
   }  

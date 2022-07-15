@@ -13,6 +13,8 @@ import { toast } from "react-toastify";
 import { Link, Avatar } from '@mui/material';
 import ElectricCarSharpIcon from '@mui/icons-material/ElectricCarSharp';
 
+import { Url } from './../../constants/global';
+
 
 function RequirementsForm() {
     const navigate = useNavigate();
@@ -34,7 +36,7 @@ function RequirementsForm() {
 
     const onSubmit = data => {
         axios
-            .post("http://localhost:4200/api/vehicle", {
+            .post(Url + "/api/vehicle", {
                 brand: data.brand,
                 model: data.model,
                 dealer: data.dealer

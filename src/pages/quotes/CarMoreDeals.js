@@ -8,7 +8,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from "@mui/material/Box";
-import { Url } from './../../constants/global'
+import { Url } from './../../constants/global';
 
 const CarMoreDeals = (props) => {
   
