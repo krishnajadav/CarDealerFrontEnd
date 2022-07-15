@@ -14,6 +14,13 @@ import { getCars, getTimes, getUnavailableTimes } from "./testDriveHelper"
 Authors: 
 Leah Isenor
 Adarsh Kannan Iyengar
+
+This file is a modified version of ServiceForm.js, specialized for dynamically displaying
+test drive booking options.
+
+References:
+Used react hook form library for form validations.
+https://react-hook-form.com/
 */
 const TestDriveServiceFormDialog = ({
     isUpdate,
