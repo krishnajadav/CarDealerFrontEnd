@@ -1,3 +1,4 @@
+// Author: Tuan Hamid
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -11,6 +12,7 @@ import Grid from "@mui/material/Grid";
 import React from "react";
 import axios from "axios";
 import {toast} from "react-toastify";
+import { Url } from './../../constants/global'
 
 function EmployeeRegistration() {
     const navigate = useNavigate();
@@ -39,7 +41,7 @@ function EmployeeRegistration() {
 
     const onSubmit = data => {
         axios
-            .post("http://localhost:4200/api/user/register", {
+            .post(Url + "/api/user/register", {
                 firstName: data.firstName,
                 lastName: data.lastName,
                 username: data.username,

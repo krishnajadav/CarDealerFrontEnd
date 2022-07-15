@@ -51,6 +51,7 @@ const settings = [
   },
 ];
 
+// adopted from https://mui.com/material-ui/react-app-bar/
 function CustomerNavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -86,7 +87,6 @@ function CustomerNavBar() {
               variant="h6"
               noWrap
               component="a"
-              href="/"
               sx={{
                 mr: 2,
                 display: { xs: "none", md: "flex" },
@@ -97,7 +97,7 @@ function CustomerNavBar() {
                 textDecoration: "none",
               }}
             >
-              LOGO
+              HFX VEHICLES
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -148,7 +148,6 @@ function CustomerNavBar() {
               variant="h5"
               noWrap
               component="a"
-              href=""
               sx={{
                 mr: 2,
                 display: { xs: "flex", md: "none" },
@@ -160,7 +159,7 @@ function CustomerNavBar() {
                 textDecoration: "none",
               }}
             >
-              LOGO
+              HFX VEHICLES
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page) => (
