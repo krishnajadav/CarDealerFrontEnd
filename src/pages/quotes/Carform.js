@@ -1,3 +1,6 @@
+// Feature : Car rental
+// Author: Elizabeth James
+
 import React from "react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -35,9 +38,20 @@ const Carform = () => {
     setSeatCount(event.target.value);
   };
 
+ const setDates = (e) =>{
+  setStartDate(e);
+  if (endDate < e){
+    setEndDate(e);
+  }
+ }
+
   const onSubmit = () => {
-    
-    setInfoAcqiured(true);
+    if (distance === "" || distance === undefined || distance === null){
+      alert("Please enter distance driven per day on an average")
+    }
+    else{
+      setInfoAcqiured(true);
+    }
   };
 
   return (
@@ -117,7 +131,7 @@ const Carform = () => {
             <Grid item xs={3} sm={3}>
               <Typography variant="h6">Start Date</Typography>
               <DatePicker
-                onChange={setStartDate}
+                onChange={ (e) => setDates(e)}
                 value={startDate}
                 minDate={new Date()}
                 required

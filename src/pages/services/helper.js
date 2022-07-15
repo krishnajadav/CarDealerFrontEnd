@@ -2,7 +2,7 @@ import oilChange from "./assets/oilchange.png";
 import tyreService from "./assets/tyreservice.png";
 import airFilter from "./assets/airfilter.png";
 import testDriveCar from "./assets/testdrivecar.png";
-import repairsCar from "./assets/repairscar.png";
+import {Url} from "../../constants/global"
 /*
 Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
 */
@@ -28,14 +28,7 @@ export const services = [
   {
     service: "Test Drive",
     image: testDriveCar,
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  },
-  {
-    service: "Repair Estimate",
-    image: repairsCar,
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    content: "Select from available vehicles to book a guaranteed time for a test drive"
   },
 ];
 
@@ -65,7 +58,7 @@ export const timeSlot = [
   "6:00 PM",
 ];
 export const location = ["Select", "Halifax", "Dartmouth", "Bedford"];
-export const baseURL = "http://localhost:4200/api";
+export const baseURL = Url+"/api";
 
 export const setBookingData = (values) =>
   localStorage.setItem("bookings", JSON.stringify(values));

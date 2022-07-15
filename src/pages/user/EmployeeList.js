@@ -1,3 +1,4 @@
+// Author: Tuan Hamid
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import {Link} from "react-router-dom";
@@ -9,8 +10,7 @@ import Dialog from "@mui/material/Dialog";
 import {useEffect} from "react";
 import axios from "axios";
 import {toast} from "react-toastify";
-
-
+import { Url } from './../../constants/global'
 
 function EmployeeList() {
     let [rows, setRows] = React.useState([])
@@ -18,7 +18,7 @@ function EmployeeList() {
 
     useEffect(() => {
         axios
-            .get("http://localhost:4200/api/user/employees", )
+            .get(Url + "/api/user/employees", )
             .then((response) => {
                 setRows(response.data);
             });
@@ -41,7 +41,8 @@ function EmployeeList() {
         }
     }
 
-
+    // Datagrid adopted from MUI https://mui.com/x/react-data-grid/
+    // Datagrid button customization adopted from Zack Amin (StackOverflow) https://stackoverflow.com/a/67380953
     const columns = [
         {
             field: 'firstName',
@@ -77,13 +78,6 @@ function EmployeeList() {
 
 
 
-    // const rows = [
-    //     {firstName: 'David', lastName: 'Peterson', id: 'dpeterson@react.com', status: 'Enabled' },
-    //     {firstName: 'Jim', lastName: 'Wallace', id: 'jwallace@react.com', status: 'Enabled' },
-    //     {firstName: 'Dwight', lastName: 'Jamieson', id: 'djamieson@react.com', status: 'Enabled' },
-    //     {firstName: 'Pam', lastName: 'Grace', id: 'pgrace@react.com', status: 'Enabled' },
-    //
-    // ];
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = (data) => {
@@ -98,7 +92,7 @@ function EmployeeList() {
 
     const handleDeactivate = () => {
         axios
-            .put("http://localhost:4200/api/user/updatestatus", {
+            .put(Url + "/api/user/updatestatus", {
                 username: selectedUser,
                 isEnabled: false
             })
@@ -116,7 +110,7 @@ function EmployeeList() {
                     setSelectedUser('');
                     setOpen(false);
                     axios
-                        .get("http://localhost:4200/api/user/employees", )
+                        .get(Url + "/api/user/employees", )
                         .then((response) => {
                             setRows(response.data);
                         });

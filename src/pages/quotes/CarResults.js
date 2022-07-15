@@ -1,3 +1,6 @@
+// Feature : Car rental
+// Author: Elizabeth James
+
 import React from "react";
 import MaterialTable from "material-table";
 import Typography from "@mui/material/Typography";
@@ -7,6 +10,7 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import CarMoreDeals from "./CarMoreDeals";
 import Box from "@mui/material/Box";
+import { Url } from './../../constants/global'
 
 const CarResults = (props) => {
   
@@ -29,9 +33,9 @@ const CarResults = (props) => {
 
   React.useEffect(() => {
 
-    axios.get(`http://localhost:4200/api/rental/factor/get/${startDate.toISOString().split('T')[0]}`)
+    axios.get(Url + `/api/rental/factor/get/${startDate.toISOString().split('T')[0]}`)
     .then((response) =>{
-      axios.get(`http://localhost:4200/api/inventory/get/${seatCount}/rent`)
+      axios.get(Url + `/api/inventory/get/${seatCount}/rent`)
     .then((res)=>{
       let temp = res.data;
       res.data.map((car, i) => {

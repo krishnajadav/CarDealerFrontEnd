@@ -4,6 +4,7 @@ import { useBookings } from "../store";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ServiceFormDialog from "../ServiceForm";
+import TestDriveBookings from "../testDrive/testDriveBookings"
 import "./bookings.css";
 /*
 Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
@@ -65,10 +66,11 @@ const CustomerBookings = () => {
   };
 
   return (
+    <>
     <div className="bookings-wrapper">
       <h1 className="header-booking">Hello Customer!</h1>
       <br></br>
-      <h1 style={{ color: "white" }}>Booking Details:</h1>
+      <h2 style={{ color: "black" }}>Services:</h2>
       {bookings &&
         bookings.map((booking) => (
           <BookingCard
@@ -93,7 +95,9 @@ const CustomerBookings = () => {
         open={open}
         handleClose={() => setOpen(false)}
       />
-    </div>
+    </div>  
+    <div><TestDriveBookings/></div>
+    </>
   );
 };
 
