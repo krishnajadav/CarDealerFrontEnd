@@ -35,6 +35,10 @@ const pages = [
     name: "Trade-in",
     link: "/trade-in",
   },
+  {
+    name: "Search",
+    link: "/search",
+  },
 ];
 const settings = [
   {
@@ -51,6 +55,7 @@ const settings = [
   },
 ];
 
+// adopted from https://mui.com/material-ui/react-app-bar/
 function CustomerNavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -86,7 +91,6 @@ function CustomerNavBar() {
               variant="h6"
               noWrap
               component="a"
-              href="/"
               sx={{
                 mr: 2,
                 display: { xs: "none", md: "flex" },
@@ -97,7 +101,7 @@ function CustomerNavBar() {
                 textDecoration: "none",
               }}
             >
-              LOGO
+              HFX VEHICLES
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -148,7 +152,6 @@ function CustomerNavBar() {
               variant="h5"
               noWrap
               component="a"
-              href=""
               sx={{
                 mr: 2,
                 display: { xs: "flex", md: "none" },
@@ -160,7 +163,7 @@ function CustomerNavBar() {
                 textDecoration: "none",
               }}
             >
-              LOGO
+              HFX VEHICLES
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page) => (
@@ -179,7 +182,7 @@ function CustomerNavBar() {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar src="/static/images/avatar/2.jpg" />
+                  <Avatar alt="Head shape" src="/static/images/avatar/2.jpg" />
                 </IconButton>
               </Tooltip>
               <Menu

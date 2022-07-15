@@ -1,3 +1,4 @@
+// Author: Tuan Hamid
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -18,7 +19,14 @@ import { Link } from 'react-router-dom'
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
+import {useEffect} from "react";
+import axios from "axios";
+import {toast} from "react-toastify";
+import {useNavigate} from "react-router-dom";
+import { Url } from './../../constants/global'
 
+// Code for components adopted from https://mui.com/material-ui/react-card/
+// Code for components adopted from https://mui.com/material-ui/react-tabs/
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -46,13 +54,80 @@ TabPanel.propTypes = {
 };
 
 function AccessoryHomeEmployee() {
-    const [open, setOpen] = React.useState(false);
+    const navigate = useNavigate();
 
-    const handleClickOpen = () => {
+    const [open, setOpen] = React.useState(false);
+    const [oils, setOils] = React.useState([]);
+    const [care, setCare] = React.useState([]);
+    const [tools, setTools] = React.useState([]);
+    const [tires, setTires] = React.useState([]);
+    const [selectedItem, setSelectedItem] = React.useState('');
+
+    const populateData = () => {
+        axios
+            .get(Url + "/api/accessory/category/Oil", )
+            .then((response) => {
+                setOils(response.data);
+            });
+        axios
+            .get(Url + "/api/accessory/category/Tools", )
+            .then((response) => {
+                setTools(response.data);
+            });
+        axios
+            .get(Url + "/api/accessory/category/Tires", )
+            .then((response) => {
+                setTires(response.data);
+            });
+        axios
+            .get(Url + "/api/accessory/category/Car%20Care", )
+            .then((response) => {
+                setCare(response.data);
+            });
+    }
+
+    useEffect(() => {
+        populateData();
+    }, []);
+
+    const handleClickOpen = (params) => {
+        setSelectedItem(params);
         setOpen(true);
     };
 
+    const handleDelete = () => {
+        axios
+            .delete(Url + "/api/accessory/"+selectedItem)
+            .then((response) => {
+                if(response.status === 200) {
+                    toast.success('Accessory removed', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: false,
+                        progress: undefined,
+                    });
+                    populateData();
+                }
+            }).catch((error)=> {
+            toast.error(error.response.data.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+            });
+        });
+        setSelectedItem('')
+        setOpen(false);
+    };
+
     const handleClose = () => {
+        setSelectedItem('')
         setOpen(false);
     };
 
@@ -129,7 +204,7 @@ function AccessoryHomeEmployee() {
                         {"Confirm accessory removal?"}
                     </DialogTitle>
                     <DialogActions>
-                        <Button onClick={handleClose}>Remove</Button>
+                        <Button onClick={handleDelete}>Remove</Button>
                         <Button onClick={handleClose} autoFocus>
                             Cancel
                         </Button>
@@ -173,29 +248,33 @@ function AccessoryHomeEmployee() {
                         </Stack>
                     </Stack>
                     <Grid container columns={{ xs: 4, sm: 8, md: 16 }}>
-                        {Array.from(Array(6)).map((_, index) => (
-                            <Grid card xs={4} sm={4} md={4} key={index}>
+                        {oils.map((elem) => (
+                            <Grid card xs={4} sm={4} md={4} key={elem._id}>
                                 <Card sx={{ m: 1 }}>
                                     <CardMedia
                                         component="img"
-                                        alt="oil can"
+                                        alt="product image"
                                         height="140"
-                                        image="/oil.jpg"
+                                        image={elem.image}
                                     />
                                     <CardContent>
                                         <Typography gutterBottom variant="h5" component="div">
-                                            Castrol GTX 10W30
+                                            {elem.name}
                                         </Typography>
                                         <Typography variant="body2" color="text.secondary">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Ut vel quam eget orci laoreet ...
+                                            {elem.description}
+
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
-                                        <Button size="small" color="secondary" component={Link} to="/manage/accessories/edit">
+                                        <Button size="small" color="secondary" onClick={()=>{
+                                            navigate("/manage/accessories/edit/" + elem._id)
+                                        }}>
                                             Edit
                                         </Button>
-                                        <Button size="small" color="error" onClick={handleClickOpen}>
+                                        <Button size="small" color="error" onClick={()=>{
+                                            handleClickOpen(elem._id);
+                                        }}>
                                             Remove
                                         </Button>
                                     </CardActions>
@@ -206,7 +285,7 @@ function AccessoryHomeEmployee() {
                 </TabPanel>
                 <TabPanel value={value} index={1}>
                     <Stack direction="row" m={1} justifyContent="space-between">
-                        <Button variant="contained" color="secondary">
+                        <Button variant="contained" color="primary" component={Link} to="/manage/accessories/add">
                             Add
                         </Button>
                         <Stack direction="row">
@@ -226,29 +305,33 @@ function AccessoryHomeEmployee() {
                         </Stack>
                     </Stack>
                     <Grid container columns={{ xs: 4, sm: 8, md: 16 }}>
-                        {Array.from(Array(6)).map((_, index) => (
-                            <Grid card xs={4} sm={4} md={4} key={index}>
+                        {care.map((elem) => (
+                            <Grid card xs={4} sm={4} md={4} key={elem._id}>
                                 <Card sx={{ m: 1 }}>
                                     <CardMedia
                                         component="img"
-                                        alt="oil can"
+                                        alt="product image"
                                         height="140"
-                                        image="/oil.jpg"
+                                        image={elem.image}
                                     />
                                     <CardContent>
                                         <Typography gutterBottom variant="h5" component="div">
-                                            Castrol GTX 10W30
+                                            {elem.name}
                                         </Typography>
                                         <Typography variant="body2" color="text.secondary">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Ut vel quam eget orci laoreet ...
+                                            {elem.description}
+
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
-                                        <Button size="small" color="secondary">
+                                        <Button size="small" color="secondary" onClick={()=>{
+                                            navigate("/manage/accessories/edit/" + elem._id)
+                                        }}>
                                             Edit
                                         </Button>
-                                        <Button size="small" color="error">
+                                        <Button size="small" color="error" onClick={()=>{
+                                            handleClickOpen(elem._id);
+                                        }}>
                                             Remove
                                         </Button>
                                     </CardActions>
@@ -259,7 +342,7 @@ function AccessoryHomeEmployee() {
                 </TabPanel>
                 <TabPanel value={value} index={2}>
                     <Stack direction="row" m={1} justifyContent="space-between">
-                        <Button variant="contained" color="secondary">
+                        <Button variant="contained" color="primary" component={Link} to="/manage/accessories/add">
                             Add
                         </Button>
 
@@ -279,34 +362,34 @@ function AccessoryHomeEmployee() {
                             </Button>
                         </Stack>
                     </Stack>
-                    <Grid
-                        container
-                        // spacing={{ xs: 2, md: 2 }}
-                        columns={{ xs: 4, sm: 8, md: 16 }}
-                    >
-                        {Array.from(Array(6)).map((_, index) => (
-                            <Grid card xs={4} sm={4} md={4} key={index}>
+                    <Grid container columns={{ xs: 4, sm: 8, md: 16 }}>
+                        {tools.map((elem) => (
+                            <Grid card xs={4} sm={4} md={4} key={elem._id}>
                                 <Card sx={{ m: 1 }}>
                                     <CardMedia
                                         component="img"
-                                        alt="oil can"
+                                        alt="product image"
                                         height="140"
-                                        image="/oil.jpg"
+                                        image={elem.image}
                                     />
                                     <CardContent>
                                         <Typography gutterBottom variant="h5" component="div">
-                                            Castrol GTX 10W30
+                                            {elem.name}
                                         </Typography>
                                         <Typography variant="body2" color="text.secondary">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Ut vel quam eget orci laoreet ...
+                                            {elem.description}
+
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
-                                        <Button size="small" color="secondary">
+                                        <Button size="small" color="secondary" onClick={()=>{
+                                            navigate("/manage/accessories/edit/" + elem._id)
+                                        }}>
                                             Edit
                                         </Button>
-                                        <Button size="small" color="error">
+                                        <Button size="small" color="error" onClick={()=>{
+                                            handleClickOpen(elem._id);
+                                        }}>
                                             Remove
                                         </Button>
                                     </CardActions>
@@ -317,7 +400,7 @@ function AccessoryHomeEmployee() {
                 </TabPanel>
                 <TabPanel value={value} index={3}>
                     <Stack direction="row" m={1} justifyContent="space-between">
-                        <Button variant="contained" color="secondary">
+                        <Button variant="contained" color="primary" component={Link} to="/manage/accessories/add">
                             Add
                         </Button>
 
@@ -338,29 +421,33 @@ function AccessoryHomeEmployee() {
                         </Stack>
                     </Stack>
                     <Grid container columns={{ xs: 4, sm: 8, md: 16 }}>
-                        {Array.from(Array(6)).map((_, index) => (
-                            <Grid card xs={4} sm={4} md={4} key={index}>
+                        {tires.map((elem) => (
+                            <Grid card xs={4} sm={4} md={4} key={elem._id}>
                                 <Card sx={{ m: 1 }}>
                                     <CardMedia
                                         component="img"
-                                        alt="oil can"
+                                        alt="product image"
                                         height="140"
-                                        image="/oil.jpg"
+                                        image={elem.image}
                                     />
                                     <CardContent>
                                         <Typography gutterBottom variant="h5" component="div">
-                                            Castrol GTX 10W30
+                                            {elem.name}
                                         </Typography>
                                         <Typography variant="body2" color="text.secondary">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Ut vel quam eget orci laoreet ...
+                                            {elem.description}
+
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
-                                        <Button size="small" color="secondary">
+                                        <Button size="small" color="secondary" onClick={()=>{
+                                            navigate("/manage/accessories/edit/" + elem._id)
+                                        }}>
                                             Edit
                                         </Button>
-                                        <Button size="small" color="error">
+                                        <Button size="small" color="error" onClick={()=>{
+                                            handleClickOpen(elem._id);
+                                        }}>
                                             Remove
                                         </Button>
                                     </CardActions>

@@ -217,11 +217,11 @@ const [anchorElNav, setAnchorElNav] = React.useState(null);
           </Toolbar>
         </Container>
       </AppBar>
-The code above was created by adapting the code in [App bar React component - Material UI](https://mui.com/material-ui/react-app-bar/) as shown below: 
+      The code above was created by adapting the code in [App bar React component - Material UI](https://mui.com/material-ui/react-app-bar/) as shown below: 
+```
 
 ```
 Copy and paste the snippet of code you are referencing
-
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -265,9 +265,9 @@ textDecoration: 'none',
 }}
 >
 LOGO
-</Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+</Typogra
+<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+phy>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -367,12 +367,10 @@ LOGO
       </Container>
     </AppBar>
 
-
+```
 - <!---How---> The code in [App bar React component - Material UI](https://mui.com/material-ui/react-app-bar/)  was implemented to be the navigation bar of my website
 - <!---Why---> [App bar React component - Material UI](https://mui.com/material-ui/react-app-bar/) 's Code was used because it shows how the library works in creating the navigation bar
-- <!---How---> [App bar React component - Material UI](https://mui.com/material-ui/react-app-bar/) 's Code was modified by making changes to the required navigation buttons and dropdown menu. Also a suitable logo replacement icon was taken from MUI Icon pack at https://mui.com/material-ui/material-icons/ 
-
-*Repeat as needed*
+- <!---How---> [App bar React component - Material UI](https://mui.com/material-ui/react-app-bar/) 's Code was modified by making changes to the required navigation buttons and dropdown menu. Also a suitable logo replacement icon was taken from MUI Icon pack at https://mui.com/material-ui/material-icons/
 
 ### AccessoryHomeCustomer.js
 
@@ -435,7 +433,7 @@ species, ranging across all continents except Antarctica
 
 - <!---How---> The code in [React Card component - Material UI](https://mui.com/material-ui/react-card/) was implemented by using it display a product information as a card
 - <!---Why---> [React Card component - Material UI](https://mui.com/material-ui/react-card/)'s Code was used because it shows the standard implementation of a MUI card component
-- <!---How---> [NAME](link)'s Code was modified by product content, color palette and additional buttons for functionality
+- <!---How---> [React Card component - Material UI](https://mui.com/material-ui/react-card/)'s Code was modified by product content, color palette and additional buttons for functionality
 
 
 ### AccessoryHomeEmployee.js
@@ -822,6 +820,92 @@ The radio button was adapted from: https://mui.com/material-ui/react-radio-butto
 
                         </RadioGroup>
 ```
+### EmployeeList.js
+
+*Lines 155 - 164*
+
+```
+		<DataGrid
+                getRowId={(row) => row._id}
+                rows={rows}
+                columns={columns}
+                pageSize={5}
+                rowsPerPageOptions={[5]}
+                checkboxSelection
+                disableSelectionOnClick
+            />
+
+```
+
+The code above was created by adapting the code in [MUI](https://mui.com/x/react-data-grid/) as shown below:
+
+```
+<DataGrid
+        rows={rows}
+        columns={columns}
+        pageSize={5}
+        rowsPerPageOptions={[5]}
+        checkboxSelection
+        disableSelectionOnClick
+      />
+```
+
+- <!---How---> The code in [MUI](https://mui.com/x/react-data-grid/) was implemented by using it for employee list
+- <!---Why---> [MUI](https://mui.com/x/react-data-grid/)'s Code was used because it shows how to create data grid
+- <!---How---> [MUI](https://mui.com/x/react-data-grid/)'s Code was modified by adding custom id and fields
+
+*Repeat as needed*
+
+### EmployeeList.js
+
+*Lines 27 - 42*
+
+```
+const renderAction = (params) => {
+        if (params.row.isEnabled) {
+            return(
+                <strong>
+                    <Button
+                        onClick={() => {
+                            handleClickOpen(params.row.username)
+                        }}
+                        color="error"
+                    >
+                        Deactivate
+                    </Button>
+                </strong>
+            )
+        }
+    }
+
+```
+
+The code above was created by adapting the code in [StackOverflow](https://stackoverflow.com/a/67380953) as shown below:
+
+```
+ const renderDetailsButton = (params) => {
+        return (
+            <strong>
+                <Button
+                    variant="contained"
+                    color="primary"
+                    size="small"
+                    style={{ marginLeft: 16 }}
+                    onClick={() => {
+                        parseName(params.row.col6)
+                    }}
+                >
+                    More Info
+                </Button>
+            </strong>
+        )
+    }
+
+```
+
+- <!---How---> The code in [StackOverflow](https://stackoverflow.com/a/67380953) was implemented by using it for action buttons in data grid
+- <!---Why---> [StackOverflow](https://stackoverflow.com/a/67380953)'s Code was used because it shows how to modify data grid
+- <!---How---> [StackOverflow](https://stackoverflow.com/a/67380953)'s Code was modified by adding custom logic for button rendering on specific condition
 
 ## Image credits
 

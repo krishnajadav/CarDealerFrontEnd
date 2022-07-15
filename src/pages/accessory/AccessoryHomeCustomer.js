@@ -1,3 +1,4 @@
+// Author: Tuan Hamid
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -16,8 +17,14 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import {CardActionArea} from "@material-ui/core";
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import axios from "axios";
+import {useEffect} from "react";
+import { Url } from './../../constants/global'
 
+
+// Code for components adopted from https://mui.com/material-ui/react-card/
+// Code for components adopted from https://mui.com/material-ui/react-tabs/
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -45,6 +52,40 @@ TabPanel.propTypes = {
 };
 
 function AccessoryHomeCustomer() {
+    const navigate = useNavigate();
+
+    const [oils, setOils] = React.useState([]);
+    const [care, setCare] = React.useState([]);
+    const [tools, setTools] = React.useState([]);
+    const [tires, setTires] = React.useState([]);
+
+    const populateData = () => {
+        axios
+            .get(Url + "/api/accessory/category/Oil", )
+            .then((response) => {
+                setOils(response.data);
+            });
+        axios
+            .get(Url + "/api/accessory/category/Tools", )
+            .then((response) => {
+                setTools(response.data);
+            });
+        axios
+            .get(Url + "/api/accessory/category/Tires", )
+            .then((response) => {
+                setTires(response.data);
+            });
+        axios
+            .get(Url + "/api/accessory/category/Car%20Care", )
+            .then((response) => {
+                setCare(response.data);
+            });
+    }
+
+    useEffect(() => {
+        populateData();
+    }, []);
+
     const [open, setOpen] = React.useState(false);
 
     const handleClose = () => {
@@ -165,26 +206,27 @@ function AccessoryHomeCustomer() {
                         </Stack>
                     </Stack>
                     <Grid container columns={{ xs: 4, sm: 8, md: 16 }}>
-                        {Array.from(Array(6)).map((_, index) => (
-                            <Grid card xs={4} sm={4} md={4} key={index}>
+                        {oils.map((elem) => (
+                            <Grid card xs={4} sm={4} md={4} key={elem._id}>
                                 <Card sx={{ m: 1 }}>
-                                    <CardActionArea component={Link} to={`/accessories/view`}>
+                                    <CardActionArea onClick={()=>{
+                                        navigate("/accessories/" + elem._id)
+                                    }}>
                                         <CardMedia
                                             component="img"
-                                            alt="oil can"
+                                            alt="product image"
                                             height="140"
-                                            image="/oil.jpg"
+                                            image={elem.image}
                                         />
                                         <CardContent>
                                             <Typography gutterBottom variant="h5" component="div">
-                                                Castrol GTX 10W30
+                                                {elem.name}
                                             </Typography>
                                             <Typography variant="body2" color="text.primary">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                Ut vel quam eget orci laoreet ...
+                                                {elem.description}
                                             </Typography>
                                             <Typography sx={{ fontWeight: 'bold' }} mt={2}>
-                                                $45
+                                                ${elem.price}
                                             </Typography>
                                         </CardContent>
                                     </CardActionArea>
@@ -212,26 +254,27 @@ function AccessoryHomeCustomer() {
                         </Stack>
                     </Stack>
                     <Grid container columns={{ xs: 4, sm: 8, md: 16 }}>
-                        {Array.from(Array(6)).map((_, index) => (
-                            <Grid card xs={4} sm={4} md={4} key={index}>
+                        {care.map((elem) => (
+                            <Grid card xs={4} sm={4} md={4} key={elem._id}>
                                 <Card sx={{ m: 1 }}>
-                                    <CardActionArea component={Link} to={`/accessories/view`}>
+                                    <CardActionArea onClick={()=>{
+                                        navigate("/accessories/" + elem._id)
+                                    }}>
                                         <CardMedia
                                             component="img"
-                                            alt="oil can"
+                                            alt="product image"
                                             height="140"
-                                            image="/oil.jpg"
+                                            image={elem.image}
                                         />
                                         <CardContent>
                                             <Typography gutterBottom variant="h5" component="div">
-                                                Castrol GTX 10W30
+                                                {elem.name}
                                             </Typography>
                                             <Typography variant="body2" color="text.primary">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                Ut vel quam eget orci laoreet ...
+                                                {elem.description}
                                             </Typography>
                                             <Typography sx={{ fontWeight: 'bold' }} mt={2}>
-                                                $45
+                                                ${elem.price}
                                             </Typography>
                                         </CardContent>
                                     </CardActionArea>
@@ -260,26 +303,27 @@ function AccessoryHomeCustomer() {
                         </Stack>
                     </Stack>
                     <Grid container columns={{ xs: 4, sm: 8, md: 16 }}>
-                        {Array.from(Array(6)).map((_, index) => (
-                            <Grid card xs={4} sm={4} md={4} key={index}>
+                        {tools.map((elem) => (
+                            <Grid card xs={4} sm={4} md={4} key={elem._id}>
                                 <Card sx={{ m: 1 }}>
-                                    <CardActionArea component={Link} to={`/accessories/view`}>
+                                    <CardActionArea onClick={()=>{
+                                        navigate("/accessories/" + elem._id)
+                                    }}>
                                         <CardMedia
                                             component="img"
-                                            alt="oil can"
+                                            alt="product image"
                                             height="140"
-                                            image="/oil.jpg"
+                                            image={elem.image}
                                         />
                                         <CardContent>
                                             <Typography gutterBottom variant="h5" component="div">
-                                                Castrol GTX 10W30
+                                                {elem.name}
                                             </Typography>
                                             <Typography variant="body2" color="text.primary">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                Ut vel quam eget orci laoreet ...
+                                                {elem.description}
                                             </Typography>
                                             <Typography sx={{ fontWeight: 'bold' }} mt={2}>
-                                                $45
+                                                ${elem.price}
                                             </Typography>
                                         </CardContent>
                                     </CardActionArea>
@@ -307,26 +351,27 @@ function AccessoryHomeCustomer() {
                         </Stack>
                     </Stack>
                     <Grid container columns={{ xs: 4, sm: 8, md: 16 }}>
-                        {Array.from(Array(6)).map((_, index) => (
-                            <Grid card xs={4} sm={4} md={4} key={index}>
+                        {tires.map((elem) => (
+                            <Grid card xs={4} sm={4} md={4} key={elem._id}>
                                 <Card sx={{ m: 1 }}>
-                                    <CardActionArea component={Link} to={`/accessories/view`}>
+                                    <CardActionArea onClick={()=>{
+                                        navigate("/accessories/" + elem._id)
+                                    }}>
                                         <CardMedia
                                             component="img"
-                                            alt="oil can"
+                                            alt="product image"
                                             height="140"
-                                            image="/oil.jpg"
+                                            image={elem.image}
                                         />
                                         <CardContent>
                                             <Typography gutterBottom variant="h5" component="div">
-                                                Castrol GTX 10W30
+                                                {elem.name}
                                             </Typography>
                                             <Typography variant="body2" color="text.primary">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                Ut vel quam eget orci laoreet ...
+                                                {elem.description}
                                             </Typography>
                                             <Typography sx={{ fontWeight: 'bold' }} mt={2}>
-                                                $45
+                                                ${elem.price}
                                             </Typography>
                                         </CardContent>
                                     </CardActionArea>

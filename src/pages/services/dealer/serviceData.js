@@ -6,7 +6,9 @@ import light from "./assets/light.jpg";
 import battery from "./assets/battery.jpg";
 import testDriveCar from "./assets/testdrivecar.png";
 import repairsCar from "./assets/repairscar.png";
-
+/*
+Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
+*/
 export const services = [
   {
     service: "Tyre Service",
@@ -43,18 +45,7 @@ export const services = [
     image: light,
     content:
       "Select the time slot availability for checking the battery in the vehicles.",
-  },
-  {
-    service: "Test Drive",
-    image: testDriveCar,
-    content:
-      "Select the time slot availability for checking the battery in the vehicles.",  },
-  {
-    service: "Repair Estimate",
-    image: repairsCar,
-    content:
-      "Select the time slot availability for repair estimate.",
-   },
+  }
 ];
 
 export const timeSlotFrom = [

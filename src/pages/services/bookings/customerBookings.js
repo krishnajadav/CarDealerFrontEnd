@@ -4,8 +4,15 @@ import { useBookings } from "../store";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ServiceFormDialog from "../ServiceForm";
+import TestDriveBookings from "../testDrive/testDriveBookings"
 import "./bookings.css";
+/*
+Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
 
+References:
+This card component from Material UI was used to display the booking details. 
+https://mui.com/material-ui/react-card/
+*/
 const BookingCard = ({
   model,
   date,
@@ -38,7 +45,7 @@ const CustomerBookings = () => {
 
   const openModal = (service) => {
     setActiveService(service.type);
-    setActiveID(service.id);
+    setActiveID(service._id);
     setOpen(true);
   };
 
@@ -57,19 +64,21 @@ const CustomerBookings = () => {
       deleteBooking(id);
     }
   };
+
   return (
+    <>
     <div className="bookings-wrapper">
       <h1 className="header-booking">Hello Customer!</h1>
       <br></br>
-      <h1 style={{ color: "white" }}>Booking Details:</h1>
+      <h2 style={{ color: "black" }}>Services:</h2>
       {bookings &&
         bookings.map((booking) => (
           <BookingCard
-            onDelete={() => deleteHandler(booking.id)}
+            onDelete={() => deleteHandler(booking._id)}
             onUpdate={() => openModal(booking)}
             type={booking.type}
             model={booking.carModel}
-            time={booking.timeSlot}
+            time={booking.time}
             date={booking.date}
             location={booking.location}
           />
@@ -86,7 +95,9 @@ const CustomerBookings = () => {
         open={open}
         handleClose={() => setOpen(false)}
       />
-    </div>
+    </div>  
+    <div><TestDriveBookings/></div>
+    </>
   );
 };
 

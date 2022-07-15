@@ -8,7 +8,14 @@ import {
 import { timeSlotFrom, timeSlotTill, location } from "./serviceData";
 import { useForm } from "react-hook-form";
 import { formatDate } from "./serviceData";
+/*
+Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
 
+References:
+https://mui.com/
+Used dialogs, buttons, dialogcontent etc from Material UI for displaying the dialogue box for updating the time slots.
+
+*/
 const TimeSlotDialog = ({
   isUpdate,
   open,

@@ -1,3 +1,4 @@
+// Author: Tuan Hamid
 import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
@@ -11,15 +12,18 @@ import Paper from '@mui/material/Paper';
 import {useNavigate} from "react-router-dom";
 import Stack from "@mui/material/Stack";
 import MenuItem from '@mui/material/MenuItem';
+import axios from "axios";
+import {toast} from "react-toastify";
+import { Url } from './../../constants/global'
 
 function AddAccessory() {
-    const [filename, setFilename] = useState("");
+    const [convertedImage, setConvertedImage] = useState('');
+
     const [category, setCategory] = React.useState("Oil");
 
     const navigate = useNavigate();
 
     const handleSelectClick = (event) => {
-        console.log(event.target.value)
         setCategory(event.target.value);
     };
 
@@ -40,11 +44,55 @@ function AddAccessory() {
     });
 
     const onSubmit = data => {
-        navigate("/manage/accessories");
+        console.log(convertedImage);
+        axios
+            .post(Url + "/api/accessory/create", {
+                image: convertedImage,
+                name: data.productName,
+                description: data.description,
+                price: data.price,
+                quantity: data.quantity,
+                category: category
+            })
+            .then((response) => {
+                if(response.status === 201) {
+                    toast.success('Accessory created', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: false,
+                        progress: undefined,
+                    });
+                    navigate("/manage/accessories");
+                }
+            }).catch((error)=> {
+            toast.error(error.response.data.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+            });
+        });
     }
 
-    const handleFileUpload = (e) => {
-        setFilename(e.target.files[0]);
+    const handleFileUpload = async (event) => {
+        const newImg = await convertToBase64(event.target.files[0]);
+        setConvertedImage(newImg);
+    }
+
+    const convertToBase64 = (file) => {
+        return new Promise(resolve => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+                resolve(reader.result);
+            }
+        })
     }
 
     return (
@@ -73,7 +121,7 @@ function AddAccessory() {
                                 </Button>
                             </label>
                             <div className="file-name">
-                                {filename ? filename.name : null}
+                                <img height="150px" width="150px" alt="product" src={convertedImage}/>
                             </div>
                         </Stack>
                     </Grid>
@@ -122,7 +170,7 @@ function AddAccessory() {
                             <MenuItem value={"Oil"} key={"Oil"}>Oil</MenuItem>
                             <MenuItem value={"Tools"} key={"Tools"}>Tools</MenuItem>
                             <MenuItem value={"Tires"} key={"Tires"}>Tires</MenuItem>
-                            <MenuItem value={"Car Care"} key={"Car Care"}>Car Care</MenuItem>
+                            <MenuItem value={"Car Care"} key={"CarCare"}>Car Care</MenuItem>
                         </TextField>
 
                     </Grid>

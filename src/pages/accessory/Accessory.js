@@ -1,22 +1,36 @@
+// Author: Tuan Hamid
 import TextField from "@mui/material/TextField";
 import Paper from '@mui/material/Paper';
 import Grid from "@mui/material/Grid";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Avatar} from "@mui/material";
 import Box from "@mui/material/Box";
+import axios from "axios";
+import {useParams} from "react-router-dom";
+import { Url } from './../../constants/global'
 
 function Accessory() {
+    const params = useParams();
+    const [accessory, setAccessory] = useState("");
+    useEffect(() => {
+        axios
+            .get(Url + "/api/accessory/" + params.id, )
+            .then((response) => {
+                setAccessory(response.data)
+            });
+    }, [params.id]);
     return (
         <Box p={3}>
             <Paper>
                 <Avatar
-                    src="/oil.jpg"
+                    src={accessory.image}
                     sx={{ width: 200, height: 200 }}
                 />
                 <Grid container spacing={1}>
                     <Grid item xs={12} sm={12} md={6}>
                         <TextField
-                            value="Castrol 20W"
+                            value={accessory.name}
+                            defaultValue="Name"
                             id="name"
                             name="name"
                             label="Name"
@@ -28,7 +42,8 @@ function Accessory() {
                 <Grid container spacing={1}>
                     <Grid item xs={12} sm={12} md={6}>
                         <TextField
-                            value="Oil"
+                            defaultValue="Category"
+                            value={accessory.category}
                             id="category"
                             name="category"
                             label="Category"
@@ -40,7 +55,8 @@ function Accessory() {
                 <Grid container spacing={1}>
                     <Grid item xs={12} sm={12} md={6}>
                         <TextField
-                            value="$45"
+                            defaultValue="0"
+                            value={accessory.price}
                             id="price"
                             name="price"
                             label="Price"
@@ -52,7 +68,8 @@ function Accessory() {
                 <Grid container spacing={1}>
                     <Grid item xs={12} sm={12} md={6}>
                         <TextField
-                            value="10"
+                            defaultValue="0"
+                            value={accessory.quantity}
                             id="quantity"
                             name="quantity"
                             label="Quantity available"
@@ -70,7 +87,8 @@ function Accessory() {
                             fullWidth
                             variant="standard"
                             rows={4}
-                            defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel quam eget orci laoreet"
+                            value={accessory.description}
+                            defaultValue="Description"
                         />
                     </Grid>
                 </Grid>

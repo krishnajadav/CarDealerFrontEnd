@@ -29,7 +29,7 @@ export const dealerRoutes = [
   },
   {
     title: "Edit Accessory",
-    path: "/manage/accessories/edit",
+    path: "/manage/accessories/edit/:id",
     key: "accessories-edit",
     component: EditAccessory,
   },
