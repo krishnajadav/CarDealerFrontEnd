@@ -1,8 +1,14 @@
 import AddVehicle from "./AddVehicle"
 import {useState,useEffect} from 'react'
+<<<<<<< HEAD
+
+import { Url } from './../../constants/global';
+
+=======
 /*
 Author: Krishna Sanjaybhai Jadav(krishna.jadav@dal.ca)
 */
+>>>>>>> 770ba085ae425cecce7e834771de4c7a142c63fc
 const VehicleInventory = () => {
 
   const [vehicles,setvehicles]=useState([])
@@ -16,7 +22,7 @@ const VehicleInventory = () => {
   }, [])
 
 const getInventory = async () => {
-  const res = await fetch('http://localhost:4200/api/inventory/get',{"method": "GET"})
+  const res = await fetch(Url + '/api/inventory/get',{"method": "GET"})
   const data = await res.json()  
   return data
 }  
@@ -34,7 +40,7 @@ const addInventory = async (vehicleAdd) => {
     ImageURL=imageData.ImageURL;
   }
 
-  const res = await fetch('http://localhost:4200/api/inventory/add',{"method": "POST",
+  const res = await fetch(Url + '/api/inventory/add',{"method": "POST",
   "headers": {
     "content-type": "application/json",
     "accept": "application/json"
@@ -52,7 +58,7 @@ const addInventory = async (vehicleAdd) => {
 } 
 
 const deleteInventory = async (ID) => {
-  const res = await fetch(`http://localhost:4200/api/inventory/delete/${ID}`,{"method": "DELETE"})
+  const res = await fetch(Url + `/api/inventory/delete/${ID}`,{"method": "DELETE"})
   const data = await res.json()  
   return data
 } 
@@ -68,7 +74,7 @@ const updateInventory = async (vehicleEdit) => {
     const imageData = await imageRes.json(); 
     vehicleEdit.vehicleImageURL=imageData.ImageURL;
   }
-  const res = await fetch(`http://localhost:4200/api/inventory/update/${vehicleEdit._id}`,{"method": "PUT",
+  const res = await fetch(Url + `/api/inventory/update/${vehicleEdit._id}`,{"method": "PUT",
   "headers": {
     "content-type": "application/json",
     "accept": "application/json"
