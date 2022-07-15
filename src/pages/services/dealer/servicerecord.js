@@ -6,6 +6,11 @@ import DialogActions from "@mui/material/DialogActions";
 import Dialog from "@mui/material/Dialog";
 /*
 Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
+
+References:
+https://mui.com/
+Used dialogs, buttons, datagrid from Material UI for displaying services approved in the dealer page.
+
 */
 function Servicerecord() {
   const columns = [

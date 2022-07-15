@@ -12,6 +12,10 @@ import axios from "axios";
 import React from "react";
 /*
 Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
+
+References:
+Used react hook form library for form validations.
+https://react-hook-form.com/
 */
 const ServiceFormDialog = ({
   isUpdate,
