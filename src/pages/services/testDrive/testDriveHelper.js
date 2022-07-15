@@ -1,3 +1,6 @@
+/*
+Author: Leah Isenor, B00316891
+*/
 const axios = require("axios");
 const url = "http://localhost:4200"
 
@@ -29,9 +32,41 @@ export const getUnavailableTimes = async () => {
         console.log(err.message);
     }
 }
-/*
-    app.get("/api/testdrives/appointments/:userid", controller.getAppointmentsForUser);
-    app.put("/api/testdrives/appointments/:userid", controller.bookAppointment);
-    app.delete("/api/testdrives/appointments/cancel/:appointmentid", controller.cancelAppointment);
 
-*/
+export const bookTestDrive = async (data) => {
+    try {
+        console.log("booking test drive")
+        console.log(data)
+        const body = {
+            car: data.carModel,
+            date: data.date,
+            time: data.timeSlot
+        }
+        let id = localStorage.getItem("id");
+        await axios.put(url +"/api/testdrives/appointments/"+id, body);
+        return "Successfully booked test drive";
+    } catch (err) {
+        console.log(err.message);
+        return "Error, could not book appointment";
+    }
+}
+
+export const getTestDrives = async () => {
+    try {
+        let id = localStorage.getItem("id");
+        let appointments = await axios.get(url +"/api/testdrives/appointments/"+id);
+        return appointments;
+    } catch (err) {
+        console.log(err.message);
+    }
+}
+
+export const cancelTestDrive = async (id) => {
+    try {
+        await axios.delete(url +"/api/testdrives/appointments/cancel/"+id);
+        return "Successfully canceled test drive";
+    } catch (err) {
+        console.log(err.message);
+        return "Error, could not cancel appointment";
+    }
+}

@@ -2,7 +2,6 @@ import oilChange from "./assets/oilchange.png";
 import tyreService from "./assets/tyreservice.png";
 import airFilter from "./assets/airfilter.png";
 import testDriveCar from "./assets/testdrivecar.png";
-import repairsCar from "./assets/repairscar.png";
 /*
 Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
 */
