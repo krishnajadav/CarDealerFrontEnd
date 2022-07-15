@@ -1,33 +1,32 @@
-<!--- The following README.md sample file was adapted from https://gist.github.com/PurpleBooth/109311bb0361f32d87a2#file-readme-template-md by Gabriella Mosquera for academic use ---> 
+<!--- The following README.md sample file was adapted from https://gist.github.com/PurpleBooth/109311bb0361f32d87a2#file-readme-template-md by Gabriella Mosquera for academic use --->
 
 # Proposal
 
 **[Optional]** If what is being submitted is an individual Lab or Assignment. Otherwise, include a brief one paragraph description about the project.
 
-* *Date Created*: 16 June 2022
-* *Last Modification Date*: 16 June 2022
-* *Live link (customer layout)*: <https://web-dev-group9.herokuapp.com/services>
-* *Live link (dealership layout)*: <https://web-dev-group9.herokuapp.com/manage/accessories>
-* *Git URL*: <https://git.cs.dal.ca/lisenor/5709_group9/-/tree/main>
+- _Date Created_: 16 June 2022
+- _Last Modification Date_: 16 June 2022
+- _Live link (customer layout)_: <https://web-dev-group9.herokuapp.com/services>
+- _Live link (dealership layout)_: <https://web-dev-group9.herokuapp.com/manage/accessories>
+- _Git URL_: <https://git.cs.dal.ca/lisenor/5709_group9/-/tree/main>
 
 ## Authors
 
 **[Optional]** If what is being submitted is an individual Lab or Assignment, you may simply include your name and email address. Otherwise list the members of your group.
 
-* [Adarsh Kannan Iyengar](adarsh.kannan@dal.ca) - *(Developer)*
-* [Elizabeth James](elizabeth.james@dal.ca) - *(Developer)*
-* [Harsh Hariramani](hr951414@dal.ca) - *(Developer)*
-* [Krishna Sanjaybhai Jadav](krishna.jadav@dal.ca) - *(Developer)*
-* [Tuan Hamid](tn220771@dal.ca) - *(Developer)*
-* [Leah Isenor](leah.isenor@dal.ca) - *(Developer)*
+- [Adarsh Kannan Iyengar](adarsh.kannan@dal.ca) - _(Developer)_
+- [Elizabeth James](elizabeth.james@dal.ca) - _(Developer)_
+- [Harsh Hariramani](hr951414@dal.ca) - _(Developer)_
+- [Krishna Sanjaybhai Jadav](krishna.jadav@dal.ca) - _(Developer)_
+- [Tuan Hamid](tn220771@dal.ca) - _(Developer)_
+- [Leah Isenor](leah.isenor@dal.ca) - _(Developer)_
 
 ## Built With
 
 <!--- Provide a list of the frameworks used to build this application, your list should include the name of the framework used, the url where the framework is available for download and what the framework was used for, see the example below --->
 
-* [React](https://reactjs.org/) - The web framework used
-* [MUI](https://mui.com/material-ui/getting-started/overview/) - UI Component Library
-
+- [React](https://reactjs.org/) - The web framework used
+- [MUI](https://mui.com/material-ui/getting-started/overview/) - UI Component Library
 
 ## Sources Used
 
@@ -40,7 +39,6 @@ _line_: #70 and #79<br/>
 _why_: I need to select date in my form<br/>
 _how_: I referred to the user guide and its properties<br/>
 _source_: https://www.npmjs.com/package/react-date-picker<br/>
-
 
 _FileName_: carResults.js<br/>
 _line_: #40 to #45<br/>
@@ -78,10 +76,10 @@ used at line #45 of CarMoreDeals.js
 
 ### CustomerNavBar.js /DealerNavBar.js
 
-*Lines 55 - 209*
+_Lines 55 - 209_
 
 ```
-Copy and paste your code on lines mentioned 
+Copy and paste your code on lines mentioned
 const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const handleOpenNavMenu = (event) => {
@@ -241,6 +239,7 @@ const [anchorElNav, setAnchorElNav] = React.useState(null);
 ```
 
 ```
+
 Copy and paste the snippet of code you are referencing
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -429,9 +428,10 @@ Copy and paste your code on lines mentioned
                                 </Card>
                             </Grid>
 
-The code above was created by adapting the code in [React Card component - Material UI](https://mui.com/material-ui/react-card/) as shown below: 
+The code above was created by adapting the code in [React Card component - Material UI](https://mui.com/material-ui/react-card/) as shown below:
 
 ```
+
 ```
 <Card sx={{ maxWidth: 345 }}>
 <CardActionArea>
@@ -458,7 +458,6 @@ species, ranging across all continents except Antarctica
 - <!---How---> The code in [React Card component - Material UI](https://mui.com/material-ui/react-card/) was implemented by using it display a product information as a card
 - <!---Why---> [React Card component - Material UI](https://mui.com/material-ui/react-card/)'s Code was used because it shows the standard implementation of a MUI card component
 - <!---How---> [React Card component - Material UI](https://mui.com/material-ui/react-card/)'s Code was modified by product content, color palette and additional buttons for functionality
-
 
 ### AccessoryHomeEmployee.js
 
@@ -499,9 +498,10 @@ Copy and paste your code on lines mentioned
                                         </Button>
                                     </CardActions>
                                 </Card>
-The code above was created by adapting the code in [React Card component - Material UI](https://mui.com/material-ui/react-card/) as shown below: 
+The code above was created by adapting the code in [React Card component - Material UI](https://mui.com/material-ui/react-card/) as shown below:
 
 ```
+
 ```
 <Card sx={{ maxWidth: 345 }}>
 <CardActionArea>
@@ -528,8 +528,6 @@ species, ranging across all continents except Antarctica
 - <!---How---> The code in [React Card component - Material UI](https://mui.com/material-ui/react-card/) was implemented by using it display a product information as a card
 - <!---Why---> [React Card component - Material UI](https://mui.com/material-ui/react-card/)'s Code was used because it shows the standard implementation of a MUI card component
 - <!---How---> [NAME](link)'s Code was modified by product content, color palette and additional buttons for functionality
-
-
 
 ### AccessoryHomeCustomer.js
 
@@ -629,13 +627,13 @@ Copy and paste the snippet of code you are referencing
 
 ### TradeIn.js
 
-
-*Line 50*
+_Line 50_
 
 ```
 const dummyYearRange = {min:2010, max:2022};
 ```
-*Line 138*
+
+_Line 138_
 
 ```
  <TextField type="number" label="Year" inputProps = {dummyYearRange} onChange={e => updateYear(e.target.value)}/>
@@ -657,12 +655,11 @@ return <TextField id="time" type="time" inputProps={inputProps} />;
 - <!---Why---> [React TextField component - Material UI ](https://mui.com/material-ui/api/text-field/)'s Code was used because it shows how to include props to the underlying input.
 - <!---How---> [React TextField component - Material UI ](https://mui.com/material-ui/api/text-field/)'s Code was modified by using different props.
 
-
 ### Vehicles/Navbar.js
 
-The code used in this file was referenced from : https://mui.com/material-ui/react-app-bar/ 
+The code used in this file was referenced from : https://mui.com/material-ui/react-app-bar/
 
-*Lines 16 - 95*
+_Lines 16 - 95_
 
 ```
 export default function MenuAppBar() {
@@ -753,11 +750,11 @@ export default function MenuAppBar() {
 
 The code used in this file was referenced from : https://github.com/mui/material-ui/blob/v5.8.4/docs/data/material/getting-started/templates/sign-in/SignIn.js and modified according to the requirements.
 
-*Lines 12 - 77*
+_Lines 12 - 77_
 
 ```
 const handleClick = () => {
-        
+
         setOpen(true);
         //window.alert("The requirements have been submitted");
     };
@@ -773,12 +770,12 @@ const handleClick = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        
+
         console.log({
             brand: data.get('brand'),
             model: data.get('model'),
         });
-       
+
     };
 
     return (
@@ -824,10 +821,9 @@ const handleClick = () => {
                     />
 ```
 
-
 The radio button was adapted from: https://mui.com/material-ui/react-radio-button/ and changed as per the requiremnts.
 
-*Lines 80 - 91*
+_Lines 80 - 91_
 
 ```
 <FormLabel id="demo-row-radio-buttons-group-label">Select the fuel variant</FormLabel>
@@ -1030,27 +1026,215 @@ Copy and paste the snippet of code you are referencing
 - <!---How---> [Medium](https://raz-levy.medium.com/upload-images-to-aws-s3-using-react-js-and-node-js-express-server-bc15b959372c)'s Code was modified by displaying previews of image before they are stored
 
 
+### ResponsiveAppBar.js
+
+The code was adapted from [App bar React Component](https://mui.com/material-ui/react-app-bar/) of Material UI.
+
+_Lines 17 - 168_
+
+```
+const pages = ['Products', 'Pricing', 'Blog'];
+const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
+const ResponsiveAppBar = () => {
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
+  return (
+    <AppBar position="static">
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            LOGO
+          </Typography>
+
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: 'block', md: 'none' },
+              }}
+            >
+              {pages.map((page) => (
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <Typography
+            variant="h5"
+            noWrap
+            component="a"
+            href=""
+            sx={{
+              mr: 2,
+              display: { xs: 'flex', md: 'none' },
+              flexGrow: 1,
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            LOGO
+          </Typography>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            {pages.map((page) => (
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                {page}
+              </Button>
+            ))}
+          </Box>
+
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              {settings.map((setting) => (
+                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
+  );
+};
+export default ResponsiveAppBar;
+```
+
+### ServiceCard.js
+
+The code was adapted from [React Card Component](https://mui.com/material-ui/react-card/#main-content) of Material UI.
+_Lines 40 - 62_
+
+```
+<Card onClick={onClick} sx={{pb:3 }}>
+  <CardActionArea>
+    <CardMedia
+      component="img"
+      height="140"
+      src={image}
+      alt="tyre service"
+    />
+    <CardContent>
+      <Typography gutterBottom variant="h5" component="div">
+        {service}
+      </Typography>
+      <Typography variant="body2" color="text.secondary">
+     {content}
+      </Typography>
+    </CardContent>
+  </CardActionArea>
+  <CardActions sx={{display:'flex',justifyContent:'center'}}>
+    <Button size="small" variant={'contained'} color="primary">
+      Book Appointment Now
+    </Button>
+  </CardActions>
+</Card>
+```
+
 ## Image credits
 
 ### src/pages/services/assets/testdrivecar.png, src/pages/services/dealer/assets/testdrivecar.png
 
-"2022 Toyota Agya 1.2 G GR Sport B101RA (20220317) 01" by オーバードライブ83 is licensed under CC BY-SA 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/4.0/?ref=openverse.
+"2022 Toyota Agya 1.2 G GR Sport B101RA (20220317) 01" by オーバードライブ 83 is licensed under CC BY-SA 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/4.0/?ref=openverse.
 
 ### src/pages/services/assets/repairscar.png, src/pages/services/dealer/assets/repairscar.png
 
 "2022 Hyundai Atos 1.1 Plus" by RL GNZLZ is licensed under CC BY-SA 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/2.0/?ref=openverse.
 
-
 ### src/mocks/carLoanStub.js, src/mocks.carStub.js
+
 Toyota: https://www.drivespark.com/images/2021-01/toyota-fortuner-exterior-1.jpg <br/>
 Mercedes: https://cdn.motor1.com/images/mgl/7xQZW/s1/2021-mercedes-amg-gt-stealth-edition.jpg <br/>
 Innova: https://gaadiwaadi.com/wp-content/uploads/2022/04/Toyota-Innova-next-gen-rendered-img1-1068x601.jpg <br/>
-Suzuki: https://s1.cdn.autoevolution.com/images/models/SUZUKI_Swift-5-Doors-2020_main.jpg  <br/>
+Suzuki: https://s1.cdn.autoevolution.com/images/models/SUZUKI_Swift-5-Doors-2020_main.jpg <br/>
 
 ### src/vehicles/CustomerForm.js
+
 LockoutlinedIcon logo: https://mui.com/material-ui/getting-started/templates/sign-in/ & https://mui.com/material-ui/material-icons/
 
-
 ## Acknowledgments
+
 https://pixabay.com/photos/bottle-container-engine-oil-liquid-3108641/ for the creative commons image used
 https://www.lipsum.com/ for lorem ipsum generator
