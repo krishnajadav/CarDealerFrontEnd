@@ -22,7 +22,7 @@ const getInventory = async () => {
 const addInventory = async (vehicleAdd) => {
 
   var ImageURL="";
-  if(vehicleAdd.carImageFile!="")
+  if(vehicleAdd.carImageFile!=="")
   {
     const imageRes = await fetch('https://mxzqx65smg.execute-api.us-east-1.amazonaws.com/storeImages',{"method": "POST",
     "body": JSON.stringify({
@@ -57,7 +57,7 @@ const deleteInventory = async (ID) => {
 
 const updateInventory = async (vehicleEdit) => {
 
-  if(vehicleEdit.carImageFile!="")
+  if(vehicleEdit.carImageFile!=="")
   {
     const imageRes = await fetch('https://mxzqx65smg.execute-api.us-east-1.amazonaws.com/storeImages',{"method": "POST",
     "body": JSON.stringify({
