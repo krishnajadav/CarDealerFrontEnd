@@ -1,3 +1,6 @@
+
+// Feature : Car rental
+// Author: Elizabeth James
 import React from "react";
 import MaterialTable from "material-table";
 import tableIcons from "./TableIcons";
@@ -5,6 +8,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from "@mui/material/Box";
+import { Url } from './../../constants/global'
 
 const CarMoreDeals = (props) => {
   
@@ -26,7 +30,7 @@ const CarMoreDeals = (props) => {
 
   React.useEffect(() => {
 
-    axios.get(`http://localhost:4200/api/rental/get/${seatCount}/${distance}/${startDate.toISOString().split('T')[0]}/${endDate.toISOString().split('T')[0]}`)
+    axios.get(Url + `/api/rental/get/${seatCount}/${distance}/${startDate.toISOString().split('T')[0]}/${endDate.toISOString().split('T')[0]}`)
     .then((res) =>{
         setLoading(false);
     let temp = res.data;

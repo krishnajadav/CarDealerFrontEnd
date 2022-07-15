@@ -1,3 +1,6 @@
+// Stubs for  Car rental
+// Author: Elizabeth James
+
 const cars = {
   4: [
     {
