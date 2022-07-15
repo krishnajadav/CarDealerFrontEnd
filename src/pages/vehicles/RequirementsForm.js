@@ -41,9 +41,9 @@ function RequirementsForm() {
             })
             .then((response) => {
                 if (response.status === 201) {
-                    toast.success('Your requirements have been submitted successfully', {
+                    toast.success('Your requirements have been submitted successfully. A dealer will get in touch with you soon.', {
                         position: "top-right",
-                        autoClose: 5000,
+                        autoClose: 9000,
                         hideProgressBar: true,
                         closeOnClick: true,
                         pauseOnHover: true,
