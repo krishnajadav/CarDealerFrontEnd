@@ -11,6 +11,14 @@ import {
 import React from "react";
 import { services } from "./serviceData";
 import TimeSlotDialog from "./Timeslotform";
+/*
+Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
+
+References:
+https://mui.com/
+Used cards, buttons, grids, typography etc from Material UI for displaying the services operated by the dealer to fix timings.
+
+*/
 const CardItem = (props) => {
   const { service, image, content, onClick } = props;
   return (

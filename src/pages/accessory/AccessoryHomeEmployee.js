@@ -1,3 +1,4 @@
+// Author: Tuan Hamid
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -22,7 +23,10 @@ import {useEffect} from "react";
 import axios from "axios";
 import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
+import { Url } from './../../constants/global'
 
+// Code for components adopted from https://mui.com/material-ui/react-card/
+// Code for components adopted from https://mui.com/material-ui/react-tabs/
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -61,22 +65,22 @@ function AccessoryHomeEmployee() {
 
     const populateData = () => {
         axios
-            .get("http://localhost:4200/api/accessory/category/Oil", )
+            .get(Url + "/api/accessory/category/Oil", )
             .then((response) => {
                 setOils(response.data);
             });
         axios
-            .get("http://localhost:4200/api/accessory/category/Tools", )
+            .get(Url + "/api/accessory/category/Tools", )
             .then((response) => {
                 setTools(response.data);
             });
         axios
-            .get("http://localhost:4200/api/accessory/category/Tires", )
+            .get(Url + "/api/accessory/category/Tires", )
             .then((response) => {
                 setTires(response.data);
             });
         axios
-            .get("http://localhost:4200/api/accessory/category/Car%20Care", )
+            .get(Url + "/api/accessory/category/Car%20Care", )
             .then((response) => {
                 setCare(response.data);
             });
@@ -93,7 +97,7 @@ function AccessoryHomeEmployee() {
 
     const handleDelete = () => {
         axios
-            .delete("http://localhost:4200/api/accessory/"+selectedItem)
+            .delete(Url + "/api/accessory/"+selectedItem)
             .then((response) => {
                 if(response.status === 200) {
                     toast.success('Accessory removed', {
