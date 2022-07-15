@@ -10,6 +10,10 @@ import "./../bookings/bookings.css";
 Authors: 
 Leah Isenor
 Adarsh Kannan Iyengar
+
+References:
+This card component from Material UI was used to display the booking details. 
+https://mui.com/material-ui/react-card/
 */
 const BookingCard = ({
   model,

@@ -14,6 +14,10 @@ import { getCars, getTimes, getUnavailableTimes } from "./testDriveHelper"
 Authors: 
 Leah Isenor
 Adarsh Kannan Iyengar
+
+References:
+Used react hook form library for form validations.
+https://react-hook-form.com/
 */
 const TestDriveServiceFormDialog = ({
     isUpdate,
