@@ -1,3 +1,15 @@
+/*
+Author: Harsh Hariramani (B00899363)
+
+Code References:
+
+Made use of the Form Group component to align and justify the user form 
+https://mui.com/material-ui/api/form-group/
+
+Used the App bar of MUI library for easy navigation between links
+https://mui.com/material-ui/react-app-bar/
+*/
+
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';

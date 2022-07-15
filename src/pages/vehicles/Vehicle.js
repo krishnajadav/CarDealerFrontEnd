@@ -1,3 +1,9 @@
+/*
+Author: Harsh Hariramani (B00899363)
+
+This page renders the Vehicle Requirements Form component to the user
+*/
+
 import * as React from 'react';
 import RequirementsForm from './RequirementsForm';
 
