@@ -68,8 +68,12 @@ export default function ServicesContainer() {
 
   const onSubmit = async(data) => {
     if(activeService === "Test Drive"){
-      let result = await bookTestDrive(data);
-      alert(result);
+      if (!localStorage.getItem("id")) {
+        alert("Please log in first");
+      } else {
+        let result = await bookTestDrive(data);
+        alert(result);
+      }
     } else {
       addBooking({
         ...data,
