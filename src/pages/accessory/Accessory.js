@@ -1,3 +1,4 @@
+// Author: Tuan Hamid
 import TextField from "@mui/material/TextField";
 import Paper from '@mui/material/Paper';
 import Grid from "@mui/material/Grid";
@@ -6,17 +7,18 @@ import {Avatar} from "@mui/material";
 import Box from "@mui/material/Box";
 import axios from "axios";
 import {useParams} from "react-router-dom";
+import { Url } from './../../constants/global'
 
 function Accessory() {
     const params = useParams();
     const [accessory, setAccessory] = useState("");
     useEffect(() => {
         axios
-            .get("http://localhost:4200/api/accessory/" + params.id, )
+            .get(Url + "/api/accessory/" + params.id, )
             .then((response) => {
                 setAccessory(response.data)
             });
-    }, []);
+    }, [params.id]);
     return (
         <Box p={3}>
             <Paper>
