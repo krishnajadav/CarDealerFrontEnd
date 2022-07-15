@@ -1,5 +1,6 @@
 /*
 Author: Leah Isenor
+This file contains functions for making requests to the test drive booking API
 */
 const axios = require("axios");
 const { baseURL } = require("./../helper");

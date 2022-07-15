@@ -11,6 +11,9 @@ Authors:
 Leah Isenor
 Adarsh Kannan Iyengar
 
+This file is a modified version of customerBookings.js, specialized for displaying
+test drive bookings.
+
 References:
 This card component from Material UI was used to display the booking details. 
 https://mui.com/material-ui/react-card/
