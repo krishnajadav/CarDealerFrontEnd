@@ -1,3 +1,17 @@
+/*
+Author: Harsh Hariramani (B00899363)
+
+Code References:
+Used material UI icon to display the car icon
+https://mui.com/material-ui/material-icons/
+
+Used the Material UI library to implement a responsive customer form with Material UI components.
+https://mui.com/material-ui/getting-started/templates/sign-in/
+
+Used the Yup validator for validating the Form components
+https://formik.org/docs/guides/validation 
+*/
+
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -19,7 +33,7 @@ function RequirementsForm() {
 
     const validationSchema = Yup.object().shape({
         brand: Yup.string().required('Vehicle brand is required'),
-        model: Yup.string().required('Preferred model is required'),
+        model: Yup.string().required('Preferred car model is required'),
         dealer: Yup.string().required('Dealer name is required')
 
     });
@@ -135,7 +149,7 @@ function RequirementsForm() {
                             placeholder="Enter the dealer of your choice"
                             id="dealer"
                             name="dealer"
-                            label="Preferred dealer name"
+                            label="Dealer name"
                             fullWidth
                             margin="dense"
                             {...register('dealer')}
