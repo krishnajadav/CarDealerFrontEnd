@@ -1302,6 +1302,60 @@ The code was adapted from [React Card Component](https://mui.com/material-ui/rea
       </div>
     </Card>
 ```
+The car icon was displayed using the Material UI icon - ElectricCarSharpIcon and was taken from this source:
+https://mui.com/material-ui/material-icons/
+
+The Material UI library was used to implement a responsive customer form with Material UI components. It was changed as per needed and its source can be found here:
+https://mui.com/material-ui/getting-started/templates/sign-in/
+
+The code inside the Navbar.js class was added and modified from [React App bar](https://mui.com/material-ui/react-app-bar/) of Material UI.
+
+The Yup validator was used for validating the form components: https://formik.org/docs/guides/validation 
+
+### RequirementsForm.js
+
+*Lines 88 - 125* of the RequirementsForm.js file were referenced from this source: https://github.com/mui/material-ui/blob/v5.8.2/docs/data/material/getting-started/templates/sign-in/SignIn.js
+
+```
+      <Box
+                    sx={{
+                        marginTop: 2,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        width: '100%'
+                    }}
+                >
+                    <Avatar sx={{ m: 2, bgcolor: 'secondary.main', width: 65, height: 65 }}>
+                        <ElectricCarSharpIcon />
+                    </Avatar>
+                    <Typography component="h1" variant="h4">
+                        Vehicle Requirements Form
+                    </Typography>
+                    <Box component="form" sx={{
+                        mt: 1, display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        width: '50%'
+                    }}>
+                        <br></br>
+                        <TextField
+                            placeholder="Enter the vehicle brand"
+                            id="brand"
+                            name="brand"
+                            label="Vehicle Brand"
+                            type="string"
+                            fullWidth
+                            margin="dense"
+                            {...register('brand')}
+                            error={errors.brand ? true : false}
+                        />
+                        <Typography variant="inherit" color="textSecondary">
+                            {errors.brand?.message}
+                        </Typography>
+
+```
+
 
 ## Image credits
 
