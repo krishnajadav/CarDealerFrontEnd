@@ -13,6 +13,10 @@ import { MenuItem } from "@mui/material";
 import TradeInResult from "./TradeInResult"
 import { getCars, getEstimate } from "./TradeInHelper";
 
+/*
+Author: Leah Isenor
+Form for the trade-in estimate feature
+*/
 const TradeIn = () => {
 
   const [make, updateMake] = useState();
