@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -11,23 +11,42 @@ import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
 import { MenuItem } from "@mui/material";
 import TradeInResult from "./TradeInResult"
+import { getCars, getEstimate } from "./TradeInHelper";
 
+/*
+Author: Leah Isenor
+Form for the trade-in estimate feature
+*/
 const TradeIn = () => {
 
   const [make, updateMake] = useState();
   const [model, updateModel] = useState();
   const [year, updateYear] = useState();
   const [kilometers, updateKilometers] = useState();
-  const [validated, updateValidated] = useState(false);
+  const [estimate, setEstimate] = useState();
+  const [makes, updateMakes] = useState([]);
+  const [models, updateModels] = useState([]);
+  const yearRange = {min:2000, max:2022};
+  const options = useRef({});
 
-  const submit = () => {
+  const reset = () => {
+    updateKilometers(null);
+    updateMake(null);
+    updateModel(null);
+    updateYear(null);
+    setEstimate(null);
+  }
+  
+  const submit = async() => {
     if (make && model && year && kilometers) {
       let match = kilometers.match(/[0-9]+/);
       if (match && match[0] === kilometers)  {
-        if (year>=dummyYearRange.min && year<=dummyYearRange.max) {
-          updateValidated(true);
+        if (year>=yearRange.min && year<=yearRange.max) {
+          console.log(options.current.value)
+          var response = await getEstimate(options.current.value[make][model]["id"],year,kilometers);
+          setEstimate(response);
         } else {
-          alert("Only years between "+dummyYearRange.min+" and "+dummyYearRange.max+" are accepted");
+          alert("Only years between "+yearRange.min+" and "+yearRange.max+" are accepted");
         }
       } else {
         alert("Enter a valid number for kilometers");
@@ -37,26 +56,31 @@ const TradeIn = () => {
     }
   }
 
-  const reset = () => {
-    updateKilometers(null);
-    updateMake(null);
-    updateModel(null);
-    updateYear(null);
-    updateValidated(false);
+  const getOptions = async() => {
+    var response = await getCars();
+      options.current.value = response;
+      updateMakes(Object.keys(options.current.value));
   }
 
-  const dummyMakes = ["Honda"];
-  const dummyModels = ["Civic","Accord"];
-  const dummyYearRange = {min:2010, max:2022};
+  useEffect(() => {
+    getOptions();
+  },[]);
 
-  if (validated) {
+  useEffect(() => {
+    if(make){
+      updateModels(Object.keys(options.current.value[make]));
+    }
+  },[make]);
+
+  if (estimate) {
     return (
       <>
         <TradeInResult
           make={make}
           model={model}
           year={year}
-          kilometers={kilometers} />
+          kilometers={kilometers}
+          estimate={estimate} />
         <Box px={3}>
           <Grid
             container
@@ -109,19 +133,19 @@ const TradeIn = () => {
                   margin="dense"
                 >
                   <InputLabel>Select Make</InputLabel>
-                  <Select label="Make" onChange={e => updateMake(e.target.value)}>
-                    {dummyMakes.map((year)=>{
-                      return <MenuItem value={year}>{year}</MenuItem>
-                    })} 
+                  <Select label="Make" onChange={e => updateMake(e.target.value)} defaultValue="">
+                    {makes.map((make)=>{
+                      return <MenuItem key={make} value={make}>{make}</MenuItem>
+                    })}
                   </Select>
                 </FormControl>
               </Grid>
               <Grid item xs={6} sm={6} md={3}>
                 <FormControl fullWidth>
                   <InputLabel>Select Model</InputLabel>
-                  <Select label="Model" onChange={e => updateModel(e.target.value)}>
-                    {dummyModels.map((year)=>{
-                      return <MenuItem value={year}>{year}</MenuItem>
+                  <Select label="Model" onChange={e => updateModel(e.target.value)} defaultValue="">
+                    {models.map((model)=>{
+                      return <MenuItem key={model} value={model}>{model}</MenuItem>
                     })} 
                   </Select>
                 </FormControl>
@@ -135,7 +159,7 @@ const TradeIn = () => {
             >
               <Grid item xs={6} sm={6} md={3}>
                 <FormControl fullWidth>
-                  <TextField type="number" label="Year" inputProps = {dummyYearRange} onChange={e => updateYear(e.target.value)}/>
+                  <TextField type="number" label="Year" inputProps = {yearRange} onChange={e => updateYear(e.target.value)}/>
                 </FormControl> 
               </Grid>
               <Grid item xs={6} sm={6} md={3}>
