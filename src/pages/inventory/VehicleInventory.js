@@ -31,7 +31,7 @@ const addInventory = async (vehicleAdd) => {
   var ImageURL="";
   if(vehicleAdd.carImageFile!=="")
   {
-    const imageRes = await fetch('https://mxzqx65smg.execute-api.us-east-1.amazonaws.com/storeImages',{"method": "POST",
+    const imageRes = await fetch('https://elw6xya3ch.execute-api.us-east-1.amazonaws.com/storewebimages',{"method": "POST",
     "body": JSON.stringify({
       "carImageFile":vehicleAdd.carImageFile
     })})
@@ -66,7 +66,7 @@ const updateInventory = async (vehicleEdit) => {
 
   if(vehicleEdit.carImageFile!=="")
   {
-    const imageRes = await fetch('https://mxzqx65smg.execute-api.us-east-1.amazonaws.com/storeImages',{"method": "POST",
+    const imageRes = await fetch('https://elw6xya3ch.execute-api.us-east-1.amazonaws.com/storewebimages',{"method": "POST",
     "body": JSON.stringify({
       "carImageFile":vehicleEdit.carImageFile
     })})
