@@ -20,12 +20,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
+
 import React from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Link, Avatar } from '@mui/material';
 import ElectricCarSharpIcon from '@mui/icons-material/ElectricCarSharp';
+//import Grid from "@mui/material/Grid";
 
 import { Url } from './../../constants/global';
 
@@ -36,7 +37,11 @@ function RequirementsForm() {
     const validationSchema = Yup.object().shape({
         brand: Yup.string().required('Vehicle brand is required'),
         model: Yup.string().required('Preferred car model is required'),
-        dealer: Yup.string().required('Dealer name is required')
+        dealer: Yup.string().required('Dealer name is required'),
+        customer: Yup.string().required('Customer name is required'),
+        email: Yup.string()
+            .required('Email address is required')
+            .email('Please enter a valid email address'),
 
     });
 
@@ -53,7 +58,8 @@ function RequirementsForm() {
             .post(Url + "/api/vehicle", {
                 brand: data.brand,
                 model: data.model,
-                dealer: data.dealer
+                dealer: data.dealer,
+                customer: data.customer
             })
             .then((response) => {
                 if (response.status === 201) {
@@ -114,10 +120,10 @@ function RequirementsForm() {
                         <br></br>
 
                         <TextField
-                            placeholder="Enter the vehicle brand"
+                            placeholder="Enter the vehicle brand "
                             id="brand"
                             name="brand"
-                            label="Vehicle Brand"
+                            label="Vehicle Brand *"
                             type="string"
                             fullWidth
                             margin="dense"
@@ -132,10 +138,10 @@ function RequirementsForm() {
                         <br></br>
 
                         <TextField
-                            placeholder="Enter your preferred model"
+                            placeholder="Enter your preferred car model"
                             id="model"
                             name="model"
-                            label="Preferred model"
+                            label="Car model *"
                             fullWidth
                             margin="dense"
                             {...register('model')}
@@ -151,7 +157,7 @@ function RequirementsForm() {
                             placeholder="Enter the dealer of your choice"
                             id="dealer"
                             name="dealer"
-                            label="Dealer name"
+                            label="Preferred Dealer name "
                             fullWidth
                             margin="dense"
                             {...register('dealer')}
@@ -162,6 +168,41 @@ function RequirementsForm() {
                         </Typography>
 
                         <br></br>
+
+                        <TextField
+                            placeholder="Enter your full name"
+                            id="customer"
+                            name="customer"
+                            label="Customer name *"
+                            fullWidth
+                            margin="dense"
+                            {...register('customer')}
+                            error={errors.customer ? true : false}
+                        />
+                        <Typography variant="inherit" color="textSecondary">
+                            {errors.customer?.message}
+                        </Typography>
+
+                        <br></br>
+
+                        <TextField
+                            placeholder="Enter your email address"
+                            id="email"
+                            name="email"
+                            label="Email address *"
+                            fullWidth
+                            margin="dense"
+                            {...register('email')}
+                            error={errors.email ? true : false}
+                        />
+                        <Typography variant="inherit" color="textSecondary">
+                            {errors.email?.message}
+                        </Typography>
+
+                        <br></br>
+                        
+                        <Typography variant="inherit" color="green"> (*) = required fields </Typography>
+                        
                         <br></br>
 
                         <Button
@@ -175,18 +216,15 @@ function RequirementsForm() {
 
                         <br></br>
 
-                        <Grid container>
-                            <Grid item xs>
-                                <Link href="/quotes" variant="body2">
-                                    <h3> Request a quote </h3>
-                                </Link>
-                            </Grid>
-                            <Grid item >
-                                <Link href="/services" variant="body2">
-                                    <h3> View offered services</h3>
-                                </Link>
-                            </Grid>
-                        </Grid>
+                        <Box display={"flex"} justifyContent={"space-between"} width={"100%"}>
+                            <Link href="/quotes" variant="body2">
+                                <h5> <b> Request a quote </b> </h5>
+                            </Link>
+                            <Link href="/services" variant="body2">
+                                <h5> <b> View offered services </b> </h5>
+                            </Link>
+
+                        </Box>
 
                         <br></br>
                         <br></br>
