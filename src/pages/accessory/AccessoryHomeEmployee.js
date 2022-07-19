@@ -62,27 +62,35 @@ function AccessoryHomeEmployee() {
     const [tools, setTools] = React.useState([]);
     const [tires, setTires] = React.useState([]);
     const [selectedItem, setSelectedItem] = React.useState('');
+    const [tempDataHolder1, setTempDataHolder1] = React.useState([]);
+    const [tempDataHolder2, setTempDataHolder2] = React.useState([]);
+    const [tempDataHolder3, setTempDataHolder3] = React.useState([]);
+    const [tempDataHolder4, setTempDataHolder4] = React.useState([]);
 
     const populateData = () => {
         axios
             .get(Url + "/api/accessory/category/Oil", )
             .then((response) => {
                 setOils(response.data);
+                setTempDataHolder1(response.data);
             });
         axios
             .get(Url + "/api/accessory/category/Tools", )
             .then((response) => {
                 setTools(response.data);
+                setTempDataHolder3(response.data);
             });
         axios
             .get(Url + "/api/accessory/category/Tires", )
             .then((response) => {
                 setTires(response.data);
+                setTempDataHolder4(response.data);
             });
         axios
             .get(Url + "/api/accessory/category/Car%20Care", )
             .then((response) => {
                 setCare(response.data);
+                setTempDataHolder2(response.data);
             });
     }
 
@@ -132,20 +140,12 @@ function AccessoryHomeEmployee() {
     };
 
     const [textTab1, setTextTab1] = React.useState("");
-    const [helperTextTab1, setHelperTextTab1] = React.useState();
-    const [helperTextTab1Error, setHelperTextTab1Error] = React.useState(false);
 
     const [textTab2, setTextTab2] = React.useState("");
-    const [helperTextTab2, setHelperTextTab2] = React.useState();
-    const [helperTextTab2Error, setHelperTextTab2Error] = React.useState(false);
 
     const [textTab3, setTextTab3] = React.useState("");
-    const [helperTextTab3, setHelperTextTab3] = React.useState();
-    const [helperTextTab3Error, setHelperTextTab3Error] = React.useState(false);
 
     const [textTab4, setTextTab4] = React.useState("");
-    const [helperTextTab4, setHelperTextTab4] = React.useState();
-    const [helperTextTab4Error, setHelperTextTab4Error] = React.useState(false);
 
     const [value, setValue] = React.useState(0);
     const handleChange = (event, newValue) => {
@@ -153,42 +153,46 @@ function AccessoryHomeEmployee() {
     };
 
     const checkTab1 = () => {
-        if (textTab1 === "") {
-            setHelperTextTab1Error(true);
-            setHelperTextTab1("Search field must not be empty to search.");
+        if (textTab1 === '') {
+            setOils(tempDataHolder1);
         } else {
-            setHelperTextTab1Error(false);
-            setHelperTextTab1("");
+            const results = oils.filter(data => {
+                return data.name.toLowerCase().includes(textTab1.toLowerCase());
+            })
+            setOils(results);
         }
     }
 
     const checkTab2 = () => {
-        if (textTab2 === "") {
-            setHelperTextTab2Error(true);
-            setHelperTextTab2("Search field must not be empty to search.");
+        if (textTab2 === '') {
+            setCare(tempDataHolder2);
         } else {
-            setHelperTextTab2Error(false);
-            setHelperTextTab2("");
+            const results = care.filter(data => {
+                return data.name.toLowerCase().includes(textTab2.toLowerCase());
+            })
+            setCare(results);
         }
     }
 
     const checkTab3 = () => {
-        if (textTab3 === "") {
-            setHelperTextTab3Error(true);
-            setHelperTextTab3("Search field must not be empty to search.");
+        if (textTab3 === '') {
+            setTools(tempDataHolder3);
         } else {
-            setHelperTextTab3Error(false);
-            setHelperTextTab3("");
+            const results = tools.filter(data => {
+                return data.name.toLowerCase().includes(textTab3.toLowerCase());
+            })
+            setTools(results);
         }
     }
 
     const checkTab4 = () => {
-        if (textTab4 === "") {
-            setHelperTextTab4Error(true);
-            setHelperTextTab4("Search field must not be empty to search.");
+        if (textTab4 === '') {
+            setTires(tempDataHolder4);
         } else {
-            setHelperTextTab4Error(false);
-            setHelperTextTab4("");
+            const results = tires.filter(data => {
+                return data.name.toLowerCase().includes(textTab4.toLowerCase());
+            })
+            setTires(results);
         }
     }
     return (
@@ -239,8 +243,6 @@ function AccessoryHomeEmployee() {
                                 variant="filled"
                                 value={textTab1}
                                 onChange={(event) => setTextTab1(event.target.value)}
-                                error={helperTextTab1Error}
-                                helperText={helperTextTab1}
                             />
                             <Button variant="contained" color="secondary" onClick={checkTab1}>
                                 <SearchIcon></SearchIcon>
@@ -296,8 +298,6 @@ function AccessoryHomeEmployee() {
                                 variant="filled"
                                 value={textTab2}
                                 onChange={(event) => setTextTab2(event.target.value)}
-                                error={helperTextTab2Error}
-                                helperText={helperTextTab2}
                             />
                             <Button variant="contained" color="secondary" onClick={checkTab2}>
                                 <SearchIcon></SearchIcon>
@@ -354,8 +354,6 @@ function AccessoryHomeEmployee() {
                                 variant="filled"
                                 value={textTab3}
                                 onChange={(event) => setTextTab3(event.target.value)}
-                                error={helperTextTab3Error}
-                                helperText={helperTextTab3}
                             />
                             <Button variant="contained" color="secondary" onClick={checkTab3}>
                                 <SearchIcon></SearchIcon>
@@ -412,8 +410,6 @@ function AccessoryHomeEmployee() {
                                 variant="filled"
                                 value={textTab4}
                                 onChange={(event) => setTextTab4(event.target.value)}
-                                error={helperTextTab4Error}
-                                helperText={helperTextTab4}
                             />
                             <Button variant="contained" color="secondary" onClick={checkTab4}>
                                 <SearchIcon></SearchIcon>
