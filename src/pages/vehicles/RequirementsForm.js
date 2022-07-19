@@ -59,7 +59,8 @@ function RequirementsForm() {
                 brand: data.brand,
                 model: data.model,
                 dealer: data.dealer,
-                customer: data.customer
+                customer: data.customer,
+                email: data.email
             })
             .then((response) => {
                 if (response.status === 201) {
@@ -102,16 +103,20 @@ function RequirementsForm() {
                     }}
                 >
 
+                    <Typography component="h1" variant="h4">
+                       <b> Pre-Order a Vehicle </b>
+                    </Typography>
+
                     <Avatar sx={{ m: 2, bgcolor: 'secondary.main', width: 65, height: 65 }}>
                         <ElectricCarSharpIcon />
                     </Avatar>
 
-                    <Typography component="h1" variant="h4">
+                    <Typography component="h1" variant="h5">
                         Vehicle Requirements Form
                     </Typography>
 
                     <Box component="form" sx={{
-                        mt: 1, display: 'flex',
+                        display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
                         width: '50%'
@@ -157,7 +162,7 @@ function RequirementsForm() {
                             placeholder="Enter the dealer of your choice"
                             id="dealer"
                             name="dealer"
-                            label="Preferred Dealer name "
+                            label="Preferred Dealer name *"
                             fullWidth
                             margin="dense"
                             {...register('dealer')}
@@ -185,7 +190,7 @@ function RequirementsForm() {
 
                         <br></br>
 
-                        <TextField
+                        <TextField 
                             placeholder="Enter your email address"
                             id="email"
                             name="email"
@@ -216,7 +221,7 @@ function RequirementsForm() {
 
                         <br></br>
 
-                        <Box display={"flex"} justifyContent={"space-between"} width={"100%"}>
+                        <Box display={"flex"} mt="10px" justifyContent={"space-between"} width={"100%"}>
                             <Link href="/quotes" variant="body2">
                                 <h5> <b> Request a quote </b> </h5>
                             </Link>

@@ -70,9 +70,9 @@ export const dealerRoutes = [
     path: "/manage/updateTimeSlots",
     key: "dealer-timeslot",
     component: updatedTimeSlot,
-    title: "Pre-orders",
+    title: "Pre-Orders",
     path: "/manage/vehicles",
     key: "customer-requirements",
     component: CustomerList,
-  },
+  }
 ];

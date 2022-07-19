@@ -31,6 +31,8 @@ function CustomerList() {
                 <th scope="col">Brand</th>
                 <th scope="col">Model</th>
                 <th scope="col">Dealer</th>
+                <th scope="col">Customer name</th>
+                <th scope="col">Email address</th>
                 
                 </tr>
             </thead>
@@ -42,6 +44,8 @@ function CustomerList() {
                                     <td>{item.brand}</td>
                                     <td>{item.model}</td>
                                     <td>{item.dealer}</td>
+                                    <td>{item.customer}</td>
+                                    <td>{item.email}</td>
                                 </tr>      
                                        })}
                 <tr>
