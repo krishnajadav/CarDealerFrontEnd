@@ -39,8 +39,9 @@ function CustomerList() {
             <tbody>
             
             {Users.map((item, i) => {
+                   console.log(item)
                                 return <tr>
-                                    
+                                 
                                     <td>{item.brand}</td>
                                     <td>{item.model}</td>
                                     <td>{item.dealer}</td>

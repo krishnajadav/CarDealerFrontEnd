@@ -33,7 +33,6 @@ import { Url } from './../../constants/global';
 
 function RequirementsForm() {
     const navigate = useNavigate();
-
     const validationSchema = Yup.object().shape({
         brand: Yup.string().required('Vehicle brand is required'),
         model: Yup.string().required('Preferred car model is required'),
@@ -208,6 +207,10 @@ function RequirementsForm() {
                         
                         <Typography variant="inherit" color="green"> (*) = required fields </Typography>
                         
+                        <br></br>
+
+                        <Typography variant="inherit" color="orange"> (Please enter 'none' if there is no dealer preference) </Typography>
+
                         <br></br>
 
                         <Button
