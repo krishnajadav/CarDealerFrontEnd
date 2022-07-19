@@ -79,7 +79,7 @@ export const getBookingData = async () => {
   //   return JSON.parse(data);
   // }
   try {
-    const res = await fetch("http://locahost:3000/manage/updateTimeSlots");
+    const res = await fetch(`${baseURL}/manage/updateTimeSlots`);
     const data = await res.json();
     return data;
   } catch (e) {
