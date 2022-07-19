@@ -4,6 +4,15 @@ import { getBookingData, setBookingData } from "./serviceData";
 Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
 */
 const BookingContext = createContext({});
+const getRequestOptions = (method = "POST") => ({
+  method,
+  mode: "cors",
+  cache: "no-cache",
+  credentials: "same-origin",
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
 
 export const BookingContextProvider = ({ children }) => {
   const [bookings, setBookings] = useState(getBookingData() ?? []);
@@ -13,27 +22,32 @@ export const BookingContextProvider = ({ children }) => {
   }, [bookings]);
 
   const addBooking = (booking) => {
-    setBookings((existingBookings) => [booking, ...existingBookings]);
+    fetch("http://locahost:3000/manage/updateTimeSlots", {
+      ...getRequestOptions(),
+      body: JSON.stringify({
+        ...booking,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        const newData = {
+          ...result.data,
+          ...booking,
+        };
+        setBookings((existingBookings) => [newData, ...existingBookings]);
+      });
   };
   const deleteBooking = (id) => {
     setBookings((existingBookings) =>
       existingBookings.filter((e) => e.id !== id)
     );
   };
-  const updateBooking = (updatedBooking) => {
-    const updatedData = bookings.map((b) =>
-      updatedBooking.id === b.id ? updatedBooking : b
-    );
-    setBookings(updatedData);
-  };
-
   return (
     <BookingContext.Provider
       value={{
         bookings,
         addBooking,
         deleteBooking,
-        updateBooking,
       }}
     >
       {children}

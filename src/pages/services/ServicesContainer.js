@@ -66,8 +66,8 @@ export default function ServicesContainer() {
     setActiveService(null);
   };
 
-  const onSubmit = async(data) => {
-    if(activeService === "Test Drive"){
+  const onSubmit = async (data) => {
+    if (activeService === "Test Drive") {
       if (!localStorage.getItem("id")) {
         alert("Please log in first");
       } else {
@@ -81,7 +81,7 @@ export default function ServicesContainer() {
         // id: Math.floor(Math.random() * 500000),
       });
       alert(`Appointment for ${activeService} booked successfully!`);
-    } 
+    }
     closeModal();
   };
 
@@ -106,22 +106,23 @@ export default function ServicesContainer() {
           );
         })}
       </Grid>
-      {activeService === "Test Drive"? 
-      <TestDriveServiceFormDialog
-        isUpdate={false}
-        handleSubmit={onSubmit}
-        service={activeService}
-        open={open}
-        handleClose={closeModal}
-      /> :
-      <ServiceFormDialog
-        isUpdate={false}
-        handleSubmit={onSubmit}
-        service={activeService}
-        open={open}
-        handleClose={closeModal}
-      />
-      }
+      {activeService === "Test Drive" ? (
+        <TestDriveServiceFormDialog
+          isUpdate={false}
+          handleSubmit={onSubmit}
+          service={activeService}
+          open={open}
+          handleClose={closeModal}
+        />
+      ) : (
+        <ServiceFormDialog
+          isUpdate={false}
+          handleSubmit={onSubmit}
+          service={activeService}
+          open={open}
+          handleClose={closeModal}
+        />
+      )}
     </div>
   );
 }

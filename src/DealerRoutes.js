@@ -7,6 +7,7 @@ import EmployeeList from "./pages/user/EmployeeList";
 import ChangePassword from "./pages/user/ChangePassword";
 import VehicleInventory from "./pages/inventory/VehicleInventory";
 import ServicesDealer from "./pages/services/dealer/ServicesDealer";
+import updatedTimeSlot from "./pages/services/dealer/updatedTimeSlot";
 
 export const dealerRoutes = [
   {
@@ -62,5 +63,11 @@ export const dealerRoutes = [
     path: "/manage/services",
     key: "dealer-service",
     component: ServicesDealer,
+  },
+  {
+    title: "TimeSlot",
+    path: "/manage/updateTimeSlots",
+    key: "dealer-timeslot",
+    component: updatedTimeSlot,
   },
 ];
