@@ -1355,6 +1355,83 @@ The Yup validator was used for validating the form components: https://formik.or
                         </Typography>
 
 ```
+### App.js
+
+_Lines 11 - 54_
+
+```
+  // https://www.robinwieruch.de/react-router-private-routes/
+  const CustomerProtection = ({ children }) => {
+    let id = localStorage.getItem("id");
+    if (!id) {
+      return <Navigate to="/login" replace />;
+    }
+    return children;
+  };
+
+  const DealerProtection = ({ children }) => {
+    let id = localStorage.getItem("id");
+    let role = localStorage.getItem("role");
+    if (!id || role!=='employee') {
+      localStorage.removeItem("id");
+      localStorage.removeItem("role");
+      localStorage.removeItem("username");
+      localStorage.removeItem("accessToken");
+      return <Navigate to="/login" replace />;
+    }
+    return children;
+  };
+
+  return (
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<Navigate replace to="/login" />} >
+        </Route>
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/register" element={<CustomerRegistration />} />
+        <Route exact path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/manage" element={
+          <DealerProtection>
+            <LayoutDealer />
+          </DealerProtection>
+        }>
+          {dealerRoutes.map((route) => (
+            <Route path={route.path} element={<route.component />} />
+          ))}
+        </Route>
+        <Route path="/" element={
+          <CustomerProtection>
+            <LayoutCustomer />
+          </CustomerProtection>
+        }>
+          {customerRoutes.map((route) => (
+            <Route path={route.path} element={<route.component />} />
+          ))}
+        </Route>
+      </Routes>
+    </Router>
+  );
+
+```
+
+The code above was created by adapting the code in [ROBIN WIERUCH](https://www.robinwieruch.de/react-router-private-routes/) as shown below:
+
+```
+Copy and paste the snippet of code you are referencing
+const ProtectedRoute = ({ user, children }) => {
+  if (!user) {
+    return <Navigate to="/landing" replace />;
+  }
+
+  return children;
+};
+
+
+```
+
+- <!---How---> The code in [ROBIN WIERUCH](https://www.robinwieruch.de/react-router-private-routes/) was implemented to protect routes
+- <!---Why---> [ROBIN WIERUCH](https://www.robinwieruch.de/react-router-private-routes/)'s Code was used because it shows route protection using react router dom
+- <!---How---> [ROBIN WIERUCH](https://www.robinwieruch.de/react-router-private-routes/)'s Code was modified by adjusting to customer and employee security levels in access
 
 
 ## Image credits

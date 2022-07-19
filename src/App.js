@@ -8,6 +8,28 @@ import CustomerRegistration from "./pages/user/CustomerRegistration";
 import ForgotPassword from "./pages/user/ForgotPassword";
 
 function App() {
+  // https://www.robinwieruch.de/react-router-private-routes/
+  const CustomerProtection = ({ children }) => {
+    let id = localStorage.getItem("id");
+    if (!id) {
+      return <Navigate to="/login" replace />;
+    }
+    return children;
+  };
+
+  const DealerProtection = ({ children }) => {
+    let id = localStorage.getItem("id");
+    let role = localStorage.getItem("role");
+    if (!id || role!=='employee') {
+      localStorage.removeItem("id");
+      localStorage.removeItem("role");
+      localStorage.removeItem("username");
+      localStorage.removeItem("accessToken");
+      return <Navigate to="/login" replace />;
+    }
+    return children;
+  };
+
   return (
     <Router>
       <Routes>
@@ -16,12 +38,20 @@ function App() {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<CustomerRegistration />} />
         <Route exact path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/manage" element={<LayoutDealer />}>
+        <Route path="/manage" element={
+          <DealerProtection>
+            <LayoutDealer />
+          </DealerProtection>
+        }>
           {dealerRoutes.map((route) => (
             <Route path={route.path} element={<route.component />} />
           ))}
         </Route>
-        <Route path="/" element={<LayoutCustomer />}>
+        <Route path="/" element={
+          <CustomerProtection>
+            <LayoutCustomer />
+          </CustomerProtection>
+        }>
           {customerRoutes.map((route) => (
             <Route path={route.path} element={<route.component />} />
           ))}
