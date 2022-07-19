@@ -1378,6 +1378,20 @@ Suzuki: https://s1.cdn.autoevolution.com/images/models/SUZUKI_Swift-5-Doors-2020
 
 LockoutlinedIcon logo: https://mui.com/material-ui/getting-started/templates/sign-in/ & https://mui.com/material-ui/material-icons/
 
+### Accessories remote images
+https://www.flickr.com/photos/jeepersmedia/14061604449
+https://www.flickr.com/photos/jeepersmedia/14061639880/in/photostream/
+https://www.flickr.com/photos/jeepersmedia/14061639170/in/photostream/
+https://www.flickr.com/photos/jeepersmedia/14268423653/in/photostream/
+
+https://pxhere.com/en/photo/1548209
+https://www.shutterstock.com/image-photo/1463332910?utm_source=iptc&utm_medium=googleimages&utm_campaign=image
+
+https://www.flickr.com/photos/chdot/2694946585
+https://commons.wikimedia.org/wiki/File:OBD_Auto_Scanner_connecting_to_the_ECU.JPG
+
+https://www.flickr.com/photos/concavowheels/8383098766
+https://commons.wikimedia.org/wiki/File:Prestone_AMAM_5050_with_Superiority_Claim.jpg
 ## Acknowledgments
 
 https://pixabay.com/photos/bottle-container-engine-oil-liquid-3108641/ for the creative commons image used
