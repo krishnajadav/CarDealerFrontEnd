@@ -11,6 +11,7 @@ import {
 import React from "react";
 import { services } from "./serviceData";
 import TimeSlotDialog from "./Timeslotform";
+import { useBookings } from "./timeSlotStore";
 /*
 Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
 
@@ -51,6 +52,7 @@ const CardItem = (props) => {
 export default function Timeslot() {
   const [open, setOpen] = React.useState(false);
   const [activeService, setActiveService] = React.useState(null);
+  const { addBooking } = useBookings();
   const openModal = (service) => {
     setActiveService(service);
     setOpen(true);
@@ -62,6 +64,10 @@ export default function Timeslot() {
   };
 
   const onSubmit = (data) => {
+    // addBooking({
+    //   ...data,
+    //   type: activeService,
+    // });
     alert(`Slots for ${activeService} updated successfully!`);
     closeModal();
   };

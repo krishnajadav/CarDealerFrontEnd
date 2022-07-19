@@ -6,6 +6,7 @@ import light from "./assets/light.jpg";
 import battery from "./assets/battery.jpg";
 import testDriveCar from "./assets/testdrivecar.png";
 import repairsCar from "./assets/repairscar.png";
+import { Url } from "../../../constants/global";
 /*
 Author: Adarsh Kannan Iyengar(ad398244@dal.ca)
 */
@@ -45,7 +46,7 @@ export const services = [
     image: light,
     content:
       "Select the time slot availability for checking the battery in the vehicles.",
-  }
+  },
 ];
 
 export const timeSlotFrom = [
@@ -67,14 +68,22 @@ export const timeSlotTill = [
   "6:00 PM",
 ];
 export const location = ["Select", "Halifax", "Dartmouth", "Bedford"];
+export const baseURL = Url + "/api";
 
 export const setBookingData = (values) =>
   localStorage.setItem("bookings", JSON.stringify(values));
 
-export const getBookingData = () => {
-  const data = localStorage.getItem("bookings");
-  if (data) {
-    return JSON.parse(data);
+export const getBookingData = async () => {
+  //const data = localStorage.getItem("bookings");
+  // if (data) {
+  //   return JSON.parse(data);
+  // }
+  try {
+    const res = await fetch("http://locahost:3000/manage/updateTimeSlots");
+    const data = await res.json();
+    return data;
+  } catch (e) {
+    return { err: e.message };
   }
 };
 
