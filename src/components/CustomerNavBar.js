@@ -13,6 +13,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import Avatar from "@mui/material/Avatar";
 import { Link as navLink } from "react-router-dom";
+import "./../App.css";
 
 const pages = [
   {
@@ -81,7 +82,7 @@ function CustomerNavBar() {
   };
   return (
     <div>
-      <AppBar position="static" color="secondary">
+      <AppBar position="static" color="primary">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <DirectionsCarIcon
