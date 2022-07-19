@@ -26,6 +26,9 @@ const pages = [{
 }, {
     name: "Inventory",
     link: "/manage/inventory"
+}, {
+    name: "Pre-orders",
+    link: "/manage/vehicles"
 }];
 const settings = [{
     name: "Account",
