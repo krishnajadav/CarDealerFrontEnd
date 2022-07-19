@@ -8,8 +8,15 @@ https://therichpost.com/reactjs-fetch-api-data-from-json-server/
 
 */
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useEffect, useState } from 'react'
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+
 function CustomerList() {
     const [Users, fetchUsers] = useState([])
     useEffect(() => {
@@ -24,36 +31,33 @@ function CustomerList() {
     return (
        <div className="container p-5">
         <h1 className='mb-5'> Vehicle requirements of customers  </h1>
-       
-        <table className="table">
-            <thead>
-                <tr>
-                <th scope="col">Brand</th>
-                <th scope="col">Model</th>
-                <th scope="col">Dealer</th>
-                <th scope="col">Customer name</th>
-                <th scope="col">Email address</th>
-                
-                </tr>
-            </thead>
-            <tbody>
-            
-            {Users.map((item, i) => {
-                   console.log(item)
-                                return <tr>
-                                 
-                                    <td>{item.brand}</td>
-                                    <td>{item.model}</td>
-                                    <td>{item.dealer}</td>
-                                    <td>{item.customer}</td>
-                                    <td>{item.email}</td>
-                                </tr>      
-                                       })}
-                <tr>
-               
-                </tr>
-            </tbody>
-            </table>
+        <TableContainer>
+      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Brand</TableCell>
+            <TableCell>Model</TableCell>
+            <TableCell>Dealer</TableCell>
+            <TableCell>Customer name</TableCell>
+            <TableCell>Email address</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+       {Users.map((item, i)=>(
+        <TableRow
+        key={i}
+        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+      >
+        <TableCell>{item.brand}</TableCell>
+        <TableCell>{item.model}</TableCell>
+        <TableCell>{item.dealer}</TableCell>
+        <TableCell>{item.customer}</TableCell>
+        <TableCell>{item.email}</TableCell>
+      </TableRow>
+       ))}     
+        </TableBody>
+      </Table>
+    </TableContainer>
        </div>
     )
 }
