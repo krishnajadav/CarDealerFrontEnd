@@ -7,7 +7,11 @@ import EmployeeList from "./pages/user/EmployeeList";
 import ChangePassword from "./pages/user/ChangePassword";
 import VehicleInventory from "./pages/inventory/VehicleInventory";
 import ServicesDealer from "./pages/services/dealer/ServicesDealer";
+<<<<<<< HEAD
 import updatedTimeSlot from "./pages/services/dealer/updatedTimeSlot";
+=======
+import CustomerList from "./pages/vehicles/DealerView";
+>>>>>>> 841d8760ea67015914ce2bf6f377549561a49529
 
 export const dealerRoutes = [
   {
@@ -65,9 +69,16 @@ export const dealerRoutes = [
     component: ServicesDealer,
   },
   {
+<<<<<<< HEAD
     title: "TimeSlot",
     path: "/manage/updateTimeSlots",
     key: "dealer-timeslot",
     component: updatedTimeSlot,
+=======
+    title: "Pre-orders",
+    path: "/manage/vehicles",
+    key: "customer-requirements",
+    component: CustomerList,
+>>>>>>> 841d8760ea67015914ce2bf6f377549561a49529
   },
 ];

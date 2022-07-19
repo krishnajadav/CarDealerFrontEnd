@@ -34,6 +34,13 @@ const pages = [
 ];
 const settings = [
   {
+    link: "/manage/inventory",
+  },
+  {
+    name: "Pre-orders",
+    link: "/manage/vehicles",
+  },
+  {
     name: "Account",
     link: "/manage/employee/change-password",
   },
