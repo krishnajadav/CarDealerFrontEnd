@@ -2,8 +2,6 @@
 
 # Assignment 3
 
-**[Optional]** If what is being submitted is an individual Lab or Assignment. Otherwise, include a brief one paragraph description about the project.
-
 - _Date Created_: 16 June 2022
 - _Last Modification Date_: 15 JUL 2022
 - _Frontend Git URL_: <https://github.com/krishnajadav/CarDealerFrontEnd>
