@@ -16,10 +16,8 @@
 
 - _Date Created_: 16 June 2022
 - _Last Modification Date_: 15 JUL 2022
-- _Live frontend_ : <https://project-group9-frontend.herokuapp.com/>
-- _Backend API_:<https://group9-backend.herokuapp.com/>
-- _Git URL_: <https://git.cs.dal.ca/lisenor/5709_group9/-/tree/main>
-- _Backend Git URL_: <https://git.cs.dal.ca/jadav/5709_cardealerbackend_group9>
+- _Frontend Git URL_: <https://github.com/krishnajadav/CarDealerFrontEnd>
+- _Backend Git URL_: <https://github.com/krishnajadav/CarDealerBackEnd>
 
 ## Authors
 
